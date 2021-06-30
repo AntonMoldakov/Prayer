@@ -1,7 +1,7 @@
 import React from 'react'
 import {Alert, StyleSheet, TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
-import {Desk, Column} from "./screens"
+import {Desk, Column, Auth} from "./screens"
 import {ColumnTitle} from './components'
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
@@ -12,6 +12,11 @@ const Navigation = () => {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{headerTitleAlign: 'center'}}>
+				<Stack.Screen
+					name="Auth"
+					component={Auth}
+					options={{title: 'Welcome'}}
+				/>
 				<Stack.Screen
 					name="Desk"
 					component={Desk}
