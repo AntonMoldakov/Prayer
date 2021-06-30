@@ -3,7 +3,6 @@ import {
 	View,
 	Text
 } from 'react-native'
-
 import {useRoute, RouteProp} from '@react-navigation/native'
 
 const Column = () => {

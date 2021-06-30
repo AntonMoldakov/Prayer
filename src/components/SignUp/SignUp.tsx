@@ -1,16 +1,20 @@
 import React from "react"
 import {useState} from 'react'
-import {View, TextInput, Button, Alert} from 'react-native'
+import {View, TextInput, Button} from 'react-native'
+import {useAppDispatch} from "../../hooks";
+import {authOperations} from "../../state/ducks/auth";
 
 const SignUp = () => {
+	const dispatch = useAppDispatch()
 	const [emailValue, setEmailValue] = useState('')
 	const [usernameValue, setUsernameValue] = useState('')
 	const [passwordValue, setPasswordValue] = useState('')
 
 
-	const onSignUp = () => {
+	const onSignUp = async () => {
 		if (emailValue && setEmailValue && passwordValue) {
-			Alert.alert(`${emailValue}, ${usernameValue}, ${passwordValue}`)
+			// @ts-ignore
+			dispatch(authOperations.signUp(emailValue, usernameValue, passwordValue))
 			setEmailValue('')
 			setUsernameValue('')
 			setPasswordValue('')
