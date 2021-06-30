@@ -63,7 +63,8 @@ export default Desk
 
 const styles = StyleSheet.create({
 	container: {
-		marginHorizontal: 15,
+		flex: 1,
+		paddingHorizontal: 15,
 		backgroundColor: '#fff'
 	},
 	listStyle: {
