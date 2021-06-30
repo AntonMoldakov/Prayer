@@ -1,9 +1,10 @@
 import React from 'react'
 import {Alert, TouchableOpacity, Text, StyleSheet} from 'react-native'
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import {Swipeable} from "react-native-gesture-handler";
+import {useNavigation} from '@react-navigation/native';
 
 const ColumnPreview = ({title, id}) => {
-
+	const navigation = useNavigation();
 	const renderRightActions = () => {
 		return (
 			<TouchableOpacity style={styles.delete}
@@ -18,7 +19,7 @@ const ColumnPreview = ({title, id}) => {
 		           containerStyle={styles.swipeableContainer}
 		           childrenContainerStyle={styles.swipeableChildContainer}>
 			<TouchableOpacity style={styles.item}
-			                  onPress={() => Alert.alert('Open Desk')}>
+			                  onPress={() =>  navigation.navigate('Column', {columnId: id, columnTitle: title})}>
 				<Text style={styles.text}>{title}</Text>
 			</TouchableOpacity>
 		</Swipeable>
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
 	},
 	delete: {
 		width: '30%',
-		justifyContent: 'center',
+		paddingVertical: 20,
+		justifyContent: 'flex-end',
 		alignItems: 'center',
 		backgroundColor: '#AC5253',
 		marginBottom: 10,

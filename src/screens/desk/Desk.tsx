@@ -14,13 +14,12 @@ import {ColumnPreview} from '../../components'
 const Desk = () => {
 	const [inputValue, setInputValue] = useState('')
 
-	const columns = [
+	const desk = [
 		{id: 120, title: 'Desk1'},
 		{id: 131, title: 'Desk2'},
-		{id: 30, title: 'Desk3'}
-
+		{id: 30, title: 'Desk3'},
+		{id: 34, title: 'Desk4'}
 	]
-
 	const AddColumn = () => {
 		if (inputValue) {
 			Alert.alert('create desk: ' + inputValue)
@@ -33,7 +32,7 @@ const Desk = () => {
 			<>
 				<FlatList
 					style={styles.listStyle}
-					data={columns}
+					data={desk}
 					renderItem={({item}) => (
 						<ColumnPreview title={item.title} id={item.id}/>
 					)}
@@ -64,17 +63,15 @@ export default Desk
 
 const styles = StyleSheet.create({
 	container: {
-		display: 'flex',
-		justifyContent: 'center',
-		// marginLeft: '5%',
+		marginHorizontal: 15,
 		backgroundColor: '#fff'
 	},
 	listStyle: {
-		width: '90%',
+		width: '100%',
 		marginTop: 15,
 	},
 	inputSection: {
-		width: '90%',
+		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
