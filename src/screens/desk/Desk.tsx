@@ -4,7 +4,8 @@ import {
 	View,
 	FlatList,
 	TextInput,
-	Alert
+	Alert,
+	StyleSheet
 } from 'react-native'
 
 import {ColumnPreview} from '../../components'
@@ -13,13 +14,12 @@ import {ColumnPreview} from '../../components'
 const Desk = () => {
 	const [inputValue, setInputValue] = useState('')
 
-	const columns = [
+	const desk = [
 		{id: 120, title: 'Desk1'},
 		{id: 131, title: 'Desk2'},
-		{id: 30, title: 'Desk3'}
-
+		{id: 30, title: 'Desk3'},
+		{id: 34, title: 'Desk4'}
 	]
-
 	const AddColumn = () => {
 		if (inputValue) {
 			Alert.alert('create desk: ' + inputValue)
@@ -28,26 +28,29 @@ const Desk = () => {
 	}
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<>
 				<FlatList
-					data={columns}
+					style={styles.listStyle}
+					data={desk}
 					renderItem={({item}) => (
 						<ColumnPreview title={item.title} id={item.id}/>
 					)}
 					keyExtractor={(item) => `${item.id}`}
 				/>
-				<View>
+				<View style={styles.inputSection}>
 					<Plus
 						name="plus"
 						size={28}
 						color="#72A8BC"
+						style={styles.inputIcon}
 					/>
 					<TextInput
 						underlineColorAndroid="transparent"
 						placeholder="Add a column..."
 						onChangeText={(text) => setInputValue(text)}
 						value={inputValue}
+						style={styles.input}
 						onSubmitEditing={AddColumn}
 					/>
 				</View>
@@ -57,3 +60,37 @@ const Desk = () => {
 }
 
 export default Desk
+
+const styles = StyleSheet.create({
+	container: {
+		marginHorizontal: 15,
+		backgroundColor: '#fff'
+	},
+	listStyle: {
+		width: '100%',
+		marginTop: 15,
+	},
+	inputSection: {
+		width: '100%',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#fff',
+		borderWidth: 1,
+		borderColor: '#E5E5E5',
+		borderRadius: 4,
+		height: 50,
+		marginTop: 16,
+		paddingRight: 10,
+	},
+	inputIcon: {
+		paddingLeft: 10,
+	},
+	input: {
+		width: '90%',
+		height: '100%',
+		paddingLeft: 10,
+		fontSize: 17,
+		lineHeight: 20,
+	},
+})
