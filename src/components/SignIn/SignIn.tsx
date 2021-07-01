@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from 'react'
 import {useState} from 'react'
 import {Button, TextInput, View} from "react-native";
 import {useAppDispatch} from "../../hooks";

@@ -1,6 +1,6 @@
-import React from "react"
+import * as React from 'react'
 import {useState} from 'react'
-import {View, TextInput, Button} from 'react-native'
+import {View, TextInput, Button, StyleSheet} from 'react-native'
 import {useAppDispatch} from "../../hooks";
 import {authOperations} from "../../state/ducks/auth";
 
@@ -11,10 +11,10 @@ const SignUp = () => {
 	const [passwordValue, setPasswordValue] = useState('')
 
 
-	const onSignUp = async () => {
+	const onSignUp = (values: { name: string, email: string, password: string }) => {
 		if (emailValue && setEmailValue && passwordValue) {
 			// @ts-ignore
-			dispatch(authOperations.signUp(emailValue, usernameValue, passwordValue))
+			dispatch(authOperations.signUp(values.email, values.name, values.password))
 			setEmailValue('')
 			setUsernameValue('')
 			setPasswordValue('')
@@ -22,7 +22,7 @@ const SignUp = () => {
 	}
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<TextInput
 				placeholder="Email"
 				onChangeText={(text) => setEmailValue(text)}
@@ -45,3 +45,33 @@ const SignUp = () => {
 }
 
 export default SignUp;
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		paddingHorizontal: 15
+	},
+	listStyle: {
+		width: '100%',
+		marginTop: 15,
+	},
+	inputSection: {
+		width: '100%',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#fff',
+		borderWidth: 1,
+		borderColor: '#E5E5E5',
+		borderRadius: 4,
+		height: 50,
+		marginTop: 16,
+		paddingRight: 10,
+	},
+	input: {
+		height: '100%',
+		paddingLeft: 10,
+		fontSize: 17,
+		lineHeight: 20,
+	},
+})

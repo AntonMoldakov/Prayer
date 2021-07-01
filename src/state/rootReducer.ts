@@ -12,6 +12,8 @@ const rootReducer = combineReducers({
 	auth: authReducer
 });
 
+// export default rootReducer
+
 export type RootState = ReturnType<typeof rootReducer>;
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,8 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import {Alert, StyleSheet, TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
 import {Desk, Column, Auth} from "./screens"
-import {ColumnTitle} from './components'
+import {ColumnTitle} from './common'
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
 import {useAppSelector} from "./hooks";
@@ -17,7 +17,7 @@ const Navigation = () => {
 		});
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={{headerTitleAlign: 'center'}}>
+			<Stack.Navigator screenOptions={{headerTitleAlign: 'center', cardStyle: {backgroundColor: '#fff'}}}>
 				{!isLogin &&
 				<Stack.Screen
 					name="Auth"

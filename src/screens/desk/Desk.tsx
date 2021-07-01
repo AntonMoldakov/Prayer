@@ -8,7 +8,7 @@ import {
 	StyleSheet
 } from 'react-native'
 
-import {ColumnPreview} from '../../components'
+import {ColumnPreview} from '../../common'
 
 
 const Desk = () => {
@@ -64,8 +64,7 @@ export default Desk
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingHorizontal: 15,
-		backgroundColor: '#fff'
+		paddingHorizontal: 15
 	},
 	listStyle: {
 		width: '100%',

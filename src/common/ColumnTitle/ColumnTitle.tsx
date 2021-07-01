@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react'
 import {useRoute, RouteProp} from '@react-navigation/native';
 import {View, Text, StyleSheet} from 'react-native';
 
-const ColumnTitle = () => {
+const ColumnTitle = (props) => {
 	const {params} = useRoute<RouteProp<any, 'Column'>>();
 
 	return (
