@@ -1,5 +1,5 @@
 import {combineReducers} from '@reduxjs/toolkit';
-import {persistReducer} from 'redux-persist';
+import {persistReducer} from "redux-persist";
 import {authReducer, columnsReducer} from './ducks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
