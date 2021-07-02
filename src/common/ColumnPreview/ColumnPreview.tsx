@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import {Alert, TouchableOpacity, Text, StyleSheet} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontFamily: 'SF UI Text',
 		fontSize: 17,
+		fontWeight: '700',
 		lineHeight: 20,
 		textAlign: 'left',
 		color: '#514D47',

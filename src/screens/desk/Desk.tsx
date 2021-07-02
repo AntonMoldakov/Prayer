@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import * as React from 'react'
+import {useEffect, useState} from 'react'
 import Plus from 'react-native-vector-icons/AntDesign'
 import {
 	View,
@@ -7,54 +8,62 @@ import {
 	Alert,
 	StyleSheet
 } from 'react-native'
-
 import {ColumnPreview} from '../../common'
+import {Loader} from "../../ui"
+import {useAppDispatch, useAppSelector} from "../../hooks"
+import {columnsOperations} from "../../state/ducks/columns"
 
 
 const Desk = () => {
 	const [inputValue, setInputValue] = useState('')
+	const [loading, setLoading] = useState(false)
+	const dispatch = useAppDispatch()
+	// @ts-ignore
+	useEffect(() => dispatch(columnsOperations.getColumns()), [])
 
-	const desk = [
-		{id: 120, title: 'Desk1'},
-		{id: 131, title: 'Desk2'},
-		{id: 30, title: 'Desk3'},
-		{id: 34, title: 'Desk4'}
-	]
+
+	const [columns] = useAppSelector(
+		(state) => {
+			const {column} = state
+			return [column.columns]
+		})
+
 	const AddColumn = () => {
 		if (inputValue) {
 			Alert.alert('create desk: ' + inputValue)
 			setInputValue('')
 		}
 	}
-
 	return (
 		<View style={styles.container}>
-			<>
-				<FlatList
-					style={styles.listStyle}
-					data={desk}
-					renderItem={({item}) => (
-						<ColumnPreview title={item.title} id={item.id}/>
-					)}
-					keyExtractor={(item) => `${item.id}`}
-				/>
-				<View style={styles.inputSection}>
-					<Plus
-						name="plus"
-						size={28}
-						color="#72A8BC"
-						style={styles.inputIcon}
+			{loading ? <Loader/> :
+				<>
+					<FlatList
+						style={styles.listStyle}
+						data={columns}
+						renderItem={({item}) => (
+							<ColumnPreview title={item.title} id={item.id}/>
+						)}
+						keyExtractor={(item) => `${item.id}`}
 					/>
-					<TextInput
-						underlineColorAndroid="transparent"
-						placeholder="Add a column..."
-						onChangeText={(text) => setInputValue(text)}
-						value={inputValue}
-						style={styles.input}
-						onSubmitEditing={AddColumn}
-					/>
-				</View>
-			</>
+					<View style={styles.inputSection}>
+						<Plus
+							name="plus"
+							size={28}
+							color="#72A8BC"
+							style={styles.inputIcon}
+						/>
+						<TextInput
+							underlineColorAndroid="transparent"
+							placeholder="Add a column..."
+							onChangeText={(text) => setInputValue(text)}
+							value={inputValue}
+							style={styles.input}
+							onSubmitEditing={AddColumn}
+						/>
+					</View>
+				</>
+			}
 		</View>
 	)
 }
@@ -63,7 +72,6 @@ export default Desk
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		paddingHorizontal: 15
 	},
 	listStyle: {

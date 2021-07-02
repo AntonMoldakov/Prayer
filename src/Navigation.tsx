@@ -17,7 +17,14 @@ const Navigation = () => {
 		});
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={{headerTitleAlign: 'center', cardStyle: {backgroundColor: '#fff'}}}>
+			<Stack.Navigator screenOptions={
+				{
+					headerTitleAlign: 'center',
+					headerTitleStyle: {fontWeight: '500'},
+					headerStyle: {borderBottomWidth: 1, borderColor: '#E5E5E5'},
+					cardStyle: {backgroundColor: '#fff'},
+				}
+			}>
 				{!isLogin &&
 				<Stack.Screen
 					name="Auth"
