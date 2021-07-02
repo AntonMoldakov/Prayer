@@ -42,7 +42,7 @@ export const columnAPI = {
 	getColumns() {
 		return api.get('columns');
 	},
-	// addColumn(title: string) {
-	// 	return api.post('columns', {title});
-	// },
+	addColumn(title: string) {
+		return api.post('columns', {title});
+	},
 }

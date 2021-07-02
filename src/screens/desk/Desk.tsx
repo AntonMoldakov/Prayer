@@ -11,7 +11,7 @@ import {
 import {ColumnPreview} from '../../common'
 import {Loader} from "../../ui"
 import {useAppDispatch, useAppSelector} from "../../hooks"
-import {columnsOperations} from "../../state/ducks/columns"
+import {columnsOperations} from "../../state/ducks/columns";
 
 
 const Desk = () => {
@@ -22,15 +22,19 @@ const Desk = () => {
 	useEffect(() => dispatch(columnsOperations.getColumns()), [])
 
 
-	const [columns] = useAppSelector(
+	const [columns, addMode] = useAppSelector(
 		(state) => {
 			const {column} = state
-			return [column.columns]
+			return [column.columns, column.addMode]
 		})
 
 	const AddColumn = () => {
 		if (inputValue) {
 			Alert.alert('create desk: ' + inputValue)
+			// @ts-ignore
+			dispatch(columnsOperations.addColumn(inputValue))
+			// @ts-ignore
+			dispatch(columnsOperations.stopAddColumn())
 			setInputValue('')
 		}
 	}
@@ -46,22 +50,25 @@ const Desk = () => {
 						)}
 						keyExtractor={(item) => `${item.id}`}
 					/>
-					<View style={styles.inputSection}>
-						<Plus
-							name="plus"
-							size={28}
-							color="#72A8BC"
-							style={styles.inputIcon}
-						/>
-						<TextInput
-							underlineColorAndroid="transparent"
-							placeholder="Add a column..."
-							onChangeText={(text) => setInputValue(text)}
-							value={inputValue}
-							style={styles.input}
-							onSubmitEditing={AddColumn}
-						/>
-					</View>
+					{
+						addMode &&
+						<View style={styles.inputSection}>
+							<Plus
+								name="plus"
+								size={28}
+								color="#72A8BC"
+								style={styles.inputIcon}
+							/>
+							<TextInput
+								underlineColorAndroid="transparent"
+								placeholder="Add a column..."
+								onChangeText={(text) => setInputValue(text)}
+								value={inputValue}
+								style={styles.input}
+								onSubmitEditing={AddColumn}
+							/>
+						</View>
+					}
 				</>
 			}
 		</View>

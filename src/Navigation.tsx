@@ -5,11 +5,13 @@ import {Desk, Column, Auth} from "./screens"
 import {ColumnTitle} from './common'
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
-import {useAppSelector} from "./hooks";
+import {useAppDispatch, useAppSelector} from "./hooks";
+import {columnsOperations} from "./state/ducks/columns";
 
 const Stack = createStackNavigator()
 
 const Navigation = () => {
+	const dispatch = useAppDispatch()
 	const [isLogin] = useAppSelector(
 		(state) => {
 			const {auth} = state
@@ -25,7 +27,7 @@ const Navigation = () => {
 					cardStyle: {backgroundColor: '#fff'},
 				}
 			}>
-				{!isLogin &&
+				{isLogin &&
 				<Stack.Screen
 					name="Auth"
 					component={Auth}
@@ -38,7 +40,10 @@ const Navigation = () => {
 					options={{
 						title: 'My Desk',
 						headerRight: () => (
-							<TouchableOpacity onPress={() => Alert.alert('Start create desk')}>
+							<TouchableOpacity onPress={() => {
+								// @ts-ignore
+								dispatch(columnsOperations.startAddColumn())
+							}}>
 								<Icon
 									name="plus"
 									size={28}
