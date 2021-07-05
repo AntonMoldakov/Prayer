@@ -2,13 +2,19 @@ import * as React from 'react'
 import {Alert, TouchableOpacity, Text, StyleSheet} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
+import {useAppDispatch} from "../../hooks";
+import {columnsOperations} from "../../state/ducks/columns";
 
-const ColumnPreview = ({title, id}) => {
+const ColumnPreview = ({title, id}: { title: string, id: number }) => {
 	const navigation = useNavigation();
+	const dispatch = useAppDispatch()
 	const renderRightActions = () => {
 		return (
 			<TouchableOpacity style={styles.delete}
-			                  onPress={() => Alert.alert('Delete desk: ' + id)}>
+			                  onPress={() => {
+				                  // @ts-ignore
+				                  dispatch(columnsOperations.deleteColumn(id))
+			                  }}>
 				<Text style={styles.DeleteText}>Delete</Text>
 			</TouchableOpacity>
 		);
@@ -19,7 +25,7 @@ const ColumnPreview = ({title, id}) => {
 		           containerStyle={styles.swipeableContainer}
 		           childrenContainerStyle={styles.swipeableChildContainer}>
 			<TouchableOpacity style={styles.item}
-			                  onPress={() =>  navigation.navigate('Column', {columnId: id, columnTitle: title})}>
+			                  onPress={() => navigation.navigate('Column', {columnId: id, columnTitle: title})}>
 				<Text style={styles.text}>{title}</Text>
 			</TouchableOpacity>
 		</Swipeable>

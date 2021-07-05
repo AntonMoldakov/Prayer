@@ -4,7 +4,6 @@ import {authAPI} from "../../../api";
 
 const signIn = (email: string, password: string) => async (dispatch: Dispatch) => {
 	let response = await authAPI.signIn(email, password);
-	console.log(response)
 	let token: string = response.data.token
 	if (token)
 		dispatch(signInAction({token}))

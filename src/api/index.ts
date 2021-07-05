@@ -45,4 +45,7 @@ export const columnAPI = {
 	addColumn(title: string) {
 		return api.post('columns', {title});
 	},
+	deleteColumn(id: number) {
+		return api.delete(`columns/${id}`)
+	}
 }

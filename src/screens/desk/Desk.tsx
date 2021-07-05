@@ -16,18 +16,16 @@ import {columnsOperations} from "../../state/ducks/columns";
 
 const Desk = () => {
 	const [inputValue, setInputValue] = useState('')
-	const [loading, setLoading] = useState(false)
 	const dispatch = useAppDispatch()
-	// @ts-ignore
-	useEffect(() => dispatch(columnsOperations.getColumns()), [])
 
-
-	const [columns, addMode] = useAppSelector(
+	const [columns, addMode, loadingMode] = useAppSelector(
 		(state) => {
-			const {column} = state
-			return [column.columns, column.addMode]
+			const {column, session} = state
+			return [column.columns, column.addMode, session.loadingMode]
 		})
 
+	// @ts-ignore
+	useEffect(() => dispatch(columnsOperations.getColumns()), [])
 	const AddColumn = () => {
 		if (inputValue) {
 			Alert.alert('create desk: ' + inputValue)
@@ -40,16 +38,8 @@ const Desk = () => {
 	}
 	return (
 		<View style={styles.container}>
-			{loading ? <Loader/> :
+			{loadingMode ? <Loader/> :
 				<>
-					<FlatList
-						style={styles.listStyle}
-						data={columns}
-						renderItem={({item}) => (
-							<ColumnPreview title={item.title} id={item.id}/>
-						)}
-						keyExtractor={(item) => `${item.id}`}
-					/>
 					{
 						addMode &&
 						<View style={styles.inputSection}>
@@ -69,6 +59,14 @@ const Desk = () => {
 							/>
 						</View>
 					}
+					<FlatList
+						style={styles.listStyle}
+						data={columns}
+						renderItem={({item}) => (
+							<ColumnPreview title={item.title} id={item.id}/>
+						)}
+						keyExtractor={(item) => `${item.id}`}
+					/>
 				</>
 			}
 		</View>

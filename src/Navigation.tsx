@@ -27,7 +27,7 @@ const Navigation = () => {
 					cardStyle: {backgroundColor: '#fff'},
 				}
 			}>
-				{isLogin &&
+				{!isLogin &&
 				<Stack.Screen
 					name="Auth"
 					component={Auth}

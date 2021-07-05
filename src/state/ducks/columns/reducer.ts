@@ -24,8 +24,11 @@ const Columns = createSlice({
 		changeAddMode(state, action: { payload: { mode: boolean } }) {
 			state.addMode = action.payload.mode
 		},
+		deleteColumnAction(state, action: { payload: { id: number } }) {
+			state.columns = state.columns.filter(column => column.id !== action.payload.id)
+		}
 	}
 })
 
 export default Columns.reducer
-export const {getColumnsAction, addColumnAction, changeAddMode} = Columns.actions
+export const {getColumnsAction, addColumnAction, changeAddMode, deleteColumnAction} = Columns.actions

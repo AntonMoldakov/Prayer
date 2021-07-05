@@ -1,6 +1,6 @@
 import {combineReducers} from '@reduxjs/toolkit';
 import {persistReducer} from "redux-persist";
-import {authReducer, columnsReducer} from './ducks';
+import {authReducer, columnsReducer, sessionReducer} from './ducks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const persistConfig = {
@@ -10,7 +10,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
 	auth: authReducer,
-	column: columnsReducer
+	column: columnsReducer,
+	session: sessionReducer
 });
 
 export default rootReducer
