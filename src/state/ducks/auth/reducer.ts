@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
 	isLogin: false,
-	token: undefined
+	token: undefined,
+	error: ''
 }
 
 const Authentication = createSlice({
@@ -12,9 +13,12 @@ const Authentication = createSlice({
 		signInAction(state, action: { payload: { token: string } }) {
 			state.isLogin = !state.isLogin
 			state.token = action.payload.token
+		},
+		errorAction(state, action: { payload: {error: string}}) {
+			state.error = action.payload.error
 		}
 	}
 })
 
 export default Authentication.reducer
-export const {signInAction} = Authentication.actions
+export const {signInAction, errorAction} = Authentication.actions

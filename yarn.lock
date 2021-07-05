@@ -963,6 +963,21 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@lemoncode/fonk-final-form@^2.3.4":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@lemoncode/fonk-final-form/-/fonk-final-form-2.3.4.tgz#f66e8506a40575165db76c2676b7c7c5d20f154f"
+  integrity sha512-oGtsTaI45NvvNZP/4XcyeFbb9U2JLuKZhIpqr0zhRf+0nsb7DjR2LYQ5L+gMHgzhjqWfPoG5TFbQ/ShgDjNnbA==
+
+"@lemoncode/fonk-iban-validator@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@lemoncode/fonk-iban-validator/-/fonk-iban-validator-1.0.0.tgz#4adc9d798002dd5bb41e750771cab755721da963"
+  integrity sha512-A04Pe980WfG0+wLoFbQU3R+/uyaw+a2noLqfu6bCUekSj++b26FHknEFEtNpMhggAu/VeE2mbbJs+EyPViMnIw==
+
+"@lemoncode/fonk@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@lemoncode/fonk/-/fonk-1.5.1.tgz#cf0ce6012cc47ab0fd6f5ba276857a3d56f313c1"
+  integrity sha512-qBSpFOt2VarJXnuxzVsQ5aheA+8zqW6P2HzTrC4GUI2HP2nfxwz3384NKf3cnDWitSn2ODCo3OmWDiuGFTd/+w==
+
 "@react-native-async-storage/async-storage@^1.15.5":
   version "1.15.5"
   resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.5.tgz#0d221a5ef1cd7a6494a42fcaad43136d68379afb"
@@ -5872,7 +5887,7 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5976,6 +5991,13 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-button@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-button/-/react-native-button-3.0.1.tgz#89de59b6ee23f6cb4451c4ebe311cc14fb02c65a"
+  integrity sha512-Tkj7PwATNEXPOX4ubE+P8WnyJMenywU6Es/Bk2r2aR15204+AxSOEB3sp7JDP44LI+tUMetjudNBRRuKQOmoPw==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-codegen@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.0.6.tgz"
@@ -6037,7 +6059,7 @@ react-native-tab-view@^3.0.1:
 
 react-native-vector-icons@^8.1.0:
   version "8.1.0"
-  resolved "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-8.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-8.1.0.tgz#e8ee2b17bc4d9f636da1c6f67feee8e2a850c3d8"
   integrity sha512-sHIdBB6Y0dHaot2fMXgy5J/hhCn5YuyN7SKDNFgPzL8KA1oF2/v7mgYMavnK7LIIs2dJoGnDANKf61dsU+TZlg==
   dependencies:
     lodash.frompairs "^4.0.1"
