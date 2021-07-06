@@ -1,14 +1,18 @@
-import React from 'react'
-import {Alert, TouchableOpacity, Text, StyleSheet} from 'react-native'
+import * as React from 'react'
+import {TouchableOpacity, Text} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
+import {useAppDispatch} from "../../hooks";
+import {columnsOperations} from "../../state/ducks/columns";
+import styles from "./ColumnPreview.styles";
 
-const ColumnPreview = ({title, id}) => {
+const ColumnPreview = ({title, id}: { title: string, id: number }) => {
 	const navigation = useNavigation();
+	const dispatch = useAppDispatch()
 	const renderRightActions = () => {
 		return (
 			<TouchableOpacity style={styles.delete}
-			                  onPress={() => Alert.alert('Delete desk: ' + id)}>
+			                  onPress={() => dispatch(columnsOperations.deleteColumn(id))}>
 				<Text style={styles.DeleteText}>Delete</Text>
 			</TouchableOpacity>
 		);
@@ -19,7 +23,7 @@ const ColumnPreview = ({title, id}) => {
 		           containerStyle={styles.swipeableContainer}
 		           childrenContainerStyle={styles.swipeableChildContainer}>
 			<TouchableOpacity style={styles.item}
-			                  onPress={() =>  navigation.navigate('Column', {columnId: id, columnTitle: title})}>
+			                  onPress={() => navigation.navigate('Column', {columnId: id, columnTitle: title})}>
 				<Text style={styles.text}>{title}</Text>
 			</TouchableOpacity>
 		</Swipeable>
@@ -28,40 +32,4 @@ const ColumnPreview = ({title, id}) => {
 
 export default ColumnPreview;
 
-const styles = StyleSheet.create({
-	item: {
-		borderWidth: 1,
-		borderColor: '#E5E5E5',
-		backgroundColor: '#fff',
-		borderRadius: 4,
-		paddingHorizontal: 15,
-		paddingVertical: 20,
-		marginBottom: 10,
-	},
-	text: {
-		fontFamily: 'SF UI Text',
-		fontSize: 17,
-		lineHeight: 20,
-		textAlign: 'left',
-		color: '#514D47',
-	},
-	DeleteText: {
-		fontFamily: 'SF UI Text',
-		fontSize: 17,
-		color: '#FFF',
-	},
-	delete: {
-		width: '30%',
-		paddingVertical: 20,
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		backgroundColor: '#AC5253',
-		marginBottom: 10,
-	},
-	swipeableContainer: {
-		width: '100%',
-	},
-	swipeableChildContainer: {
-		width: '100%',
-	},
-})
+

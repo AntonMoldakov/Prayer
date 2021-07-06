@@ -6,31 +6,61 @@ const api = axios.create({
 	responseType: 'json'
 });
 
-// api.interceptors.request.use((config) => {
-// 	const token = store.getState().auth.token;
-//
-// 	if (!token) {
-// 		return config;
-// 	}
-//
-// 	return {
-// 		...config,
-// 		headers: {...config.headers, token},
-// 	};
-// });
+api.interceptors.request.use((config) => {
+	const token = store.getState().auth.token;
+
+	if (!token) {
+		return config;
+	}
+
+	const Authorization = `Bearer ${token}`;
+
+	return {
+		...config,
+		headers: {...config.headers, Authorization},
+	};
+});
+
 
 export const authAPI = {
 	signIn(email: string, password: string) {
 		return api.post(`auth/sign-in`, {
 			email,
 			password
-		}).then(response => response);
+		});
 	},
 	signUp(email: string, name: string, password: string) {
 		return api.post(`auth/sign-up`, {
 			email,
 			name,
 			password
-		}).then(response => response);
+		});
+	}
+}
+
+export const columnAPI = {
+	getColumns() {
+		return api.get('columns');
+	},
+	addColumn(title: string) {
+		return api.post('columns', {title});
+	},
+	deleteColumn(id: number) {
+		return api.delete(`columns/${id}`)
+	}
+}
+
+export const cardAPI = {
+	getCards() {
+		return api.get('prayers');
+	},
+	addCard(columnId: number, title: string) {
+		return api.post(`columns/${columnId}/prayers`, {
+			title,
+			checked: false
+		});
+	},
+	deleteCard(id: number) {
+		return api.delete(`prayers/${id}`)
 	}
 }

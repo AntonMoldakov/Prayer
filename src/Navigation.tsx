@@ -1,15 +1,17 @@
 import * as React from 'react'
-import {Alert, StyleSheet, TouchableOpacity} from 'react-native'
-import Icon from 'react-native-vector-icons/AntDesign'
+import {Alert, TouchableOpacity} from 'react-native'
 import {Desk, Column, Auth} from "./screens"
 import {ColumnTitle} from './common'
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
-import {useAppSelector} from "./hooks";
+import {useAppDispatch, useAppSelector} from "./hooks";
+import {columnsOperations} from "./state/ducks/columns";
+import Icon from 'react-native-vector-icons/dist/AntDesign';
 
 const Stack = createStackNavigator()
 
 const Navigation = () => {
+	const dispatch = useAppDispatch()
 	const [isLogin] = useAppSelector(
 		(state) => {
 			const {auth} = state
@@ -17,12 +19,23 @@ const Navigation = () => {
 		});
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={{headerTitleAlign: 'center', cardStyle: {backgroundColor: '#fff'}}}>
+			<Stack.Navigator screenOptions={
+				{
+					headerTitleAlign: 'center',
+					headerTitleStyle: {color: '#514D47', fontWeight: '500'},
+					headerStyle: {borderBottomWidth: 1, borderColor: '#E5E5E5'},
+					cardStyle: {backgroundColor: '#fff'},
+				}
+			}>
 				{!isLogin &&
 				<Stack.Screen
 					name="Auth"
 					component={Auth}
-					options={{title: 'Welcome'}}
+					options={{
+						headerStyle: {
+							borderBottomWidth: 0,
+						}, title: 'Welcome'
+					}}
 				/>
 				}
 				<Stack.Screen
@@ -31,12 +44,12 @@ const Navigation = () => {
 					options={{
 						title: 'My Desk',
 						headerRight: () => (
-							<TouchableOpacity onPress={() => Alert.alert('Start create desk')}>
+							<TouchableOpacity onPress={() => dispatch(columnsOperations.startAddColumn())}>
 								<Icon
 									name="plus"
 									size={28}
 									color="#72A8BC"
-									style={styles.icon}
+									style={{marginRight: 10}}
 								/>
 							</TouchableOpacity>
 						)
@@ -53,7 +66,7 @@ const Navigation = () => {
 									name="plus"
 									size={28}
 									color="#72A8BC"
-									style={styles.icon}
+									style={{marginRight: 10}}
 								/>
 							</TouchableOpacity>
 						)
@@ -66,8 +79,3 @@ const Navigation = () => {
 
 export default Navigation
 
-const styles = StyleSheet.create({
-	icon: {
-		marginRight: 10,
-	},
-})
