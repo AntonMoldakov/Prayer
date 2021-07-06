@@ -12,6 +12,7 @@ import styles from "./Desk.styles";
 const Desk = () => {
 	const [inputValue, setInputValue] = useState('')
 	const dispatch = useAppDispatch()
+	useEffect(() => dispatch(columnsOperations.getColumns()), [dispatch])
 
 	const [columns, addMode, loadingMode] = useAppSelector(
 		(state) => {
@@ -19,7 +20,6 @@ const Desk = () => {
 			return [column.columns, column.addMode, session.loadingMode]
 		})
 
-	useEffect(() => dispatch(columnsOperations.getColumns()), [])
 	const AddColumn = () => {
 		if (inputValue) {
 			dispatch(columnsOperations.addColumn(inputValue))

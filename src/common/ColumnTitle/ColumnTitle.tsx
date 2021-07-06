@@ -7,16 +7,17 @@ const ColumnTitle = (props) => {
 
 	return (
 		<View>
-			<Text style={style.title}>{params?.columnName}</Text>
+			<Text style={style.title}>{params?.columnTitle}</Text>
 		</View>
 	);
 };
 
 const style = StyleSheet.create({
 	title: {
-		fontSize: 17,
-		lineHeight: 20,
-		fontWeight: '500',
+		color: '#514D47',
+		fontWeight: '700',
+		fontFamily: 'SF UI Text',
+		fontSize: 17
 	},
 });
 

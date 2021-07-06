@@ -1,28 +1,74 @@
-import React, {useMemo} from 'react'
-import {
-	View,
-	Text
-} from 'react-native'
+import React, {useEffect} from 'react'
 import {useRoute, RouteProp} from '@react-navigation/native'
+import {useAppDispatch} from "../../hooks";
+import {cardsOperations} from "../../state/ducks/cards";
+import {SceneMap, TabBar, TabView} from "react-native-tab-view";
+import {useWindowDimensions, Text, View} from 'react-native'
+import {Prayers} from "../../components";
+import {Subscribed} from "../../components";
+import styles from "./Column.styles";
+
 
 const Column = () => {
-	const route = useRoute<RouteProp<any, 'Column'>>()
-	const {columnId} = route.params
-	const columns = [
-		{deskId: 120, id: 15, deskTitle: 'Desk1', message: '1 task'},
-		{deskId: 120, id: 13, deskTitle: 'Desk1', message: '3 fsdtask'},
-		{deskId: 120, id: 152, deskTitle: 'Desk1', message: '4 edtask'},
-		{deskId: 120, id: 11, deskTitle: 'Desk1', message: '5 fsdtask'},
-		{deskId: 131, id: 13, deskTitle: 'Desk2', message: 'ha ha'},
-		{deskId: 30, id: 17, deskTitle: 'Desk3', message: ' task 1'}
-	]
-	const filteredTasks = useMemo(() => columns.filter(column => column.deskId === columnId), [columns, columnId])
+	const dispatch = useAppDispatch()
+
+	const route = useRoute<RouteProp<any, 'Column'>>();
+	const {columnId} = route.params;
+
+	useEffect(() => {
+		dispatch(cardsOperations.getCards())
+	}, [dispatch]);
+
+	const getTabBarIcon = (props) => {
+		const {route} = props
+
+		if (route.key === 'Subscribed') {
+			return <View style={styles.bubble}>
+				<Text style={styles.bubbleText}>3</Text>
+			</View>
+
+		}
+	}
+
+	const renderScene = SceneMap({
+		Prayers: () => <Prayers columnId={columnId}/>,
+		Subscribed: () => <Subscribed columnId={columnId}/>
+	})
+
+
+	const layout = useWindowDimensions()
+	const [index, setIndex] = React.useState(0)
+	const [routes] = React.useState([
+		{key: 'Prayers', title: 'My Prayers'},
+		{key: 'Subscribed', title: 'Subscribed'},
+	])
+
+
+	const renderTabBar = props => (
+		<TabBar
+			{...props}
+			indicatorStyle={{backgroundColor: '#72A8BC'}}
+			tabStyle={{flexDirection: 'row-reverse'}}
+
+			activeColor={'#72A8BC'}
+			inactiveColor={'#C8C8C8'}
+			pressColor={'#72A8BC'}
+			labelStyle={styles.tabText}
+			style={{backgroundColor: '#fff'}}
+			renderIcon={
+				props => getTabBarIcon(props)
+			}
+		/>
+	);
+
 	return (
-		<View>
-			{filteredTasks.length > 0 ? filteredTasks.map(column => {
-				return <Text key={column.id}>{column.message}</Text>
-			}) : <Text>No tasks, create new!</Text>}
-		</View>
+		<TabView
+			navigationState={{index, routes}}
+			renderScene={renderScene}
+			renderTabBar={renderTabBar}
+			onIndexChange={setIndex}
+			initialLayout={{width: layout.width}}
+		/>
 	)
 }
 
