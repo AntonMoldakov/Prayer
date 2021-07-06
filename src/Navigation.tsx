@@ -64,7 +64,7 @@ const Navigation = () => {
 						},
 						headerTitle: (props) => <ColumnTitle {...props} />,
 						headerRight: () => (
-							<TouchableOpacity onPress={() => Alert.alert('Start create task')}>
+							<TouchableOpacity>
 								<Settings
 									name="settings"
 									size={28}

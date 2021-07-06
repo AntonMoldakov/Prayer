@@ -23,9 +23,7 @@ const addCard = (columnId: number, title: string) => async (dispatch: Dispatch) 
 }
 
 const checkedCard = (id: number, checked: boolean) => async (dispatch: Dispatch) => {
-	console.log('start')
 	const response = await cardAPI.checkedCard(id, (!checked))
-	console.log(response);
 	if (response.status === 200) {
 		dispatch(checkedCardAction({id}))
 	}
