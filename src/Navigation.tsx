@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {Alert, TouchableOpacity} from 'react-native'
-import {Desk, Column, Auth} from "./screens"
+import {TouchableOpacity} from 'react-native'
+import {Desk, Column, Auth, Card} from "./screens"
 import {ColumnTitle} from './common'
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
@@ -8,6 +8,7 @@ import {useAppDispatch, useAppSelector} from "./hooks";
 import {columnsOperations} from "./state/ducks/columns";
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import Settings from 'react-native-vector-icons/Feather';
+import Hands from 'react-native-vector-icons/FontAwesome5';
 const Stack = createStackNavigator()
 
 const Navigation = () => {
@@ -73,6 +74,20 @@ const Navigation = () => {
 								/>
 							</TouchableOpacity>
 						)
+					}}
+				/>
+				<Stack.Screen
+					name="Card"
+					component={Card}
+					options={{
+						headerStyle: {
+							backgroundColor: '#BFB393',
+							borderBottomWidth: 0,
+							elevation: 0,
+							shadowOpacity: 0,
+						},
+						headerTitle: () => null,
+						headerRight: () => <Hands />
 					}}
 				/>
 			</Stack.Navigator>

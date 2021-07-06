@@ -39,8 +39,7 @@ const CardPreview = ({item}: IProps) => {
 
 				<TouchableOpacity
 					style={styles.cardLink}
-					// onPress={() => navigation.navigate('Card', {cardId: item.id})}>
-					onPress={() => console.log('card')}>
+					onPress={() => navigation.navigate('Card', {cardId: item.id})}>
 					<Text
 						style={item.checked ? styles.cardTextChecked : styles.cardText}
 						numberOfLines={1}>
