@@ -3,3 +3,9 @@ export interface IColumn {
 	title: string,
 	description: string
 }
+
+export interface ICard {
+	id: number,
+	title: string,
+	description: string
+}

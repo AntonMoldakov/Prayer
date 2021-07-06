@@ -49,3 +49,18 @@ export const columnAPI = {
 		return api.delete(`columns/${id}`)
 	}
 }
+
+export const cardAPI = {
+	getCards() {
+		return api.get('prayers');
+	},
+	addCard(columnId: number, title: string) {
+		return api.post(`columns/${columnId}/prayers`, {
+			title,
+			checked: false
+		});
+	},
+	deleteCard(id: number) {
+		return api.delete(`prayers/${id}`)
+	}
+}

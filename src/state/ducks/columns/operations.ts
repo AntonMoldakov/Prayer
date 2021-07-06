@@ -5,13 +5,11 @@ import {IColumn} from "../../../interface";
 import {sessionOperations} from "../session";
 
 const getColumns = () => async (dispatch: Dispatch) => {
-	// @ts-ignore
 	dispatch(sessionOperations.startLoading())
 	const response = await columnAPI.getColumns()
 	let columns: IColumn[] = response.data
 	if (columns) {
 		dispatch(getColumnsAction({columns}))
-		// @ts-ignore
 		dispatch(sessionOperations.stopLoading())
 	}
 }

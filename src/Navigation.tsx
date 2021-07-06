@@ -44,9 +44,7 @@ const Navigation = () => {
 					options={{
 						title: 'My Desk',
 						headerRight: () => (
-							<TouchableOpacity onPress={() => {
-								dispatch(columnsOperations.startAddColumn())
-							}}>
+							<TouchableOpacity onPress={() => dispatch(columnsOperations.startAddColumn())}>
 								<Icon
 									name="plus"
 									size={28}
