@@ -1,5 +1,5 @@
 import {Dispatch} from "redux"
-import {getCardsAction, addCardAction, deleteCardAction} from "./reducer"
+import {getCardsAction, addCardAction, deleteCardAction, checkedCardAction} from "./reducer"
 import {cardAPI} from "../../../api"
 import {ICard} from "../../../interface";
 import {sessionOperations} from "../session";
@@ -22,6 +22,15 @@ const addCard = (columnId: number, title: string) => async (dispatch: Dispatch) 
 	}
 }
 
+const checkedCard = (id: number, checked: boolean) => async (dispatch: Dispatch) => {
+	console.log('start')
+	const response = await cardAPI.checkedCard(id, (!checked))
+	console.log(response);
+	if (response.status === 200) {
+		dispatch(checkedCardAction({id}))
+	}
+}
+
 const deleteCard = (id: number) => async (dispatch: Dispatch) => {
 	const response = await cardAPI.deleteCard(id)
 	if (response.status === 200) {
@@ -29,6 +38,6 @@ const deleteCard = (id: number) => async (dispatch: Dispatch) => {
 	}
 }
 
-const operations = {getCards, addCard, deleteCard}
+const operations = {getCards, addCard, deleteCard, checkedCard}
 
 export default operations

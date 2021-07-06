@@ -7,7 +7,7 @@ import {NavigationContainer} from "@react-navigation/native"
 import {useAppDispatch, useAppSelector} from "./hooks";
 import {columnsOperations} from "./state/ducks/columns";
 import Icon from 'react-native-vector-icons/dist/AntDesign';
-
+import Settings from 'react-native-vector-icons/Feather';
 const Stack = createStackNavigator()
 
 const Navigation = () => {
@@ -59,11 +59,14 @@ const Navigation = () => {
 					name="Column"
 					component={Column}
 					options={{
+						headerStyle: {
+							borderBottomWidth: 0,
+						},
 						headerTitle: (props) => <ColumnTitle {...props} />,
 						headerRight: () => (
 							<TouchableOpacity onPress={() => Alert.alert('Start create task')}>
-								<Icon
-									name="plus"
+								<Settings
+									name="settings"
 									size={28}
 									color="#72A8BC"
 									style={{marginRight: 10}}

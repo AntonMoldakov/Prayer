@@ -6,6 +6,11 @@ export interface IColumn {
 
 export interface ICard {
 	id: number,
+	columnId: number,
 	title: string,
-	description: string
+	description: string,
+	checked: boolean,
+	subscribed: number,
+	prayedByMe: number,
+	prayedByOthers: number
 }

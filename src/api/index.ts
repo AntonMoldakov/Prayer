@@ -56,8 +56,17 @@ export const cardAPI = {
 	},
 	addCard(columnId: number, title: string) {
 		return api.post(`columns/${columnId}/prayers`, {
+			description: '',
 			title,
-			checked: false
+			checked: false,
+			subscribed: 0,
+			prayedByMe: 0,
+			prayedByOthers: 0,
+		});
+	},
+	checkedCard(id: number, checked: boolean) {
+		return api.put(`prayers/${id}`, {
+			checked
 		});
 	},
 	deleteCard(id: number) {
