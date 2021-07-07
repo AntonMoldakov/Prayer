@@ -1,27 +1,11 @@
 import * as React from 'react'
-import {TextInput, View, TouchableOpacity, Text} from "react-native";
-import {useAppDispatch, useAppSelector} from "../../hooks";
+import {View, TouchableOpacity, Text} from "react-native";
 import {authOperations} from "../../state/ducks/auth";
 import styles from "./SignUp.styles";
 import {Field, Form as FinalForm} from "react-final-form";
-
-const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const required = (v: string) => (!v || v.trim() === '') ? 'required' : undefined
-const invalidEmail = (v: string) => (!v || v.trim() === '') ? 'required' : (!reg.test(v)) ? 'email invalid' : undefined
-
-const InputField = ({input, meta, ...rest}) => {
-	return (<View>
-		<TextInput
-			{...input}
-			{...rest}
-			style={styles.input}/>
-		{
-			meta.error && meta.touched &&
-			<Text style={styles.error}>{meta.error}</Text>
-		}
-	</View>)
-}
-
+import {validate} from "../../utils";
+import {InputField} from "../../common";
+import {useAppDispatch, useAppSelector} from "../../state/store";
 
 const SignIn = () => {
 	const dispatch = useAppDispatch()
@@ -50,7 +34,7 @@ const SignIn = () => {
 								name="email"
 								placeholder={'email'}
 								component={InputField}
-								validate={invalidEmail}
+								validate={validate.requiredEmail}
 							/>
 						</View>
 						<View>
@@ -58,7 +42,7 @@ const SignIn = () => {
 								name="name"
 								placeholder={'name'}
 								component={InputField}
-								validate={required}
+								validate={validate.required}
 							/>
 						</View>
 						<View>
@@ -67,7 +51,7 @@ const SignIn = () => {
 								secureTextEntry
 								placeholder={'password'}
 								component={InputField}
-								validate={required}
+								validate={validate.required}
 							/>
 						</View>
 						{error.length > 0 && <Text style={styles.error}>{error}</Text>}

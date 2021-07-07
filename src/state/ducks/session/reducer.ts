@@ -4,8 +4,8 @@ const initialState = {
 	loadingMode: false,
 }
 
-const Session = createSlice({
-	name: 'SessionReducer',
+const session = createSlice({
+	name: 'sessionReducer',
 	initialState,
 	reducers: {
 		changeLoadingMode(state, action: { payload: { mode: boolean } }) {
@@ -14,5 +14,5 @@ const Session = createSlice({
 	}
 })
 
-export default Session.reducer
-export const {changeLoadingMode} = Session.actions
+export default session.reducer
+export const {changeLoadingMode} = session.actions

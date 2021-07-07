@@ -1,12 +1,14 @@
-import React, {useEffect} from 'react'
+import * as React from "react";
+import {useEffect} from 'react'
 import {useRoute, RouteProp} from '@react-navigation/native'
-import {useAppDispatch} from "../../hooks";
 import {cardsOperations} from "../../state/ducks/cards";
 import {SceneMap, TabBar, TabView} from "react-native-tab-view";
 import {useWindowDimensions, Text, View} from 'react-native'
 import {Prayers} from "../../components";
 import {Subscribed} from "../../components";
 import styles from "./Column.styles";
+import {useAppDispatch} from "../../state/store";
+import colors from "../../styles/colors";
 
 
 const Column = () => {
@@ -47,14 +49,14 @@ const Column = () => {
 	const renderTabBar = props => (
 		<TabBar
 			{...props}
-			indicatorStyle={{backgroundColor: '#72A8BC'}}
-			tabStyle={{flexDirection: 'row-reverse'}}
+			indicatorStyle={styles.indicator}
+			tabStyle={styles.tab}
 
-			activeColor={'#72A8BC'}
-			inactiveColor={'#C8C8C8'}
-			pressColor={'#72A8BC'}
+			activeColor={colors.lightBlue}
+			inactiveColor={colors.gray}
+			pressColor={colors.lightBlue}
 			labelStyle={styles.tabText}
-			style={{backgroundColor: '#fff'}}
+			style={styles.tabBar}
 			renderIcon={
 				props => getTabBarIcon(props)
 			}

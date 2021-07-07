@@ -4,13 +4,15 @@ import {Desk, Column, Auth, Card} from "./screens"
 import {ColumnTitle} from './common'
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
-import {useAppDispatch, useAppSelector} from "./hooks";
 import {columnsOperations} from "./state/ducks/columns";
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import Settings from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
-const Stack = createStackNavigator()
+import {useAppDispatch, useAppSelector} from "./state/store";
+import colors from "./styles/colors";
+import styles from "./Navigation.styles";
 
+const Stack = createStackNavigator()
 const Navigation = () => {
 	const dispatch = useAppDispatch()
 	const [isLogin] = useAppSelector(
@@ -23,9 +25,8 @@ const Navigation = () => {
 			<Stack.Navigator screenOptions={
 				{
 					headerTitleAlign: 'center',
-					headerTitleStyle: {color: '#514D47', fontWeight: '500'},
-					headerStyle: {borderBottomWidth: 1, borderColor: '#E5E5E5'},
-					cardStyle: {backgroundColor: '#fff'},
+					headerTitleStyle: styles.headerTitle,
+					cardStyle: styles.card,
 				}
 			}>
 				{!isLogin &&
@@ -33,9 +34,7 @@ const Navigation = () => {
 					name="Auth"
 					component={Auth}
 					options={{
-						headerStyle: {
-							borderBottomWidth: 0,
-						}, title: 'Welcome'
+						title: 'Welcome'
 					}}
 				/>
 				}
@@ -43,14 +42,15 @@ const Navigation = () => {
 					name="Desk"
 					component={Desk}
 					options={{
+						headerStyle: styles.deskScreenHeader,
 						title: 'My Desk',
 						headerRight: () => (
 							<TouchableOpacity onPress={() => dispatch(columnsOperations.startAddColumn())}>
 								<Icon
 									name="plus"
 									size={28}
-									color="#72A8BC"
-									style={{marginRight: 10}}
+									color={colors.lightBlue}
+									style={styles.HeaderIcon}
 								/>
 							</TouchableOpacity>
 						)
@@ -60,17 +60,14 @@ const Navigation = () => {
 					name="Column"
 					component={Column}
 					options={{
-						headerStyle: {
-							borderBottomWidth: 0,
-						},
 						headerTitle: (props) => <ColumnTitle {...props} />,
 						headerRight: () => (
 							<TouchableOpacity>
 								<Settings
 									name="settings"
 									size={28}
-									color="#72A8BC"
-									style={{marginRight: 10}}
+									color={colors.lightBlue}
+									style={styles.HeaderIcon}
 								/>
 							</TouchableOpacity>
 						)
@@ -80,14 +77,16 @@ const Navigation = () => {
 					name="Card"
 					component={Card}
 					options={{
-						headerStyle: {
-							backgroundColor: '#BFB393',
-							borderBottomWidth: 0,
-							elevation: 0,
-							shadowOpacity: 0,
-						},
+						headerStyle: styles.headerCard,
+						headerTintColor: colors.white,
 						headerTitle: () => null,
-						headerRight: () => <Hands />
+						headerRight: () => <Hands
+							style={styles.HeaderIcon}
+							name="praying-hands"
+							size={22}
+							color={colors.white}
+							light
+						/>
 					}}
 				/>
 			</Stack.Navigator>

@@ -1,12 +1,11 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
-import Plus from 'react-native-vector-icons/AntDesign'
-import {View, FlatList, TextInput} from 'react-native'
+import {View, FlatList} from 'react-native'
 import {ColumnPreview} from '../../common'
-import {Loader} from "../../ui"
-import {useAppDispatch, useAppSelector} from "../../hooks"
+import {IconTextInput, Loader} from "../../ui"
 import {columnsOperations} from "../../state/ducks/columns";
 import styles from "./Desk.styles";
+import {useAppDispatch, useAppSelector} from "../../state/store";
 
 
 const Desk = () => {
@@ -33,24 +32,15 @@ const Desk = () => {
 				<>
 					{
 						addMode &&
-						<View style={styles.inputSection}>
-							<Plus
-								name="plus"
-								size={28}
-								color="#72A8BC"
-								style={styles.inputIcon}
-							/>
-							<TextInput
-								underlineColorAndroid="transparent"
-								placeholder="Add a column..."
-								onChangeText={(text) => setInputValue(text)}
-								value={inputValue}
-								style={styles.input}
-								onSubmitEditing={AddColumn}
-								autoFocus={true}
-								onBlur={() => dispatch(columnsOperations.stopAddColumn())}
-							/>
-						</View>
+						<IconTextInput
+							underlineColorAndroid="transparent"
+							placeholder="Add a column..."
+							inputValue={inputValue}
+							onBlur={() => dispatch(columnsOperations.stopAddColumn())}
+							onChangeText={(text) => setInputValue(text)}
+							onSubmitEditing={AddColumn}
+							autoFocus={true}
+						/>
 					}
 					<FlatList
 						style={styles.listStyle}

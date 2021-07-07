@@ -73,3 +73,15 @@ export const cardAPI = {
 		return api.delete(`prayers/${id}`)
 	}
 }
+
+export const commentAPI = {
+	getComments() {
+		return api.get('comments');
+	},
+	addComment(cardId: number, body: string) {
+		return api.post(`prayers/${cardId}/comments`, {body});
+	},
+	deleteComment(id: number) {
+		return api.delete(`comments/${id}`)
+	}
+}

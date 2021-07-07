@@ -6,8 +6,8 @@ const initialState = {
 	error: ''
 }
 
-const Authentication = createSlice({
-	name: 'AuthenticationReducer',
+const authentication = createSlice({
+	name: 'authenticationReducer',
 	initialState,
 	reducers: {
 		signInAction(state, action: { payload: { token: string } }) {
@@ -20,5 +20,5 @@ const Authentication = createSlice({
 	}
 })
 
-export default Authentication.reducer
-export const {signInAction, errorAction} = Authentication.actions
+export default authentication.reducer
+export const {signInAction, errorAction} = authentication.actions

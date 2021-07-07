@@ -14,3 +14,9 @@ export interface ICard {
 	prayedByMe: number,
 	prayedByOthers: number
 }
+
+export interface IComment {
+	id: number,
+	cardId: number,
+	body: string,
+}

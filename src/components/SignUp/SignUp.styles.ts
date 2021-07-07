@@ -5,17 +5,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		paddingHorizontal: 15
 	},
-	input: {
-		backgroundColor: '#fff',
-		borderWidth: 1,
-		borderColor: '#E5E5E5',
-		borderRadius: 10,
-		height: 50,
-		marginTop: 16,
-		paddingHorizontal: 10,
-		fontSize: 17,
-		lineHeight: 20,
-	},
 	buttonContainer: {
 		alignItems: 'center',
 		backgroundColor: '#BFB393',

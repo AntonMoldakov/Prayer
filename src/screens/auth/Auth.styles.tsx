@@ -1,16 +1,12 @@
 import {StyleSheet} from 'react-native';
+import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	},
 	tabBar: {
-		flexDirection: 'row'
+		backgroundColor: '#fff'
 	},
-	tabItem: {
-		flex: 1,
-		alignItems: 'center',
-		padding: 16,
+	indicator: {
+		backgroundColor: colors.lightBlue,
 	},
 	tabText: {
 		fontFamily: 'SF UI Text',

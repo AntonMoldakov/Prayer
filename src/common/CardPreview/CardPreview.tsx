@@ -2,13 +2,15 @@ import * as React from 'react'
 import {TouchableOpacity, Text, View} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
-import {useAppDispatch} from "../../hooks";
 import styles from "./CardPreview.styles";
 import {ICard} from "../../interface";
 import {cardsOperations} from "../../state/ducks/cards";
 import {Checkbox} from 'react-native-paper';
 import User from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
+import {useAppDispatch} from "../../state/store";
+import {DeleteButton} from '../../ui'
+import colors from "../../styles/colors";
 
 interface IProps {
 	item: ICard
@@ -17,14 +19,7 @@ interface IProps {
 const CardPreview = ({item}: IProps) => {
 	const navigation = useNavigation();
 	const dispatch = useAppDispatch()
-	const renderRightActions = () => {
-		return (
-			<TouchableOpacity style={styles.delete}
-			                  onPress={() => dispatch(cardsOperations.deleteCard(item.id))}>
-				<Text style={styles.DeleteText}>Delete</Text>
-			</TouchableOpacity>
-		);
-	};
+	const renderRightActions = () => <DeleteButton onPress={dispatch(cardsOperations.deleteCard)} id={item.id}/>
 	return (
 		<Swipeable renderRightActions={renderRightActions}
 		           containerStyle={styles.swipeableContainer}
@@ -34,7 +29,7 @@ const CardPreview = ({item}: IProps) => {
 				<Checkbox
 					status={item.checked ? 'checked' : 'unchecked'}
 					onPress={() => dispatch(cardsOperations.checkedCard(item.id, item.checked))}
-					color="#514D47"
+					color={colors.lightBlack}
 				/>
 
 				<TouchableOpacity
@@ -46,15 +41,15 @@ const CardPreview = ({item}: IProps) => {
 						{item.title}
 					</Text>
 					<View style={styles.cardIcons}>
-						<User style={styles.icon} name="user" size={22} color="#72A8BC"/>
-						<Text style={{color: '#514D47'}}>{item.subscribed}</Text>
+						<User style={styles.icon} name="user" size={22} color={colors.lightBlue}/>
+						<Text style={styles.subscribedText}>{item.subscribed}</Text>
 						<Hands
 							style={styles.icon}
 							name="praying-hands"
 							size={22}
-							color="#72A8BC"
+							color={colors.lightBlue}
 						/>
-						<Text style={{color: '#514D47'}}>{item.prayedByMe + item.prayedByOthers}</Text>
+						<Text style={styles.totalCountText}>{item.prayedByMe + item.prayedByOthers}</Text>
 					</View>
 				</TouchableOpacity>
 			</View>

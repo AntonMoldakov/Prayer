@@ -11,8 +11,8 @@ const initialState = {
 	]
 }
 
-const Columns = createSlice({
-	name: 'ColumnsReducer',
+const columns = createSlice({
+	name: 'columnsReducer',
 	initialState,
 	reducers: {
 		getColumnsAction(state, action: { payload: { columns: IColumn[] } }) {
@@ -30,5 +30,5 @@ const Columns = createSlice({
 	}
 })
 
-export default Columns.reducer
-export const {getColumnsAction, addColumnAction, changeAddMode, deleteColumnAction} = Columns.actions
+export default columns.reducer
+export const {getColumnsAction, addColumnAction, changeAddMode, deleteColumnAction} = columns.actions

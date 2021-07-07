@@ -1,15 +1,16 @@
 import {StyleSheet} from 'react-native';
+import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
 	cardPreview: {
 		width: '90%',
 		height: 66,
 		flexDirection: 'row',
-		borderBottomColor: '#E5E5E5',
+		borderBottomColor: colors.lightGray,
 		borderBottomWidth: 1,
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		backgroundColor: '#fff',
+		backgroundColor: colors.white,
 		overflow: 'hidden',
 	},
 	swipeableContainer: {
@@ -21,16 +22,22 @@ const styles = StyleSheet.create({
 	cardStatus: {
 		width: 3,
 		height: 22,
-		backgroundColor: '#AC5253',
+		backgroundColor: colors.vinous,
 	},
 	cardText: {
-		color: '#514D47',
+		color: colors.lightBlack,
 		width: '60%',
 		fontSize: 17,
 		lineHeight: 20,
 	},
+	subscribedText: {
+		color: colors.lightBlack
+	},
+	totalCountText: {
+		color: colors.lightBlack
+	},
 	cardTextChecked: {
-		color: '#514D47',
+		color: colors.lightBlack,
 		width: '60%',
 		fontSize: 17,
 		lineHeight: 20,
@@ -53,21 +60,7 @@ const styles = StyleSheet.create({
 	},
 	icon: {
 		marginLeft: 8,
-	},
-	DeleteText: {
-		fontFamily: 'SF UI Text',
-		fontSize: 17,
-		color: '#FFF',
-	},
-	delete: {
-		width: '30%',
-		height: '100%',
-		paddingVertical: 20,
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		backgroundColor: '#AC5253',
-		marginBottom: 10,
-	},
+	}
 });
 
 export default styles;

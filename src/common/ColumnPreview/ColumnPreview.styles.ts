@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
+import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
 	item: {
 		borderWidth: 1,
-		borderColor: '#E5E5E5',
-		backgroundColor: '#fff',
+		borderColor: colors.lightGray,
+		backgroundColor: colors.white,
 		borderRadius: 4,
 		paddingHorizontal: 15,
 		paddingVertical: 20,
@@ -16,20 +17,7 @@ const styles = StyleSheet.create({
 		fontWeight: '700',
 		lineHeight: 20,
 		textAlign: 'left',
-		color: '#514D47',
-	},
-	DeleteText: {
-		fontFamily: 'SF UI Text',
-		fontSize: 17,
-		color: '#FFF',
-	},
-	delete: {
-		width: '30%',
-		paddingVertical: 20,
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		backgroundColor: '#AC5253',
-		marginBottom: 10,
+		color: colors.lightBlack,
 	},
 	swipeableContainer: {
 		width: '100%',

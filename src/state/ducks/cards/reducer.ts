@@ -7,8 +7,8 @@ const initialState = {
 	]
 }
 
-const Cards = createSlice({
-	name: 'CardsReducer',
+const cards = createSlice({
+	name: 'cardsReducer',
 	initialState,
 	reducers: {
 		getCardsAction(state, action: { payload: { cards: ICard[] } }) {
@@ -29,5 +29,5 @@ const Cards = createSlice({
 	}
 })
 
-export default Cards.reducer
-export const {getCardsAction, addCardAction, deleteCardAction, checkedCardAction} = Cards.actions
+export default cards.reducer
+export const {getCardsAction, addCardAction, deleteCardAction, checkedCardAction} = cards.actions

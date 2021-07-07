@@ -1,1 +1,6 @@
 export {Loader} from './Loader'
+export {BrownButton} from './BrownButton'
+export {CustomTextInput} from './CustomTextInput'
+export {DeleteButton} from './DeleteButton'
+export {IconButton} from './IconButton'
+export {IconTextInput} from './IconTextInput'

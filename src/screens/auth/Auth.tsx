@@ -2,9 +2,10 @@ import * as React from 'react'
 import {SignIn, SignUp} from '../../components'
 import {SceneMap, TabBar, TabView} from "react-native-tab-view"
 import {useWindowDimensions} from 'react-native'
-import {useAppDispatch} from "../../hooks";
 import {authOperations} from "../../state/ducks/auth";
 import styles from "./Auth.styles";
+import {useAppDispatch} from "../../state/store";
+import colors from "../../styles/colors";
 
 
 const renderScene = SceneMap({
@@ -23,12 +24,12 @@ function Auth() {
 	const renderTabBar = props => (
 		<TabBar
 			{...props}
-			indicatorStyle={{backgroundColor: '#72A8BC'}}
-			activeColor={'#72A8BC'}
-			inactiveColor={'#C8C8C8'}
-			pressColor={'#72A8BC'}
+			indicatorStyle={styles.indicator}
+			activeColor={colors.lightBlue}
+			inactiveColor={colors.gray}
+			pressColor={colors.lightBlue}
 			labelStyle={styles.tabText}
-			style={{backgroundColor: '#fff'}}
+			style={styles.tabBar}
 		/>
 	);
 
