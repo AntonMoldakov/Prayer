@@ -4,7 +4,6 @@ import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
 import {columnsOperations} from "../../state/ducks/columns";
 import styles from "./ColumnPreview.styles";
-import {useAppDispatch} from "../../state/store";
 import {DeleteButton} from "../../ui/DeleteButton";
 
 interface IProps {
@@ -14,10 +13,9 @@ interface IProps {
 
 const ColumnPreview = ({title, id}: IProps) => {
 	const navigation = useNavigation();
-	const dispatch = useAppDispatch()
-	const renderRightActions = () => <DeleteButton onPress={dispatch(columnsOperations.deleteColumn)} id={id}/>
+	const renderRightActions = () => <DeleteButton onPress={columnsOperations.deleteColumn} id={id}/>
 	return (
-		<Swipeable renderRightActions={renderRightActions}
+		<Swipeable  renderRightActions={renderRightActions}
 		           containerStyle={styles.swipeableContainer}
 		           childrenContainerStyle={styles.swipeableChildContainer}>
 			<TouchableOpacity style={styles.item}

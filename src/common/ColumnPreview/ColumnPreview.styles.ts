@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
 		borderRadius: 4,
 		paddingHorizontal: 15,
 		paddingVertical: 20,
-		marginBottom: 10,
 	},
 	text: {
 		fontFamily: 'SF UI Text',
@@ -20,6 +19,7 @@ const styles = StyleSheet.create({
 		color: colors.lightBlack,
 	},
 	swipeableContainer: {
+		marginBottom: 10,
 		width: '100%',
 	},
 	swipeableChildContainer: {

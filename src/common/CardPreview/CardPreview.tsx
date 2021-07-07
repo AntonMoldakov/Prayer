@@ -19,7 +19,7 @@ interface IProps {
 const CardPreview = ({item}: IProps) => {
 	const navigation = useNavigation();
 	const dispatch = useAppDispatch()
-	const renderRightActions = () => <DeleteButton onPress={dispatch(cardsOperations.deleteCard)} id={item.id}/>
+	const renderRightActions = () => <DeleteButton onPress={cardsOperations.deleteCard} id={item.id}/>
 	return (
 		<Swipeable renderRightActions={renderRightActions}
 		           containerStyle={styles.swipeableContainer}
