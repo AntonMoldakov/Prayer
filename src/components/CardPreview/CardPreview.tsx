@@ -4,7 +4,7 @@ import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
 import styles from "./CardPreview.styles";
 import {ICard} from "../../interface";
-import {cardsOperations} from "../../state/ducks/cards";
+import {cardsOperations} from "../../state/cards";
 import {Checkbox} from 'react-native-paper';
 import User from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';

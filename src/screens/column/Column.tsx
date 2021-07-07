@@ -1,11 +1,10 @@
 import * as React from "react";
 import {useEffect} from 'react'
 import {useRoute, RouteProp} from '@react-navigation/native'
-import {cardsOperations} from "../../state/ducks/cards";
+import {cardsOperations} from "../../state/cards";
 import {SceneMap, TabBar, TabView} from "react-native-tab-view";
 import {useWindowDimensions, Text, View} from 'react-native'
-import {Prayers} from "../../components";
-import {Subscribed} from "../../components";
+import {Prayers, Subscribed} from "../../components";
 import styles from "./Column.styles";
 import {useAppDispatch} from "../../state/store";
 import colors from "../../styles/colors";

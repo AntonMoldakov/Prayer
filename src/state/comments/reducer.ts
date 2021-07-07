@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IComment} from "../../../interface";
+import {IComment} from "../../interface";
 
 const initialState = {
 	addMode: false,

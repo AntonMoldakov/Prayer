@@ -1,11 +1,11 @@
 import * as React from 'react'
 import {View, TouchableOpacity, Text} from "react-native";
-import {authOperations} from "../../state/ducks/auth";
 import styles from "./SignIn.styles";
 import {Field, Form as FinalForm} from "react-final-form";
 import {validate} from "../../utils";
-import {InputField} from "../../common";
 import {useAppDispatch, useAppSelector} from "../../state/store";
+import {clearError, signIn} from "../../state/auth/actions";
+import {InputField} from "../";
 
 const SignIn = () => {
 	const dispatch = useAppDispatch()
@@ -16,8 +16,8 @@ const SignIn = () => {
 		})
 
 	const onSignIn = ({email, password}) => {
-		dispatch(authOperations.clearError())
-		dispatch(authOperations.signIn(email, password))
+		dispatch(clearError())
+		dispatch(signIn(email, password))
 	}
 
 	return (

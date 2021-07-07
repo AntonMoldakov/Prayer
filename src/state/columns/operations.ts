@@ -1,7 +1,7 @@
 import {Dispatch} from "redux"
 import {getColumnsAction, addColumnAction, changeAddMode, deleteColumnAction} from "./reducer"
-import {columnAPI} from "../../../api"
-import {IColumn} from "../../../interface";
+import {columnAPI} from "../../api"
+import {IColumn} from "../../interface";
 import {sessionOperations} from "../session";
 
 const getColumns = () => async (dispatch: Dispatch) => {

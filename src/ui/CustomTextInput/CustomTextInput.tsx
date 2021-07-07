@@ -1,10 +1,15 @@
 import * as React from "react";
-import {TextInput} from 'react-native'
-import {TextInputProps} from "react-native-paper/lib/typescript/components/TextInput/TextInput";
+import {TextInput, TextInputProps} from 'react-native'
 import styles from "./CustomTextInput.styles";
 
+type IProps = {
+	onChangeText?: (text: string) => void,
+	onBlur?: () => void,
+	onSubmitEditing?: () => void,
+	inputValue?: string,
+} & Omit<TextInputProps, 'onChangeText' | 'onBlur' | 'onChange' | 'inputValue' | 'onSubmitEditing'>
 
-const CustomTextInput: React.FC<TextInputProps> = (props) => {
+const CustomTextInput = (props: IProps) => {
 	return (
 		<TextInput{...props}
 		          style={styles.input}/>

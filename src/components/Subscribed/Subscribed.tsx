@@ -3,10 +3,14 @@ import {useState, useMemo} from 'react';
 import {View, FlatList} from 'react-native';
 import styles from './Subscribed.styles';
 import {BrownButton} from "../../ui";
-import {CardPreview} from "../../common";
 import {useAppSelector} from "../../state/store";
+import {CardPreview} from "../";
 
-const Subscribed = ({columnId}: { columnId: number }) => {
+interface IProps {
+	columnId: number
+}
+
+const Subscribed = ({columnId}: IProps) => {
 	const [isShowAnswered, setIsShowAnswered] = useState(false);
 
 	const [cards] = useAppSelector(

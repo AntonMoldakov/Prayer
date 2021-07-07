@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {signInSuccess, errorSuccess} from "./actions";
 
 const initialState = {
 	isLogin: false,
@@ -9,16 +10,16 @@ const initialState = {
 const authentication = createSlice({
 	name: 'authenticationReducer',
 	initialState,
-	reducers: {
-		signInAction(state, action: { payload: { token: string } }) {
+	reducers: {},
+	extraReducers: (builder) => {
+		builder.addCase(signInSuccess, (state, action) => {
 			state.isLogin = !state.isLogin
 			state.token = action.payload.token
-		},
-		errorAction(state, action: { payload: {error: string}}) {
+		})
+		builder.addCase(errorSuccess, (state, action) => {
 			state.error = action.payload.error
-		}
+		})
 	}
 })
 
 export default authentication.reducer
-export const {signInAction, errorAction} = authentication.actions

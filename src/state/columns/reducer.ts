@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IColumn} from "../../../interface";
+import {IColumn} from "../../interface";
 
 const initialState = {
 	addMode: false,

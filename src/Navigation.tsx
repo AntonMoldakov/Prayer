@@ -1,16 +1,16 @@
 import * as React from 'react'
 import {TouchableOpacity} from 'react-native'
 import {Desk, Column, Auth, Card} from "./screens"
-import {ColumnTitle} from './common'
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
-import {columnsOperations} from "./state/ducks/columns";
+import {columnsOperations} from "./state/columns";
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import Settings from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
 import {useAppDispatch, useAppSelector} from "./state/store";
 import colors from "./styles/colors";
 import styles from "./Navigation.styles";
+import {ColumnTitle} from "./components";
 
 const Stack = createStackNavigator()
 const Navigation = () => {

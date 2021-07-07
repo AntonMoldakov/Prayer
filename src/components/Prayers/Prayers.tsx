@@ -2,11 +2,11 @@ import * as React from 'react'
 import {useState, useMemo} from 'react'
 import {View, FlatList} from 'react-native'
 import styles from './Prayers.styles'
-import {cardsOperations} from "../../state/ducks/cards"
+import {cardsOperations} from "../../state/cards"
 import {BrownButton, IconTextInput} from "../../ui"
-import {CardPreview} from "../../common"
 import {useAppDispatch, useAppSelector} from "../../state/store"
-import {columnsOperations} from "../../state/ducks/columns"
+import {columnsOperations} from "../../state/columns"
+import {CardPreview} from "../";
 
 interface IProps {
 	columnId: number

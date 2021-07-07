@@ -1,7 +1,7 @@
 import {Dispatch} from "redux"
 import {getCommentsAction, addCommentAction, deleteCommentAction} from "./reducer"
-import {commentAPI} from "../../../api"
-import {IComment} from "../../../interface";
+import {commentAPI} from "../../api"
+import {IComment} from "../../interface";
 import {sessionOperations} from "../session";
 
 const getComments = () => async (dispatch: Dispatch) => {

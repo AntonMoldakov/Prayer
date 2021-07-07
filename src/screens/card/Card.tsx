@@ -2,7 +2,7 @@ import * as React from "react";
 import {View, ScrollView, Text, Image} from 'react-native'
 import {useRoute, RouteProp} from '@react-navigation/native'
 import {useEffect, useMemo} from "react";
-import {commentsOperations} from "../../state/ducks/comments";
+import {commentsOperations} from "../../state/comments";
 import styles from "./Card.styles";
 import {ICard} from "../../interface";
 import {useAppDispatch, useAppSelector} from "../../state/store";

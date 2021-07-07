@@ -1,11 +1,11 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {View, FlatList} from 'react-native'
-import {ColumnPreview} from '../../common'
 import {IconTextInput, Loader} from "../../ui"
-import {columnsOperations} from "../../state/ducks/columns";
+import {columnsOperations} from "../../state/columns";
 import styles from "./Desk.styles";
 import {useAppDispatch, useAppSelector} from "../../state/store";
+import {ColumnPreview} from "../../components";
 
 
 const Desk = () => {

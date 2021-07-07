@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {ICard} from "../../../interface";
+import {ICard} from "../../interface";
 
 const initialState = {
 	cards: [

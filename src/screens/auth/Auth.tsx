@@ -2,10 +2,10 @@ import * as React from 'react'
 import {SignIn, SignUp} from '../../components'
 import {SceneMap, TabBar, TabView} from "react-native-tab-view"
 import {useWindowDimensions} from 'react-native'
-import {authOperations} from "../../state/ducks/auth";
 import styles from "./Auth.styles";
 import {useAppDispatch} from "../../state/store";
 import colors from "../../styles/colors";
+import {clearError} from "../../state/auth/actions";
 
 
 const renderScene = SceneMap({
@@ -38,7 +38,7 @@ function Auth() {
 			navigationState={{index, routes}}
 			renderScene={renderScene}
 			renderTabBar={renderTabBar}
-			onSwipeEnd={() => dispatch(authOperations.clearError())}
+			onSwipeEnd={() => dispatch(clearError())}
 			onIndexChange={setIndex}
 			initialLayout={{width: layout.width}}
 		/>

@@ -1,7 +1,7 @@
 import {Dispatch} from "redux"
 import {getCardsAction, addCardAction, deleteCardAction, checkedCardAction} from "./reducer"
-import {cardAPI} from "../../../api"
-import {ICard} from "../../../interface";
+import {cardAPI} from "../../api"
+import {ICard} from "../../interface";
 import {sessionOperations} from "../session";
 
 const getCards = () => async (dispatch: Dispatch) => {
