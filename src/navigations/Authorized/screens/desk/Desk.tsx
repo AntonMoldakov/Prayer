@@ -1,11 +1,11 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {View, FlatList} from 'react-native'
-import {IconTextInput, Loader} from "../../../../ui"
+import {IconTextInput, Loader} from "ui"
 import styles from "./Desk.styles";
-import {useAppDispatch, useAppSelector} from "../../../../state";
-import {ColumnPreview} from "../../../../components";
-import {addColumn, getColumns, stopAddColumn} from "../../../../state/columns/actions";
+import {useAppDispatch, useAppSelector} from "state";
+import {ColumnPreview} from "components";
+import {addColumn, getColumns, stopAddColumn} from "state/columns/actions";
 import {DeskScreenNavigationProps} from "../../Authorized";
 
 

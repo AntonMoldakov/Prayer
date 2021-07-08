@@ -1,10 +1,9 @@
 import * as React from "react";
 import {TouchableOpacity} from 'react-native'
-import {Icon} from "react-native-vector-icons/Icon";
 
 interface IProps {
 	onPress?: () => void,
-	children: Icon
+	children: React.ReactNode
 }
 
 const HeaderIconButton = (props: IProps) => {

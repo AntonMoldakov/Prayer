@@ -1,5 +1,5 @@
 import {takeLatest, put} from 'redux-saga/effects';
-import {commentAPI} from "../../../api";
+import {commentAPI} from "/api";
 import {PayloadAction} from "@reduxjs/toolkit";
 import {deleteCommentSuccess} from "../actions";
 

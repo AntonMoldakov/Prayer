@@ -2,11 +2,12 @@ import * as React from "react";
 import {View, ScrollView, Text, Image} from 'react-native'
 import {useEffect, useMemo} from "react";
 import styles from "./Card.styles";
-import {ICard} from "../../../../interface";
-import {useAppDispatch, useAppSelector} from "../../../../state";
-import {IconButton} from "../../../../ui";
-import {getComments} from "../../../../state/comments/actions";
+import {ICard} from "interface";
+import {useAppDispatch, useAppSelector} from "state";
+import {IconButton} from "ui";
+import {getComments} from "state/comments/actions";
 import {CardScreenNavigationProps} from "../../Authorized";
+import {Comments} from "components";
 
 const Card = (props: CardScreenNavigationProps) => {
 	const {cardId} = props.route.params;
@@ -74,7 +75,7 @@ const Card = (props: CardScreenNavigationProps) => {
 						<IconButton/>
 					</View>
 				</View>
-				{/*<CommentsList cardId={card.id} />*/}
+				<Comments cardId={card.id}/>
 			</View>
 		</ScrollView>
 	)

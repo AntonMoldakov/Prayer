@@ -1,8 +1,8 @@
 import * as React from "react";
 import {TouchableOpacity} from 'react-native'
-import Icon from 'react-native-vector-icons/dist/AntDesign';
 import styles from "./IconButton.styles";
 import colors from "../../styles/colors";
+import Icon from 'react-native-vector-icons/AntDesign'
 
 const IconButton = () => {
 	return (

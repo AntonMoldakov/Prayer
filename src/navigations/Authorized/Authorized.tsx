@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Desk, Column, Card} from "./screens"
 import {createStackNavigator, StackNavigationProp} from "@react-navigation/stack"
 import {NavigationContainer, RouteProp} from "@react-navigation/native"
-import Icon from 'react-native-vector-icons/dist/AntDesign';
+import Icon from "react-native-vector-icons/AntDesign";
 import Settings from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
 import styles from "../Navigation.styles";

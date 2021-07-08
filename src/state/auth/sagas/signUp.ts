@@ -1,5 +1,5 @@
 import {takeLatest, put} from 'redux-saga/effects';
-import {authAPI} from "../../../api";
+import {authAPI} from "api";
 import {PayloadAction} from "@reduxjs/toolkit";
 import {signInSuccess, errorSuccess} from "../actions";
 
@@ -9,7 +9,7 @@ function* signUp(action: PayloadAction<{ email: string, userName: string, passwo
 		if (response.data.message) {
 			yield put(errorSuccess('Email is already in use'))
 		} else {
-			yield put(signInSuccess(response.data.token));
+			yield put(signInSuccess(response.data));
 		}
 	} catch (error) {
 		yield console.log(error.message);

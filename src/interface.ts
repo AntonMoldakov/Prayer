@@ -17,6 +17,14 @@ export interface ICard {
 
 export interface IComment {
 	id: number,
-	cardId: number,
+	prayerId: number,
 	body: string,
+	name: string,
+}
+
+export interface IUser {
+	name: string,
+	email: string,
+	password: string,
+	token: string,
 }

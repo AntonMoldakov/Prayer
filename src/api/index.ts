@@ -1,5 +1,5 @@
 import axios from "axios";
-import index from "../state";
+import index from "state";
 
 const api = axios.create({
 	baseURL: 'https://prayer.herokuapp.com/',
@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-	const token = index.getState().auth.token;
+	const token = index.getState().auth.user.token
 
 	if (!token) {
 		return config;
@@ -78,8 +78,8 @@ export const commentAPI = {
 	getComments() {
 		return api.get('comments');
 	},
-	addComment(cardId: number, body: string) {
-		return api.post(`prayers/${cardId}/comments`, {body});
+	addComment(cardId: number, body: string, name: string) {
+		return api.post(`prayers/${cardId}/comments`, {body, name});
 	},
 	deleteComment(id: number) {
 		return api.delete(`comments/${id}`)

@@ -2,9 +2,9 @@ import * as React from 'react'
 import {TouchableOpacity, Text} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import styles from "./ColumnPreview.styles";
-import {DeleteButton} from "../../ui/DeleteButton";
-import {deleteColumn} from "../../state/columns/actions";
-import {DeskScreenNavigationProps} from "../../navigations/Authorized/Authorized";
+import {DeleteButton} from "ui/DeleteButton";
+import {deleteColumn} from "state/columns/actions";
+import {DeskScreenNavigationProps} from "navigations/Authorized/Authorized";
 
 interface IProps extends DeskScreenNavigationProps {
 	title: string,
