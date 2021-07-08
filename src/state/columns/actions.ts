@@ -5,7 +5,7 @@ export const addColumn = createAction('ADD_COLUMN', function prepare(title: stri
 	return {payload: {title}}
 })
 
-export const getColumns = createAction('GET_COLUMN')
+export const getColumns = createAction('GET_COLUMNS')
 
 export const startAddColumn = createAction('START_ADD_COLUMN')
 

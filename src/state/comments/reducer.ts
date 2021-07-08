@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IComment} from "../../interface";
+import {addCommentSuccess, deleteCommentSuccess, getCommentsSuccess} from "./actions";
 
 const initialState = {
 	addMode: false,
@@ -9,18 +9,18 @@ const initialState = {
 const comments = createSlice({
 	name: 'commentsReducer',
 	initialState,
-	reducers: {
-		getCommentsAction(state, action: { payload: { comments: IComment[] } }) {
+	reducers: {},
+	extraReducers: (builder) => {
+		builder.addCase(getCommentsSuccess, (state, action) => {
 			state.comments = action.payload.comments
-		},
-		addCommentAction(state, action: { payload: { comment: IComment } }) {
+		})
+		builder.addCase(addCommentSuccess, (state, action) => {
 			state.comments.push(action.payload.comment)
-		},
-		deleteCommentAction(state, action: { payload: { id: number } }) {
+		})
+		builder.addCase(deleteCommentSuccess, (state, action) => {
 			state.comments = state.comments.filter(comment => comment.id !== action.payload.id)
-		}
+		})
 	}
 })
 
 export default comments.reducer
-export const {getCommentsAction, addCommentAction, deleteCommentAction} = comments.actions

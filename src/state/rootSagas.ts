@@ -1,5 +1,5 @@
 import {sagas} from "./ducks";
-import { call, all } from "redux-saga/effects";
+import {call, all} from "redux-saga/effects";
 
 export default function* rootSaga() {
 	yield all([
@@ -7,5 +7,6 @@ export default function* rootSaga() {
 		call(sagas.cardsSagas),
 		call(sagas.sessionSagas),
 		call(sagas.columnsSagas),
+		call(sagas.commentsSagas)
 	]);
 }

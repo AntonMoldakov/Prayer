@@ -2,11 +2,11 @@ import * as React from "react";
 import {View, ScrollView, Text, Image} from 'react-native'
 import {useRoute, RouteProp} from '@react-navigation/native'
 import {useEffect, useMemo} from "react";
-import {commentsOperations} from "../../state/comments";
 import styles from "./Card.styles";
 import {ICard} from "../../interface";
 import {useAppDispatch, useAppSelector} from "../../state";
 import {IconButton} from "../../ui";
+import {getComments} from "../../state/comments/actions";
 
 const Card = () => {
 	const route = useRoute<RouteProp<any, 'Card'>>();
@@ -22,7 +22,7 @@ const Card = () => {
 		[cards, cardId],
 	);
 	useEffect(() => {
-		dispatch(commentsOperations.getComments())
+		dispatch(getComments())
 	}, [dispatch]);
 
 	return (
