@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useAppSelector} from "../state";
+import {useAppSelector} from "state"
 import Authorized from "./Authorized/Authorized";
 import Unauthorized from "./Unauthorized/Unauthorized";
 

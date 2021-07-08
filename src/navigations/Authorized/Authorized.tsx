@@ -1,5 +1,4 @@
 import * as React from 'react'
-import {TouchableOpacity} from 'react-native'
 import {Desk, Column, Card} from "./screens"
 import {createStackNavigator, StackNavigationProp} from "@react-navigation/stack"
 import {NavigationContainer, RouteProp} from "@react-navigation/native"
@@ -7,10 +6,11 @@ import Icon from 'react-native-vector-icons/dist/AntDesign';
 import Settings from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
 import styles from "../Navigation.styles";
-import {useAppDispatch} from "../../state";
-import {startAddColumn} from "../../state/columns/actions";
+import {useAppDispatch} from "state";
+import {startAddColumn} from "state/columns/actions";
 import colors from "../../styles/colors";
 import {ColumnTitle} from "../../components";
+import {HeaderIconButton} from "ui";
 
 const StackAuth = createStackNavigator()
 
@@ -32,14 +32,14 @@ const Authorized = () => {
 						headerStyle: styles.deskScreenHeader,
 						title: 'My Desk',
 						headerRight: () => (
-							<TouchableOpacity onPress={() => dispatch(startAddColumn())}>
+							<HeaderIconButton onPress={() => dispatch(startAddColumn())}>
 								<Icon
 									name="plus"
 									size={28}
 									color={colors.lightBlue}
 									style={styles.HeaderIcon}
 								/>
-							</TouchableOpacity>
+							</HeaderIconButton>
 						)
 					}}
 				/>
@@ -49,14 +49,14 @@ const Authorized = () => {
 					options={{
 						headerTitle: (props) => <ColumnTitle {...props} />,
 						headerRight: () => (
-							<TouchableOpacity>
+							<HeaderIconButton>
 								<Settings
 									name="settings"
 									size={28}
 									color={colors.lightBlue}
 									style={styles.HeaderIcon}
 								/>
-							</TouchableOpacity>
+							</HeaderIconButton>
 						)
 					}}
 				/>
