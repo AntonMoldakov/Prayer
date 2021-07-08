@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import {persistReducer} from "redux-persist";
-import {reducers} from './index';
+import {reducers} from './ducks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const persistConfig = {

@@ -2,16 +2,19 @@ import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {View, FlatList} from 'react-native'
 import {IconTextInput, Loader} from "../../ui"
-import {columnsOperations} from "../../state/columns";
 import styles from "./Desk.styles";
-import {useAppDispatch, useAppSelector} from "../../state/store";
+import {useAppDispatch, useAppSelector} from "../../state";
 import {ColumnPreview} from "../../components";
+import {addColumn, getColumns, stopAddColumn} from "../../state/columns/actions";
 
 
 const Desk = () => {
 	const [inputValue, setInputValue] = useState('')
 	const dispatch = useAppDispatch()
-	useEffect(() => dispatch(columnsOperations.getColumns()), [dispatch])
+
+	useEffect(() => {
+		dispatch(getColumns())
+	}, [dispatch]);
 
 	const [columns, addMode, loadingMode] = useAppSelector(
 		(state) => {
@@ -21,8 +24,8 @@ const Desk = () => {
 
 	const AddColumn = () => {
 		if (inputValue) {
-			dispatch(columnsOperations.addColumn(inputValue))
-			dispatch(columnsOperations.stopAddColumn())
+			dispatch(addColumn(inputValue))
+			dispatch(stopAddColumn())
 			setInputValue('')
 		}
 	}
@@ -36,7 +39,7 @@ const Desk = () => {
 							underlineColorAndroid="transparent"
 							placeholder="Add a column..."
 							inputValue={inputValue}
-							onBlur={() => dispatch(columnsOperations.stopAddColumn())}
+							onBlur={() => dispatch(stopAddColumn())}
 							onChangeText={(text) => setInputValue(text)}
 							onSubmitEditing={AddColumn}
 							autoFocus={true}

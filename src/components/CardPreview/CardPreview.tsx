@@ -4,13 +4,13 @@ import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
 import styles from "./CardPreview.styles";
 import {ICard} from "../../interface";
-import {cardsOperations} from "../../state/cards";
 import {Checkbox} from 'react-native-paper';
 import User from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
-import {useAppDispatch} from "../../state/store";
+import {useAppDispatch} from "../../state";
 import {DeleteButton} from '../../ui'
 import colors from "../../styles/colors";
+import {deleteCard, checkedCard} from "../../state/cards/actions";
 
 interface IProps {
 	item: ICard
@@ -19,7 +19,7 @@ interface IProps {
 const CardPreview = ({item}: IProps) => {
 	const navigation = useNavigation();
 	const dispatch = useAppDispatch()
-	const renderRightActions = () => <DeleteButton onPress={cardsOperations.deleteCard} id={item.id}/>
+	const renderRightActions = () => <DeleteButton onPress={deleteCard} id={item.id}/>
 	return (
 		<Swipeable renderRightActions={renderRightActions}
 		           containerStyle={styles.swipeableContainer}
@@ -28,7 +28,7 @@ const CardPreview = ({item}: IProps) => {
 				<View style={styles.cardStatus}/>
 				<Checkbox
 					status={item.checked ? 'checked' : 'unchecked'}
-					onPress={() => dispatch(cardsOperations.checkedCard(item.id, item.checked))}
+					onPress={() => dispatch(checkedCard(item.id, item.checked))}
 					color={colors.lightBlack}
 				/>
 

@@ -3,14 +3,14 @@ import {TouchableOpacity} from 'react-native'
 import {Desk, Column, Auth, Card} from "./screens"
 import {createStackNavigator} from "@react-navigation/stack"
 import {NavigationContainer} from "@react-navigation/native"
-import {columnsOperations} from "./state/columns";
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import Settings from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
-import {useAppDispatch, useAppSelector} from "./state/store";
+import {useAppDispatch, useAppSelector} from "./state";
 import colors from "./styles/colors";
 import styles from "./Navigation.styles";
 import {ColumnTitle} from "./components";
+import {startAddColumn} from "./state/columns/actions";
 
 const Stack = createStackNavigator()
 const Navigation = () => {
@@ -45,7 +45,7 @@ const Navigation = () => {
 						headerStyle: styles.deskScreenHeader,
 						title: 'My Desk',
 						headerRight: () => (
-							<TouchableOpacity onPress={() => dispatch(columnsOperations.startAddColumn())}>
+							<TouchableOpacity onPress={() => dispatch(startAddColumn())}>
 								<Icon
 									name="plus"
 									size={28}

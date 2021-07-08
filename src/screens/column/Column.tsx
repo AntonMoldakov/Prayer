@@ -1,13 +1,13 @@
 import * as React from "react";
 import {useEffect} from 'react'
 import {useRoute, RouteProp} from '@react-navigation/native'
-import {cardsOperations} from "../../state/cards";
 import {SceneMap, TabBar, TabView} from "react-native-tab-view";
 import {useWindowDimensions, Text, View} from 'react-native'
 import {Prayers, Subscribed} from "../../components";
 import styles from "./Column.styles";
-import {useAppDispatch} from "../../state/store";
+import {useAppDispatch} from "../../state";
 import colors from "../../styles/colors";
+import {getCards} from "../../state/cards/actions";
 
 
 const Column = () => {
@@ -17,7 +17,7 @@ const Column = () => {
 	const {columnId} = route.params;
 
 	useEffect(() => {
-		dispatch(cardsOperations.getCards())
+		dispatch(getCards())
 	}, [dispatch]);
 
 	const getTabBarIcon = (props) => {

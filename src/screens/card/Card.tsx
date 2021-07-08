@@ -5,7 +5,7 @@ import {useEffect, useMemo} from "react";
 import {commentsOperations} from "../../state/comments";
 import styles from "./Card.styles";
 import {ICard} from "../../interface";
-import {useAppDispatch, useAppSelector} from "../../state/store";
+import {useAppDispatch, useAppSelector} from "../../state";
 import {IconButton} from "../../ui";
 
 const Card = () => {
@@ -64,12 +64,10 @@ const Card = () => {
 					<Text style={styles.blockTitle}>MEMBERS</Text>
 					<View style={styles.block}>
 						<Image
-							size={35}
 							source={require('../../assets/img/1.png')}
 							style={styles.avatar}
 						/>
 						<Image
-							size={35}
 							source={require('../../assets/img/2.png')}
 							style={styles.avatar}
 						/>

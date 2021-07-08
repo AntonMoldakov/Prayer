@@ -1,5 +1,6 @@
 import reducer from './reducer';
+import * as actions from './actions'
+import {cardsSagas} from "./sagas";
 
-export { default as cardsOperations } from "./operations";
+export default {reducer, actions, cardsSagas};
 
-export default reducer;

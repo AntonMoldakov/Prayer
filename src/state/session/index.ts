@@ -1,5 +1,5 @@
 import reducer from './reducer';
+import * as actions from './actions'
+import {sessionSagas} from "./sagas";
 
-export { default as sessionOperations } from "./operations";
-
-export default reducer;
+export default {reducer, actions, sessionSagas};

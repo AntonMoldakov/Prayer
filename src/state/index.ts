@@ -1,24 +1,42 @@
-import auth from "./auth";
+import createSagaMiddleware from 'redux-saga';
+import persistedReducer from './rootReducer';
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {
+	persistStore,
+	FLUSH,
+	REHYDRATE,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
+} from 'redux-persist';
+import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import rootSaga from "./rootSagas";
 
-import {default as columnsReducer} from "./columns";
-import {default as sessionReducer} from "./session";
-import {default as cardsReducer} from "./cards";
-import {default as commentsReducer} from "./comments";
+const sagaMiddleware = createSagaMiddleware();
 
-export const sagas = {
-	authSagas: auth.authSagas
+const middleware = [
+	sagaMiddleware,
+	...getDefaultMiddleware({
+		serializableCheck: {
+			ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+		},
+	}),
+];
 
-}
+const index = configureStore({
+	reducer: persistedReducer,
+	middleware: middleware,
+});
 
-export const reducers = {
-	authReducer: auth.reducer,
-	columnsReducer,
-	sessionReducer,
-	cardsReducer,
-	commentsReducer
-}
+sagaMiddleware.run(rootSaga)
 
-export const actions = {
-	authActions: auth.actions
+export type RootState = ReturnType<typeof index.getState>
+export type AppDispatch = typeof index.dispatch
 
-}
+export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+
+export const persistor = persistStore(index);
+
+export default index;

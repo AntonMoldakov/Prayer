@@ -3,7 +3,7 @@ import {useState, useMemo} from 'react';
 import {View, FlatList} from 'react-native';
 import styles from './Subscribed.styles';
 import {BrownButton} from "../../ui";
-import {useAppSelector} from "../../state/store";
+import {useAppSelector} from "../../state";
 import {CardPreview} from "../";
 
 interface IProps {
@@ -37,7 +37,7 @@ const Subscribed = ({columnId}: IProps) => {
 				contentContainerStyle={styles.cardListContainer}
 				data={uncheckedCards}
 				renderItem={({item}) => <CardPreview item={item}/>}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => 'key' + item.id}
 			/>
 			<BrownButton
 				text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
@@ -49,7 +49,7 @@ const Subscribed = ({columnId}: IProps) => {
 				contentContainerStyle={styles.cardListContainer}
 				data={checkedCards}
 				renderItem={({item}) => <CardPreview item={item}/>}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => 'key' + item.id}
 			/>
 			}
 		</View>

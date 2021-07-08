@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "../state/store";
+import index from "../state";
 
 const api = axios.create({
 	baseURL: 'https://prayer.herokuapp.com/',
@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-	const token = store.getState().auth.token;
+	const token = index.getState().auth.token;
 
 	if (!token) {
 		return config;

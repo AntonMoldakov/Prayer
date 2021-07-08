@@ -2,9 +2,9 @@ import * as React from 'react'
 import {TouchableOpacity, Text} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import {useNavigation} from '@react-navigation/native';
-import {columnsOperations} from "../../state/columns";
 import styles from "./ColumnPreview.styles";
 import {DeleteButton} from "../../ui/DeleteButton";
+import {deleteColumn} from "../../state/columns/actions";
 
 interface IProps {
 	title: string,
@@ -13,9 +13,9 @@ interface IProps {
 
 const ColumnPreview = ({title, id}: IProps) => {
 	const navigation = useNavigation();
-	const renderRightActions = () => <DeleteButton onPress={columnsOperations.deleteColumn} id={id}/>
+	const renderRightActions = () => <DeleteButton onPress={deleteColumn} id={id}/>
 	return (
-		<Swipeable  renderRightActions={renderRightActions}
+		<Swipeable renderRightActions={renderRightActions}
 		           containerStyle={styles.swipeableContainer}
 		           childrenContainerStyle={styles.swipeableChildContainer}>
 			<TouchableOpacity style={styles.item}

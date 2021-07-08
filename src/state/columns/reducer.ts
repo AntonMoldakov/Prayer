@@ -1,34 +1,35 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {IColumn} from "../../interface";
+import {addColumnSuccess, changeAddModeSuccess, deleteColumnSuccess, getColumnsSuccess} from "./actions";
 
-const initialState = {
+interface IInitialState {
+	columns: IColumn[],
+	addMode: boolean
+}
+
+const initialState: IInitialState = {
 	addMode: false,
-	columns: [
-		{id: 120, title: 'Desk1', description: ''},
-		{id: 131, title: 'Desk2', description: ''},
-		{id: 30, title: 'Desk3', description: ''},
-		{id: 34, title: 'Desk4', description: ''}
-	]
+	columns: []
 }
 
 const columns = createSlice({
 	name: 'columnsReducer',
 	initialState,
-	reducers: {
-		getColumnsAction(state, action: { payload: { columns: IColumn[] } }) {
+	reducers: {},
+	extraReducers: (builder) => {
+		builder.addCase(getColumnsSuccess, (state, action) => {
 			state.columns = action.payload.columns
-		},
-		addColumnAction(state, action: { payload: { column: IColumn } }) {
+		})
+		builder.addCase(addColumnSuccess, (state, action) => {
 			state.columns.push(action.payload.column)
-		},
-		changeAddMode(state, action: { payload: { mode: boolean } }) {
+		})
+		builder.addCase(changeAddModeSuccess, (state, action) => {
 			state.addMode = action.payload.mode
-		},
-		deleteColumnAction(state, action: { payload: { id: number } }) {
+		})
+		builder.addCase(deleteColumnSuccess, (state, action) => {
 			state.columns = state.columns.filter(column => column.id !== action.payload.id)
-		}
+		})
 	}
 })
 
 export default columns.reducer
-export const {getColumnsAction, addColumnAction, changeAddMode, deleteColumnAction} = columns.actions

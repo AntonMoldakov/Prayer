@@ -3,7 +3,7 @@ import {View, TouchableOpacity, Text} from "react-native";
 import styles from "./SignIn.styles";
 import {Field, Form as FinalForm} from "react-final-form";
 import {validate} from "../../utils";
-import {useAppDispatch, useAppSelector} from "../../state/store";
+import {useAppDispatch, useAppSelector} from "../../state";
 import {clearError, signIn} from "../../state/auth/actions";
 import {InputField} from "../";
 

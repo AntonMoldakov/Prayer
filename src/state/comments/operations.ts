@@ -2,15 +2,15 @@ import {Dispatch} from "redux"
 import {getCommentsAction, addCommentAction, deleteCommentAction} from "./reducer"
 import {commentAPI} from "../../api"
 import {IComment} from "../../interface";
-import {sessionOperations} from "../session";
+import {startLoading, stopLoading} from "../session/actions";
 
 const getComments = () => async (dispatch: Dispatch) => {
-	dispatch(sessionOperations.startLoading())
+	dispatch(startLoading())
 	const response = await commentAPI.getComments()
 	let comments: IComment[] = response.data
 	if (comments) {
 		dispatch(getCommentsAction({comments}))
-		dispatch(sessionOperations.stopLoading())
+		dispatch(stopLoading())
 	}
 }
 

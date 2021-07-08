@@ -2,11 +2,11 @@ import * as React from 'react'
 import {useState, useMemo} from 'react'
 import {View, FlatList} from 'react-native'
 import styles from './Prayers.styles'
-import {cardsOperations} from "../../state/cards"
 import {BrownButton, IconTextInput} from "../../ui"
-import {useAppDispatch, useAppSelector} from "../../state/store"
-import {columnsOperations} from "../../state/columns"
+import {useAppDispatch, useAppSelector} from "../../state"
 import {CardPreview} from "../";
+import {addCard} from "../../state/cards/actions";
+import {stopAddColumn} from "../../state/columns/actions";
 
 interface IProps {
 	columnId: number
@@ -25,7 +25,7 @@ const PrayersList = ({columnId}: IProps) => {
 
 	const AddCard = () => {
 		if (inputValue) {
-			dispatch(cardsOperations.addCard(columnId, inputValue))
+			dispatch(addCard(columnId, inputValue))
 			setInputValue('')
 		}
 	}
@@ -49,7 +49,7 @@ const PrayersList = ({columnId}: IProps) => {
 					underlineColorAndroid="transparent"
 					placeholder="Add a prayer..."
 					inputValue={inputValue}
-					onBlur={() => dispatch(columnsOperations.stopAddColumn())}
+					onBlur={() => dispatch(stopAddColumn())}
 					onChangeText={(text) => setInputValue(text)}
 					onSubmitEditing={AddCard}/>
 				<FlatList
@@ -57,7 +57,7 @@ const PrayersList = ({columnId}: IProps) => {
 					contentContainerStyle={styles.cardListContainer}
 					data={uncheckedCards}
 					renderItem={({item}) => <CardPreview item={item}/>}
-					keyExtractor={(item) => item.id}
+					keyExtractor={(item) => 'key' + item.id}
 				/>
 				<BrownButton
 					text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
@@ -69,7 +69,7 @@ const PrayersList = ({columnId}: IProps) => {
 					contentContainerStyle={styles.cardListContainer}
 					data={checkedCards}
 					renderItem={({item}) => <CardPreview item={item}/>}
-					keyExtractor={(item) => item.id}
+					keyExtractor={(item) => 'key' + item.id}
 				/>
 				}
 			</>

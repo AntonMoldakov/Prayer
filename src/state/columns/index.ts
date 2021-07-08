@@ -1,5 +1,6 @@
 import reducer from './reducer';
+import * as actions from './actions'
+import {columnsSagas} from "./sagas";
 
-export { default as columnsOperations } from "./operations";
+export default {reducer, actions, columnsSagas};
 
-export default reducer;
