@@ -1,12 +1,11 @@
 import * as React from 'react'
-import {SignIn, SignUp} from '../../../../components'
+import {SignIn, SignUp} from 'components'
 import {SceneMap, TabBar, TabView} from "react-native-tab-view"
 import {useWindowDimensions} from 'react-native'
 import styles from "./Auth.styles";
-import {useAppDispatch} from "../../../../state";
-import colors from "../../../../styles/colors";
-import {clearError} from "../../../../state/auth/actions";
-import {AuthScreenNavigationProps} from "../../Unauthorized";
+import {useAppDispatch} from "state";
+import colors from "styles/colors";
+import {clearError} from "state/auth/actions";
 
 
 const renderScene = SceneMap({
@@ -14,7 +13,7 @@ const renderScene = SceneMap({
 	SignUp
 })
 
-function Auth(props: AuthScreenNavigationProps) {
+function Auth() {
 	const dispatch = useAppDispatch()
 	const layout = useWindowDimensions()
 	const [index, setIndex] = React.useState(0)

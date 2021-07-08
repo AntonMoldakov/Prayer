@@ -2,12 +2,12 @@ import * as React from 'react'
 import {useState, useMemo} from 'react'
 import {View, FlatList} from 'react-native'
 import styles from './Prayers.styles'
-import {BrownButton, IconTextInput} from "../../ui"
-import {useAppDispatch, useAppSelector} from "../../state"
-import {CardPreview} from "../";
-import {addCard} from "../../state/cards/actions";
-import {stopAddColumn} from "../../state/columns/actions";
-import {ColumnScreenNavigationProps} from "../../navigations/Authorized/Authorized";
+import {BrownButton, IconTextInput} from "ui"
+import {useAppDispatch, useAppSelector} from "state"
+import {CardPreview} from "../CardPreview";
+import {addCard} from "state/cards/actions";
+import {stopAddColumn} from "state/columns/actions";
+import {ColumnScreenNavigationProps} from "navigations/Authorized/Authorized";
 
 interface IProps extends ColumnScreenNavigationProps{
 	columnId: number
