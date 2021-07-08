@@ -1,20 +1,19 @@
 import * as React from "react";
 import {useEffect} from 'react'
-import {useRoute, RouteProp} from '@react-navigation/native'
 import {SceneMap, TabBar, TabView} from "react-native-tab-view";
 import {useWindowDimensions, Text, View} from 'react-native'
-import {Prayers, Subscribed} from "../../components";
+import {Prayers, Subscribed} from "../../../../components";
 import styles from "./Column.styles";
-import {useAppDispatch} from "../../state";
-import colors from "../../styles/colors";
-import {getCards} from "../../state/cards/actions";
+import {useAppDispatch} from "../../../../state";
+import colors from "../../../../styles/colors";
+import {getCards} from "../../../../state/cards/actions";
+import {ColumnScreenNavigationProps} from "../../Authorized";
 
 
-const Column = () => {
+const Column = (props: ColumnScreenNavigationProps) => {
 	const dispatch = useAppDispatch()
 
-	const route = useRoute<RouteProp<any, 'Column'>>();
-	const {columnId} = route.params;
+	const {columnId} = props.route.params;
 
 	useEffect(() => {
 		dispatch(getCards())
@@ -32,8 +31,8 @@ const Column = () => {
 	}
 
 	const renderScene = SceneMap({
-		Prayers: () => <Prayers columnId={columnId}/>,
-		Subscribed: () => <Subscribed columnId={columnId}/>
+		Prayers: () => <Prayers {...props} columnId={columnId}/>,
+		Subscribed: () => <Subscribed {...props} columnId={columnId}/>
 	})
 
 

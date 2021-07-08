@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Navigation from "./navigations/Navigation";
+import Navigations from "./navigations/Navigations";
 import {Provider} from "react-redux";
 import index from "./state";
 
@@ -7,7 +7,7 @@ import index from "./state";
 const App = () => {
 	return (
 		<Provider store={index}>
-			<Navigation/>
+			<Navigations/>
 		</Provider>
 	)
 }

@@ -1,18 +1,17 @@
 import * as React from 'react'
 import {TouchableOpacity, Text} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
-import {useNavigation} from '@react-navigation/native';
 import styles from "./ColumnPreview.styles";
 import {DeleteButton} from "../../ui/DeleteButton";
 import {deleteColumn} from "../../state/columns/actions";
+import {DeskScreenNavigationProps} from "../../navigations/Authorized/Authorized";
 
-interface IProps {
+interface IProps extends DeskScreenNavigationProps {
 	title: string,
 	id: number
 }
 
-const ColumnPreview = ({title, id}: IProps) => {
-	const navigation = useNavigation();
+const ColumnPreview = ({navigation, title, id}: IProps) => {
 	const renderRightActions = () => <DeleteButton onPress={deleteColumn} id={id}/>
 	return (
 		<Swipeable renderRightActions={renderRightActions}

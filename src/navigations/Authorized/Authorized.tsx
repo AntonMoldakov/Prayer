@@ -1,44 +1,31 @@
 import * as React from 'react'
 import {TouchableOpacity} from 'react-native'
-import {Desk, Column, Auth, Card} from "../screens"
-import {createStackNavigator} from "@react-navigation/stack"
-import {NavigationContainer} from "@react-navigation/native"
+import {Desk, Column, Card} from "./screens"
+import {createStackNavigator, StackNavigationProp} from "@react-navigation/stack"
+import {NavigationContainer, RouteProp} from "@react-navigation/native"
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import Settings from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
-import {useAppDispatch, useAppSelector} from "../state";
-import colors from "../styles/colors";
-import styles from "./Navigation.styles";
-import {ColumnTitle} from "../components";
-import {startAddColumn} from "../state/columns/actions";
+import styles from "../Navigation.styles";
+import {useAppDispatch} from "../../state";
+import {startAddColumn} from "../../state/columns/actions";
+import colors from "../../styles/colors";
+import {ColumnTitle} from "../../components";
 
-const Stack = createStackNavigator()
-const Navigation = () => {
+const StackAuth = createStackNavigator()
+
+const Authorized = () => {
 	const dispatch = useAppDispatch()
-	const [isLogin] = useAppSelector(
-		(state) => {
-			const {auth} = state
-			return [auth.isLogin]
-		});
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={
+			<StackAuth.Navigator screenOptions={
 				{
 					headerTitleAlign: 'center',
 					headerTitleStyle: styles.headerTitle,
 					cardStyle: styles.card,
 				}
 			}>
-				{!isLogin &&
-				<Stack.Screen
-					name="Auth"
-					component={Auth}
-					options={{
-						title: 'Welcome'
-					}}
-				/>
-				}
-				<Stack.Screen
+				<StackAuth.Screen
 					name="Desk"
 					component={Desk}
 					options={{
@@ -56,7 +43,7 @@ const Navigation = () => {
 						)
 					}}
 				/>
-				<Stack.Screen
+				<StackAuth.Screen
 					name="Column"
 					component={Column}
 					options={{
@@ -73,7 +60,7 @@ const Navigation = () => {
 						)
 					}}
 				/>
-				<Stack.Screen
+				<StackAuth.Screen
 					name="Card"
 					component={Card}
 					options={{
@@ -89,10 +76,31 @@ const Navigation = () => {
 						/>
 					}}
 				/>
-			</Stack.Navigator>
+			</StackAuth.Navigator>
 		</NavigationContainer>
 	)
 }
 
-export default Navigation
+export default Authorized
+
+type StackAuthParamList = {
+	Desk: undefined;
+	Column: { columnId: number; columnTitle: string };
+	Card: { cardId: number; };
+};
+
+export type DeskScreenNavigationProps = {
+	route: RouteProp<StackAuthParamList, 'Desk'>;
+	navigation: StackNavigationProp<StackAuthParamList, 'Desk'>;
+};
+
+export type ColumnScreenNavigationProps = {
+	route: RouteProp<StackAuthParamList, 'Column'>;
+	navigation: StackNavigationProp<StackAuthParamList, 'Column'>;
+};
+
+export type CardScreenNavigationProps = {
+	route: RouteProp<StackAuthParamList, 'Card'>;
+	navigation: StackNavigationProp<StackAuthParamList, 'Card'>;
+};
 

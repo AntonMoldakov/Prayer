@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {TouchableOpacity, Text, View} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
-import {useNavigation} from '@react-navigation/native';
 import styles from "./CardPreview.styles";
 import {ICard} from "../../interface";
 import {Checkbox} from 'react-native-paper';
@@ -11,13 +10,13 @@ import {useAppDispatch} from "../../state";
 import {DeleteButton} from '../../ui'
 import colors from "../../styles/colors";
 import {deleteCard, checkedCard} from "../../state/cards/actions";
+import {ColumnScreenNavigationProps} from "../../navigations/Authorized/Authorized";
 
-interface IProps {
+interface IProps extends ColumnScreenNavigationProps {
 	item: ICard
 }
 
-const CardPreview = ({item}: IProps) => {
-	const navigation = useNavigation();
+const CardPreview = ({item, navigation}: IProps) => {
 	const dispatch = useAppDispatch()
 	const renderRightActions = () => <DeleteButton onPress={deleteCard} id={item.id}/>
 	return (

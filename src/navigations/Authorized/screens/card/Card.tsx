@@ -1,16 +1,16 @@
 import * as React from "react";
 import {View, ScrollView, Text, Image} from 'react-native'
-import {useRoute, RouteProp} from '@react-navigation/native'
 import {useEffect, useMemo} from "react";
 import styles from "./Card.styles";
-import {ICard} from "../../interface";
-import {useAppDispatch, useAppSelector} from "../../state";
-import {IconButton} from "../../ui";
-import {getComments} from "../../state/comments/actions";
+import {ICard} from "../../../../interface";
+import {useAppDispatch, useAppSelector} from "../../../../state";
+import {IconButton} from "../../../../ui";
+import {getComments} from "../../../../state/comments/actions";
+import {CardScreenNavigationProps} from "../../Authorized";
 
-const Card = () => {
-	const route = useRoute<RouteProp<any, 'Card'>>();
-	const {cardId} = route.params;
+const Card = (props: CardScreenNavigationProps) => {
+	const {cardId} = props.route.params;
+
 	const dispatch = useAppDispatch();
 	const [cards] = useAppSelector(
 		(state) => {
@@ -64,11 +64,11 @@ const Card = () => {
 					<Text style={styles.blockTitle}>MEMBERS</Text>
 					<View style={styles.block}>
 						<Image
-							source={require('../../assets/img/1.png')}
+							source={require('../../../../assets/img/1.png')}
 							style={styles.avatar}
 						/>
 						<Image
-							source={require('../../assets/img/2.png')}
+							source={require('../../../../assets/img/2.png')}
 							style={styles.avatar}
 						/>
 						<IconButton/>

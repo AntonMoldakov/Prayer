@@ -7,12 +7,13 @@ import {useAppDispatch, useAppSelector} from "../../state"
 import {CardPreview} from "../";
 import {addCard} from "../../state/cards/actions";
 import {stopAddColumn} from "../../state/columns/actions";
+import {ColumnScreenNavigationProps} from "../../navigations/Authorized/Authorized";
 
-interface IProps {
+interface IProps extends ColumnScreenNavigationProps{
 	columnId: number
 }
 
-const PrayersList = ({columnId}: IProps) => {
+const PrayersList = ({columnId, ...props}: IProps) => {
 	const [inputValue, setInputValue] = useState('')
 	const [isShowAnswered, setIsShowAnswered] = useState(false)
 	const dispatch = useAppDispatch()
@@ -56,7 +57,7 @@ const PrayersList = ({columnId}: IProps) => {
 					style={styles.cardList}
 					contentContainerStyle={styles.cardListContainer}
 					data={uncheckedCards}
-					renderItem={({item}) => <CardPreview item={item}/>}
+					renderItem={({item}) => <CardPreview {...props} item={item}/>}
 					keyExtractor={(item) => 'key' + item.id}
 				/>
 				<BrownButton
@@ -68,7 +69,7 @@ const PrayersList = ({columnId}: IProps) => {
 					style={styles.cardList}
 					contentContainerStyle={styles.cardListContainer}
 					data={checkedCards}
-					renderItem={({item}) => <CardPreview item={item}/>}
+					renderItem={({item}) => <CardPreview {...props} item={item}/>}
 					keyExtractor={(item) => 'key' + item.id}
 				/>
 				}

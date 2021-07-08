@@ -1,8 +1,7 @@
 import * as React from 'react'
 import Plus from 'react-native-vector-icons/AntDesign'
-import {View, TextInput} from 'react-native'
+import {View, TextInput, TextInputProps} from 'react-native'
 import styles from "./IconTextInput.styles";
-import {TextInputProps} from "react-native-paper/lib/typescript/components/TextInput/TextInput";
 import colors from "../../styles/colors";
 
 type IProps = {

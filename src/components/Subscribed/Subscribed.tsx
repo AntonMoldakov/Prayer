@@ -5,12 +5,13 @@ import styles from './Subscribed.styles';
 import {BrownButton} from "../../ui";
 import {useAppSelector} from "../../state";
 import {CardPreview} from "../";
+import {ColumnScreenNavigationProps} from "../../navigations/Authorized/Authorized";
 
-interface IProps {
+interface IProps extends ColumnScreenNavigationProps {
 	columnId: number
 }
 
-const Subscribed = ({columnId}: IProps) => {
+const Subscribed = ({columnId, ...props}: IProps) => {
 	const [isShowAnswered, setIsShowAnswered] = useState(false);
 
 	const [cards] = useAppSelector(
@@ -36,7 +37,7 @@ const Subscribed = ({columnId}: IProps) => {
 				style={styles.cardList}
 				contentContainerStyle={styles.cardListContainer}
 				data={uncheckedCards}
-				renderItem={({item}) => <CardPreview item={item}/>}
+				renderItem={({item}) => <CardPreview {...props} item={item}/>}
 				keyExtractor={(item) => 'key' + item.id}
 			/>
 			<BrownButton
@@ -48,7 +49,7 @@ const Subscribed = ({columnId}: IProps) => {
 				style={styles.cardList}
 				contentContainerStyle={styles.cardListContainer}
 				data={checkedCards}
-				renderItem={({item}) => <CardPreview item={item}/>}
+				renderItem={({item}) => <CardPreview {...props} item={item}/>}
 				keyExtractor={(item) => 'key' + item.id}
 			/>
 			}
