@@ -3,10 +3,14 @@ import {useState, useMemo} from 'react';
 import {View, FlatList} from 'react-native';
 import styles from './Subscribed.styles';
 import {BrownButton} from "../../ui";
-import {CardPreview} from "../../common";
-import {useAppSelector} from "../../state/store";
+import {useAppSelector} from "../../state";
+import {CardPreview} from "../";
 
-const Subscribed = ({columnId}: { columnId: number }) => {
+interface IProps {
+	columnId: number
+}
+
+const Subscribed = ({columnId}: IProps) => {
 	const [isShowAnswered, setIsShowAnswered] = useState(false);
 
 	const [cards] = useAppSelector(
@@ -33,7 +37,7 @@ const Subscribed = ({columnId}: { columnId: number }) => {
 				contentContainerStyle={styles.cardListContainer}
 				data={uncheckedCards}
 				renderItem={({item}) => <CardPreview item={item}/>}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => 'key' + item.id}
 			/>
 			<BrownButton
 				text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
@@ -45,7 +49,7 @@ const Subscribed = ({columnId}: { columnId: number }) => {
 				contentContainerStyle={styles.cardListContainer}
 				data={checkedCards}
 				renderItem={({item}) => <CardPreview item={item}/>}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => 'key' + item.id}
 			/>
 			}
 		</View>

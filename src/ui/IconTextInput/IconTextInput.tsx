@@ -5,12 +5,12 @@ import styles from "./IconTextInput.styles";
 import {TextInputProps} from "react-native-paper/lib/typescript/components/TextInput/TextInput";
 import colors from "../../styles/colors";
 
-interface IProps extends TextInputProps{
+type IProps = {
 	onChangeText: (text: string) => void,
 	onBlur: () => void,
 	onSubmitEditing: () => void,
 	inputValue: string,
-}
+} & Omit<TextInputProps, 'onChangeText' | 'onBlur' | 'onChange' | 'inputValue' | 'onSubmitEditing'>
 
 const IconTextInput = ({onChangeText, onBlur, onSubmitEditing, inputValue, ...props}: IProps) => {
 	return (

@@ -1,13 +1,12 @@
-import React from 'react'
-import type {Node} from 'react'
-import Navigation from "./Navigation";
+import * as React from 'react'
+import Navigation from "./navigations/Navigation";
 import {Provider} from "react-redux";
-import store from "./state/store";
+import index from "./state";
 
 
-const App: () => Node = () => {
+const App = () => {
 	return (
-		<Provider store={store}>
+		<Provider store={index}>
 			<Navigation/>
 		</Provider>
 	)
