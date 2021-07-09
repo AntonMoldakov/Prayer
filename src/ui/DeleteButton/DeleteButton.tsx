@@ -1,10 +1,10 @@
-import {TouchableOpacity, Text} from 'react-native'
+import {TouchableOpacity, Text, TouchableOpacityProps, Omit} from 'react-native'
 import * as React from "react";
 import styles from "./DeleteButton.styles";
 import {useAppDispatch} from "state";
 import {AnyAction} from "redux";
 
-interface DeleteButtonProps {
+interface DeleteButtonProps extends Omit<TouchableOpacityProps, 'onPress'> {
 	onPress: (id: number) => AnyAction,
 	id: number
 }

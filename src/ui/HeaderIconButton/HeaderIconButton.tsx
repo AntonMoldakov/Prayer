@@ -1,12 +1,11 @@
 import * as React from "react";
-import {TouchableOpacity} from 'react-native'
+import {TouchableOpacity, TouchableOpacityProps} from 'react-native'
 
-interface IProps {
-	onPress?: () => void,
+interface HeaderIconButtonProps extends TouchableOpacityProps {
 	children: React.ReactNode
 }
 
-const HeaderIconButton = (props: IProps) => {
+const HeaderIconButton = (props: HeaderIconButtonProps) => {
 	return (
 		<TouchableOpacity onPress={props.onPress}>
 			{props.children}

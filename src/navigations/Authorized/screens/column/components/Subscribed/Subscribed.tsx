@@ -42,7 +42,7 @@ const Subscribed = ({columnId, ...props}: SubscribedProps) => {
 			/>
 			<BrownButton
 				text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
-				action={() => setIsShowAnswered(!isShowAnswered)}
+				onPress={() => setIsShowAnswered(!isShowAnswered)}
 			/>
 			{isShowAnswered &&
 			<FlatList

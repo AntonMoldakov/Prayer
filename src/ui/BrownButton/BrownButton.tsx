@@ -1,15 +1,14 @@
 import * as React from 'react';
 import styles from './BrownButton.styles';
-import {TouchableOpacity, Text} from "react-native";
+import {TouchableOpacity, Text, TouchableOpacityProps} from "react-native";
 
-interface IProps {
+interface BrownButtonProps extends TouchableOpacityProps{
 	text: string,
-	action: () => void
 }
 
-const BrownButton = ({text, action}: IProps) => {
+const BrownButton = ({text, onPress}: BrownButtonProps) => {
 	return (
-		<TouchableOpacity onPress={action} style={styles.buttonContainer}>
+		<TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
 			<Text style={styles.buttonText}>{text}</Text>
 		</TouchableOpacity>
 	);

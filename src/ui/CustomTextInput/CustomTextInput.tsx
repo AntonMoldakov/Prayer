@@ -11,8 +11,7 @@ type IProps = {
 
 const CustomTextInput = (props: IProps) => {
 	return (
-		<TextInput{...props}
-		          style={styles.input}/>
+		<TextInput{...props} style={styles.input}/>
 	)
 }
 

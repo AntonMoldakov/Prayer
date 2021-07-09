@@ -62,7 +62,7 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 				/>
 				<BrownButton
 					text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
-					action={() => setIsShowAnswered(!isShowAnswered)}
+					onPress={() => setIsShowAnswered(!isShowAnswered)}
 				/>
 				{isShowAnswered &&
 				<FlatList

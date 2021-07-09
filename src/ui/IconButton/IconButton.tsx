@@ -1,12 +1,12 @@
 import * as React from "react";
-import {TouchableOpacity} from 'react-native'
+import {TouchableOpacity, TouchableOpacityProps} from 'react-native'
 import styles from "./IconButton.styles";
-import colors from "../../styles/colors";
+import colors from "styles/colors";
 import Icon from 'react-native-vector-icons/AntDesign'
 
-const IconButton = () => {
+const IconButton = (props: TouchableOpacityProps) => {
 	return (
-		<TouchableOpacity>
+		<TouchableOpacity onPress={props.onPress}>
 			<Icon
 				name="plus"
 				size={20}
