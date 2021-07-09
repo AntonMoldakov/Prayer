@@ -21,9 +21,9 @@ const SignIn = () => {
 			return [auth.error]
 		})
 
-	const handleSubmitForm = ({email, name, password}: handleSubmitFormProps) => {
+	const handleSubmitForm = (date: handleSubmitFormProps) => {
 		dispatch(clearError())
-		dispatch(signUp(email, name, password))
+		dispatch(signUp(date))
 	}
 
 	return (

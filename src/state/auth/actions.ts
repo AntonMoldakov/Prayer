@@ -1,20 +1,24 @@
 import {createAction} from "@reduxjs/toolkit";
 import {IUser} from "interface";
 
-export const signIn = createAction('SIGN_IN', function prepare(email: string, password: string) {
-	return {payload: {email, password}}
-})
+type signIn = {
+	email: string,
+	password: string
+}
 
-export const signUp = createAction('SIGN_UP', function prepare(email: string, userName: string, password: string) {
-	return {payload: {email, userName, password}}
-})
+type signUp = {
+	name: string,
+} & signIn
+
+type error = string
+
+
+export const signIn = createAction<signIn>('SIGN_IN')
+
+export const signUp = createAction<signUp>('SIGN_UP')
 
 export const clearError = createAction('CLEAR_ERROR')
 
-export const signInSuccess = createAction('auth/signIn', function prepare(user: IUser) {
-	return {payload: {user}}
-})
+export const signInSuccess = createAction<IUser>('auth/signIn')
 
-export const errorSuccess = createAction('auth/error', function prepare(error: string) {
-	return {payload: {error}}
-})
+export const errorSuccess = createAction<error>('auth/error')

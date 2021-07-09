@@ -29,7 +29,7 @@ const Comments = ({cardId}: CommentsProps) => {
 
 	const handleSubmit = () => {
 		if (commentValue) {
-			dispatch(addComment(cardId, commentValue, name));
+			dispatch(addComment({cardId, body: commentValue, name}));
 			setCommentValue('');
 		}
 	};

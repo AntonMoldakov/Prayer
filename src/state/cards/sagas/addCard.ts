@@ -1,7 +1,7 @@
 import {takeLatest, put} from 'redux-saga/effects';
-import {cardAPI} from "../../../api";
+import {cardAPI} from "api";
 import {PayloadAction} from "@reduxjs/toolkit";
-import {ICard} from "../../../interface";
+import {ICard} from "interface";
 import {addCardSuccess} from "../actions";
 
 function* addCard(action: PayloadAction<{ columnId: number, title: string }>) {

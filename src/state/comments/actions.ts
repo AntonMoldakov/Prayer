@@ -1,27 +1,27 @@
 import {createAction} from "@reduxjs/toolkit";
 import {IComment} from "interface";
 
-export const addComment = createAction('ADD_COMMENT', function prepare(cardId: number, body: string, name: string) {
-	return {payload: {cardId, body, name}}
-})
+type addComment = {
+	cardId: number,
+	body: string,
+	name: string
+}
+
+type deleteComment = {
+	id: number
+}
+
+export const addComment = createAction<addComment>('ADD_COMMENT')
 
 export const getComments = createAction('GET_COMMENTS')
 
-export const deleteComment = createAction('DELETE_COMMENT', function prepare(id: number) {
-	return {payload: {id}}
-})
+export const deleteComment = createAction<deleteComment>('DELETE_COMMENT')
 
 
-export const addCommentSuccess = createAction('comments/addComment', function prepare(comment: IComment) {
-	return {payload: {comment}}
-})
+export const addCommentSuccess = createAction<IComment>('comments/addComment')
 
-export const getCommentsSuccess = createAction('comments/getComments', function prepare(comments: IComment[]) {
-	return {payload: {comments}}
-})
+export const getCommentsSuccess = createAction<Array<IComment>>('comments/getComments')
 
-export const deleteCommentSuccess = createAction('comments/deleteComment', function prepare(id: number) {
-	return {payload: {id}}
-})
+export const deleteCommentSuccess = createAction<deleteComment>('comments/deleteComment')
 
 

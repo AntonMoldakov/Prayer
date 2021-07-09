@@ -5,7 +5,7 @@ import {useAppDispatch} from "state";
 import {AnyAction} from "redux";
 
 interface DeleteButtonProps extends Omit<TouchableOpacityProps, 'onPress'> {
-	onPress: (id: number) => AnyAction,
+	onPress: (props: { id: number }) => AnyAction,
 	id: number
 }
 
@@ -13,7 +13,7 @@ const DeleteButton = ({onPress, id}: DeleteButtonProps) => {
 	const dispatch = useAppDispatch()
 	return (
 		<TouchableOpacity style={styles.delete}
-		                  onPress={() => dispatch(onPress(id))}>
+		                  onPress={() => dispatch(onPress({id}))}>
 			<Text style={styles.DeleteText}>Delete</Text>
 		</TouchableOpacity>
 	);

@@ -7,7 +7,7 @@ function* deleteComment(action: PayloadAction<{ id: number }>) {
 	try {
 		const response = yield commentAPI.deleteComment(action.payload.id)
 		if (response.status === 200) {
-			yield put(deleteCommentSuccess(action.payload.id))
+			yield put(deleteCommentSuccess(action.payload))
 		}
 	} catch (error) {
 		yield console.log(error.message);

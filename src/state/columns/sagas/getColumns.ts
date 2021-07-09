@@ -1,7 +1,7 @@
 import {takeLatest, put} from 'redux-saga/effects';
 import {startLoading, stopLoading} from "../../session/actions";
-import {columnAPI} from "../../../api";
-import {IColumn} from "../../../interface";
+import {columnAPI} from "api";
+import {IColumn} from "interface";
 import {getColumnsSuccess} from "../actions";
 
 

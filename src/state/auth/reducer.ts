@@ -19,10 +19,10 @@ const authentication = createSlice({
 	extraReducers: (builder) => {
 		builder.addCase(signInSuccess, (state, action) => {
 			state.isLogin = !state.isLogin
-			state.user = action.payload.user
+			state.user = action.payload
 		})
 		builder.addCase(errorSuccess, (state, action) => {
-			state.error = action.payload.error
+			state.error = action.payload
 		})
 	}
 })

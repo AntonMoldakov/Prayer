@@ -18,10 +18,10 @@ const comments = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getCommentsSuccess, (state, action) => {
-			state.comments = action.payload.comments
+			state.comments = action.payload
 		})
 		builder.addCase(addCommentSuccess, (state, action) => {
-			state.comments.push(action.payload.comment)
+			state.comments.push(action.payload)
 		})
 		builder.addCase(deleteCommentSuccess, (state, action) => {
 			state.comments = state.comments.filter(comment => comment.id !== action.payload.id)

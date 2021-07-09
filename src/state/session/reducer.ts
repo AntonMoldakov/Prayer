@@ -11,7 +11,7 @@ const session = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(changeLoadingModeSuccess, (state, action) => {
-			state.loadingMode = action.payload.mode
+			state.loadingMode = action.payload
 		})
 	}
 })

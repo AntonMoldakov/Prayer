@@ -1,5 +1,5 @@
 import {takeLatest, put} from 'redux-saga/effects';
-import {cardAPI} from "../../../api";
+import {cardAPI} from "api";
 import {PayloadAction} from "@reduxjs/toolkit";
 import {checkedCardSuccess} from "../actions";
 

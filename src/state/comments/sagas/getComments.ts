@@ -1,7 +1,7 @@
 import {takeLatest, put} from 'redux-saga/effects';
 import {startLoading, stopLoading} from "../../session/actions";
-import {commentAPI} from "../../../api";
-import {IComment} from "../../../interface";
+import {commentAPI} from "api";
+import {IComment} from "interface";
 import {getCommentsSuccess} from "../actions";
 
 

@@ -9,7 +9,7 @@ import {addCard} from "state/cards/actions";
 import {stopAddColumn} from "state/columns/actions";
 import {ColumnScreenNavigationProps} from "navigations/Authorized/Authorized";
 
-interface PrayersListProps extends ColumnScreenNavigationProps{
+interface PrayersListProps extends ColumnScreenNavigationProps {
 	columnId: number
 }
 
@@ -26,7 +26,7 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 
 	const handleSubmit = () => {
 		if (inputValue) {
-			dispatch(addCard(columnId, inputValue))
+			dispatch(addCard({columnId, title: inputValue}))
 			setInputValue('')
 		}
 	}

@@ -25,7 +25,7 @@ const Desk = (props: DeskScreenNavigationProps) => {
 
 	const handleSubmit = () => {
 		if (inputValue) {
-			dispatch(addColumn(inputValue))
+			dispatch(addColumn({title: inputValue}))
 			dispatch(stopAddColumn())
 			setInputValue('')
 		}

@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {addCardSuccess, checkedCardSuccess, deleteCardSuccess, getCardsSuccess} from "./actions";
-import {ICard} from "../../interface";
+import {ICard} from "interface";
 
 interface IInitialState {
 	cards: ICard[]
@@ -16,14 +16,14 @@ const cards = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getCardsSuccess, (state, action) => {
-			state.cards = action.payload.cards
+			state.cards = action.payload
 		})
 		builder.addCase(addCardSuccess, (state, action) => {
-			state.cards.push(action.payload.card)
+			state.cards.push(action.payload)
 		})
 		builder.addCase(checkedCardSuccess, (state, action) => {
 			state.cards.map(card => {
-				(card.id === action.payload.id) ? card.checked = !card.checked : null
+				(card.id === action.payload) ? card.checked = !card.checked : null
 				return card
 			})
 		})

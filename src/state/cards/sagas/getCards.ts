@@ -1,6 +1,6 @@
 import {takeLatest, put} from 'redux-saga/effects';
-import {cardAPI} from "../../../api";
-import {ICard} from "../../../interface";
+import {cardAPI} from "api";
+import {ICard} from "interface";
 import {getCardsSuccess} from "../actions";
 import {startLoading, stopLoading} from "../../session/actions";
 

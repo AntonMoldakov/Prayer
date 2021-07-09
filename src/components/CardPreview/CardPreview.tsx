@@ -27,7 +27,7 @@ const CardPreview = ({item, navigation}: CardPreviewProps) => {
 				<View style={styles.cardStatus}/>
 				<Checkbox
 					status={item.checked ? 'checked' : 'unchecked'}
-					onPress={() => dispatch(checkedCard(item.id, item.checked))}
+					onPress={() => dispatch(checkedCard({id: item.id, checked: item.checked}))}
 					color={colors.lightBlack}
 				/>
 

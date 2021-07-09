@@ -1,33 +1,33 @@
 import {createAction} from "@reduxjs/toolkit";
-import {ICard} from "../../interface";
+import {ICard} from "interface";
 
-export const addCard = createAction('ADD_CARD', function prepare(columnId: number, title: string) {
-	return {payload: {columnId, title}}
-})
+type addCard = {
+	columnId: number,
+	title: string
+}
+
+type checkedCard = {
+	id: number,
+	checked: boolean
+}
+
+type deleteCard = {
+	id: number
+}
+
+export const addCard = createAction<addCard>('ADD_CARD')
 
 export const getCards = createAction('GET_CARDS')
 
-export const checkedCard = createAction('CHECKED_CARD', function prepare(id: number, checked: boolean) {
-	return {payload: {id, checked}}
-})
+export const checkedCard = createAction<checkedCard>('CHECKED_CARD')
 
-export const deleteCard = createAction('DELETE_CARD', function prepare(id: number) {
-	return {payload: {id}}
-})
+export const deleteCard = createAction<deleteCard>('DELETE_CARD')
 
-export const addCardSuccess = createAction('cards/addCard', function prepare(card: ICard) {
-	return {payload: {card}}
-})
+export const addCardSuccess = createAction<ICard>('cards/addCard')
 
-export const getCardsSuccess = createAction('cards/getCards', function prepare(cards: ICard[]) {
-	return {payload: {cards}}
-})
+export const getCardsSuccess = createAction<Array<ICard>>('cards/getCards')
 
-export const checkedCardSuccess = createAction('cards/checkedCard', function prepare(id: number) {
-	return {payload: {id}}
-})
+export const checkedCardSuccess = createAction<number>('cards/checkedCard')
 
-export const deleteCardSuccess = createAction('cards/deleteCard', function prepare(id: number) {
-	return {payload: {id}}
-})
+export const deleteCardSuccess = createAction<deleteCard>('cards/deleteCard')
 

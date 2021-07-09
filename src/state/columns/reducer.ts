@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IColumn} from "../../interface";
+import {IColumn} from "interface";
 import {addColumnSuccess, changeAddModeSuccess, deleteColumnSuccess, getColumnsSuccess} from "./actions";
 
 interface IInitialState {
@@ -18,13 +18,13 @@ const columns = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getColumnsSuccess, (state, action) => {
-			state.columns = action.payload.columns
+			state.columns = action.payload
 		})
 		builder.addCase(addColumnSuccess, (state, action) => {
-			state.columns.push(action.payload.column)
+			state.columns.push(action.payload)
 		})
 		builder.addCase(changeAddModeSuccess, (state, action) => {
-			state.addMode = action.payload.mode
+			state.addMode = action.payload
 		})
 		builder.addCase(deleteColumnSuccess, (state, action) => {
 			state.columns = state.columns.filter(column => column.id !== action.payload.id)
