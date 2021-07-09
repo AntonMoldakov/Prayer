@@ -3,9 +3,10 @@ import {useState, useMemo} from 'react';
 import {View, FlatList} from 'react-native';
 import styles from './Subscribed.styles';
 import {BrownButton} from "ui";
-import {useAppSelector} from "state";
 import {CardPreview} from "@components/index";
 import {ColumnScreenNavigationProps} from "../../../../Authorized";
+import {useSelector} from "react-redux";
+import {selectCards} from "state/cards/selectors";
 
 interface SubscribedProps extends ColumnScreenNavigationProps {
 	columnId: number
@@ -14,11 +15,7 @@ interface SubscribedProps extends ColumnScreenNavigationProps {
 const Subscribed = ({columnId, ...props}: SubscribedProps) => {
 	const [isShowAnswered, setIsShowAnswered] = useState(false);
 
-	const [cards] = useAppSelector(
-		(state) => {
-			const {card} = state
-			return [card.cards]
-		})
+	const cards = useSelector(selectCards)
 
 	const filteredCards = useMemo(
 		() => cards.filter(card => card.columnId === columnId),

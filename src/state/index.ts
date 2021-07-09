@@ -10,7 +10,7 @@ import {
 	PURGE,
 	REGISTER,
 } from 'redux-persist';
-import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import rootSaga from "./rootSagas";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -24,19 +24,18 @@ const middleware = [
 	}),
 ];
 
-const index = configureStore({
+const store = configureStore({
 	reducer: persistedReducer,
 	middleware: middleware,
 });
 
 sagaMiddleware.run(rootSaga)
 
-export type RootState = ReturnType<typeof index.getState>
-export type AppDispatch = typeof index.dispatch
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export const persistor = persistStore(index);
+export const persistor = persistStore(store);
 
-export default index;
+export default store;

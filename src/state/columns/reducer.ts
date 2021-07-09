@@ -1,13 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IColumn} from "interface";
 import {addColumnSuccess, changeAddModeSuccess, deleteColumnSuccess, getColumnsSuccess} from "./actions";
+import {InitialStateTypes} from "./types";
 
-interface IInitialState {
-	columns: IColumn[],
-	addMode: boolean
-}
 
-const initialState: IInitialState = {
+const initialState: InitialStateTypes = {
 	addMode: false,
 	columns: []
 }

@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {signInSuccess, errorSuccess} from "./actions";
+import {initialStateType} from "./types";
 
-const initialState = {
-	isLogin: false,
+const initialState: initialStateType = {
 	error: '',
 	user: {
 		token: '',
@@ -18,7 +18,6 @@ const authentication = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(signInSuccess, (state, action) => {
-			state.isLogin = !state.isLogin
 			state.user = action.payload
 		})
 		builder.addCase(errorSuccess, (state, action) => {

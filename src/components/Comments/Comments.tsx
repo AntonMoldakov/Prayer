@@ -3,9 +3,12 @@ import {useMemo, useState} from 'react';
 import {View, Text, TextInput} from 'react-native';
 import Message from 'react-native-vector-icons/Feather';
 import {addComment} from "state/comments/actions";
-import {useAppDispatch, useAppSelector} from "state";
+import {useAppDispatch} from "/state";
 import styles from "./Comments.styles";
 import {Comment} from "components";
+import {useSelector} from "react-redux";
+import {selectComments} from "state/comments/selectors";
+import {selectUser} from "state/auth/selectors";
 
 interface CommentsProps {
 	cardId: number
@@ -15,11 +18,8 @@ const Comments = ({cardId}: CommentsProps) => {
 	const dispatch = useAppDispatch();
 	const [commentValue, setCommentValue] = useState('');
 
-	const [comments, name] = useAppSelector(
-		(state) => {
-			const {comment, auth} = state
-			return [comment.comments, auth.user.name]
-		})
+	const comments = useSelector(selectComments)
+	const {name} = useSelector(selectUser)
 
 
 	const cardComments = useMemo(

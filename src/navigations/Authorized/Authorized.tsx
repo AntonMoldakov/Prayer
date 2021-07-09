@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 import Settings from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
 import styles from "../Navigation.styles";
-import {useAppDispatch} from "state";
+import {useAppDispatch} from "/state";
 import {startAddColumn} from "state/columns/actions";
 import colors from "styles/colors";
 import {ColumnTitle} from "components";

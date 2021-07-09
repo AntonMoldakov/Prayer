@@ -1,15 +1,12 @@
 import * as React from 'react'
-import {useAppSelector} from "state"
 import Authorized from "./Authorized/Authorized";
 import Unauthorized from "./Unauthorized/Unauthorized";
+import {useSelector} from "react-redux";
+import {selectUser} from "state/auth/selectors";
 
 const Navigations = () => {
-	const [isLogin] = useAppSelector(
-		(state) => {
-			const {auth} = state
-			return [auth.isLogin]
-		});
-	if (isLogin) {
+	const user = useSelector(selectUser)
+	if (user.token) {
 		return <Authorized/>
 	} else {
 		return <Unauthorized/>

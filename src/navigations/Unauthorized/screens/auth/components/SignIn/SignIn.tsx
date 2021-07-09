@@ -3,9 +3,11 @@ import {View, TouchableOpacity, Text} from "react-native";
 import styles from "./SignIn.styles";
 import {Field, Form as FinalForm} from "react-final-form";
 import {validate} from "utils";
-import {useAppDispatch, useAppSelector} from "state";
+import {useAppDispatch} from "/state";
 import {clearError, signIn} from "state/auth/actions";
 import {InputField} from "@components/index";
+import {useSelector} from "react-redux";
+import {selectAuthError} from "state/auth/selectors";
 
 interface handleSubmitFormProps {
 	email: string,
@@ -14,11 +16,7 @@ interface handleSubmitFormProps {
 
 const SignIn = () => {
 	const dispatch = useAppDispatch()
-	const [error] = useAppSelector(
-		(state) => {
-			const {auth} = state
-			return [auth.error]
-		})
+	const error = useSelector(selectAuthError)
 
 	const handleSubmitForm = (date: handleSubmitFormProps) => {
 		dispatch(clearError())

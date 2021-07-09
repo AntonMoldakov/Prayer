@@ -3,7 +3,7 @@ import {SignIn, SignUp} from './components'
 import {NavigationState, SceneMap, SceneRendererProps, TabBar, TabView} from "react-native-tab-view"
 import {useWindowDimensions} from 'react-native'
 import styles from "./Auth.styles";
-import {useAppDispatch} from "state";
+import {useAppDispatch} from "/state";
 import colors from "styles/colors";
 import {clearError} from "state/auth/actions";
 

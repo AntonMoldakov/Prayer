@@ -3,25 +3,26 @@ import {useEffect, useState} from 'react'
 import {View, FlatList} from 'react-native'
 import {IconTextInput, Loader} from "ui"
 import styles from "./Desk.styles";
-import {useAppDispatch, useAppSelector} from "state";
+import {useAppDispatch} from "/state";
 import {ColumnPreview} from "components";
 import {addColumn, getColumns, stopAddColumn} from "state/columns/actions";
 import {DeskScreenNavigationProps} from "../../Authorized";
+import {useSelector} from "react-redux";
+import {selectColumns, selectColumnsAddMode} from "state/columns/selectors";
 
 
 const Desk = (props: DeskScreenNavigationProps) => {
 	const [inputValue, setInputValue] = useState('')
+	const [loading, setLoading] = useState(true)
+
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
 		dispatch(getColumns())
+		setLoading(false)
 	}, [dispatch]);
-
-	const [columns, addMode, loadingMode] = useAppSelector(
-		(state) => {
-			const {column, session} = state
-			return [column.columns, column.addMode, session.loadingMode]
-		})
+	const columns = useSelector(selectColumns)
+	const addMode = useSelector(selectColumnsAddMode)
 
 	const handleSubmit = () => {
 		if (inputValue) {
@@ -32,7 +33,7 @@ const Desk = (props: DeskScreenNavigationProps) => {
 	}
 	return (
 		<View style={styles.container}>
-			{loadingMode ? <Loader/> :
+			{loading ? <Loader/> :
 				<>
 					{
 						addMode &&

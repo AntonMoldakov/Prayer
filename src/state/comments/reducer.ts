@@ -1,13 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {addCommentSuccess, deleteCommentSuccess, getCommentsSuccess} from "./actions";
-import {IComment} from "interface";
+import {InitialStateTypes} from "state/comments/types";
 
-interface IInitialState {
-	addMode: boolean,
-	comments: IComment[]
-}
 
-const initialState: IInitialState = {
+const initialState: InitialStateTypes = {
 	addMode: false,
 	comments: []
 }

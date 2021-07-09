@@ -6,7 +6,7 @@ import {ICard} from "interface";
 import {Checkbox} from 'react-native-paper';
 import User from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
-import {useAppDispatch} from "state";
+import {useAppDispatch} from '/state';
 import {DeleteButton} from 'ui'
 import colors from "styles/colors";
 import {deleteCard, checkedCard} from "state/cards/actions";
