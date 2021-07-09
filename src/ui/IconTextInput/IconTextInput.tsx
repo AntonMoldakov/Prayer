@@ -4,14 +4,14 @@ import {View, TextInput, TextInputProps} from 'react-native'
 import styles from "./IconTextInput.styles";
 import colors from "../../styles/colors";
 
-type IProps = {
+type IconTextInputProps = {
 	onChangeText: (text: string) => void,
 	onBlur: () => void,
 	onSubmitEditing: () => void,
 	inputValue: string,
 } & Omit<TextInputProps, 'onChangeText' | 'onBlur' | 'onChange' | 'inputValue' | 'onSubmitEditing'>
 
-const IconTextInput = ({onChangeText, onBlur, onSubmitEditing, inputValue, ...props}: IProps) => {
+const IconTextInput = ({onChangeText, onBlur, onSubmitEditing, inputValue, ...props}: IconTextInputProps) => {
 	return (
 		<View style={styles.inputSection}>
 			<Plus

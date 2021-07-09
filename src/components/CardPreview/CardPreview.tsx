@@ -2,21 +2,21 @@ import * as React from 'react'
 import {TouchableOpacity, Text, View} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import styles from "./CardPreview.styles";
-import {ICard} from "../../interface";
+import {ICard} from "interface";
 import {Checkbox} from 'react-native-paper';
 import User from 'react-native-vector-icons/Feather';
 import Hands from 'react-native-vector-icons/FontAwesome5';
-import {useAppDispatch} from "../../state";
-import {DeleteButton} from '../../ui'
-import colors from "../../styles/colors";
-import {deleteCard, checkedCard} from "../../state/cards/actions";
-import {ColumnScreenNavigationProps} from "../../navigations/Authorized/Authorized";
+import {useAppDispatch} from "state";
+import {DeleteButton} from 'ui'
+import colors from "styles/colors";
+import {deleteCard, checkedCard} from "state/cards/actions";
+import {ColumnScreenNavigationProps} from "navigations/Authorized/Authorized";
 
-interface IProps extends ColumnScreenNavigationProps {
+interface CardPreviewProps extends ColumnScreenNavigationProps {
 	item: ICard
 }
 
-const CardPreview = ({item, navigation}: IProps) => {
+const CardPreview = ({item, navigation}: CardPreviewProps) => {
 	const dispatch = useAppDispatch()
 	const renderRightActions = () => <DeleteButton onPress={deleteCard} id={item.id}/>
 	return (

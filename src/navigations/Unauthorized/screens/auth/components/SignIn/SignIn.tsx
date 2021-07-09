@@ -2,10 +2,15 @@ import * as React from 'react'
 import {View, TouchableOpacity, Text} from "react-native";
 import styles from "./SignIn.styles";
 import {Field, Form as FinalForm} from "react-final-form";
-import {validate} from "../../utils";
-import {useAppDispatch, useAppSelector} from "../../state";
-import {clearError, signIn} from "../../state/auth/actions";
-import {InputField} from "../";
+import {validate} from "utils";
+import {useAppDispatch, useAppSelector} from "state";
+import {clearError, signIn} from "state/auth/actions";
+import {InputField} from "@components/index";
+
+interface handleSubmitFormProps {
+	email: string,
+	password: string
+}
 
 const SignIn = () => {
 	const dispatch = useAppDispatch()
@@ -15,14 +20,14 @@ const SignIn = () => {
 			return [auth.error]
 		})
 
-	const onSignIn = ({email, password}) => {
+	const handleSubmitForm = ({email, password}: handleSubmitFormProps) => {
 		dispatch(clearError())
 		dispatch(signIn(email, password))
 	}
 
 	return (
 		<FinalForm
-			onSubmit={onSignIn}
+			onSubmit={handleSubmitForm}
 			render={({handleSubmit}) => {
 				return (
 					<View style={styles.container}>

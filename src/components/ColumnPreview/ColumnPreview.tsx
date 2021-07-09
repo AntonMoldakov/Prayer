@@ -6,12 +6,12 @@ import {DeleteButton} from "ui/DeleteButton";
 import {deleteColumn} from "state/columns/actions";
 import {DeskScreenNavigationProps} from "navigations/Authorized/Authorized";
 
-interface IProps extends DeskScreenNavigationProps {
+interface ColumnPreviewProps extends DeskScreenNavigationProps {
 	title: string,
 	id: number
 }
 
-const ColumnPreview = ({navigation, title, id}: IProps) => {
+const ColumnPreview = ({navigation, title, id}: ColumnPreviewProps) => {
 	const renderRightActions = () => <DeleteButton onPress={deleteColumn} id={id}/>
 	return (
 		<Swipeable renderRightActions={renderRightActions}

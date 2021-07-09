@@ -2,16 +2,16 @@ import * as React from "react";
 import {useState, useMemo} from 'react';
 import {View, FlatList} from 'react-native';
 import styles from './Subscribed.styles';
-import {BrownButton} from "../../ui";
-import {useAppSelector} from "../../state";
-import {CardPreview} from "../";
-import {ColumnScreenNavigationProps} from "../../navigations/Authorized/Authorized";
+import {BrownButton} from "ui";
+import {useAppSelector} from "state";
+import {CardPreview} from "@components/index";
+import {ColumnScreenNavigationProps} from "../../../../Authorized";
 
-interface IProps extends ColumnScreenNavigationProps {
+interface SubscribedProps extends ColumnScreenNavigationProps {
 	columnId: number
 }
 
-const Subscribed = ({columnId, ...props}: IProps) => {
+const Subscribed = ({columnId, ...props}: SubscribedProps) => {
 	const [isShowAnswered, setIsShowAnswered] = useState(false);
 
 	const [cards] = useAppSelector(

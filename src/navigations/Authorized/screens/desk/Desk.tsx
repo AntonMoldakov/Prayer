@@ -23,7 +23,7 @@ const Desk = (props: DeskScreenNavigationProps) => {
 			return [column.columns, column.addMode, session.loadingMode]
 		})
 
-	const AddColumn = () => {
+	const handleSubmit = () => {
 		if (inputValue) {
 			dispatch(addColumn(inputValue))
 			dispatch(stopAddColumn())
@@ -42,7 +42,7 @@ const Desk = (props: DeskScreenNavigationProps) => {
 							inputValue={inputValue}
 							onBlur={() => dispatch(stopAddColumn())}
 							onChangeText={(text) => setInputValue(text)}
-							onSubmitEditing={AddColumn}
+							onSubmitEditing={handleSubmit}
 							autoFocus={true}
 						/>
 					}

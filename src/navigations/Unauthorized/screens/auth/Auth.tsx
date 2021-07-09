@@ -1,12 +1,11 @@
 import * as React from 'react'
-import {SignIn, SignUp} from 'components'
-import {SceneMap, TabBar, TabView} from "react-native-tab-view"
+import {SignIn, SignUp} from './components'
+import {NavigationState, SceneMap, SceneRendererProps, TabBar, TabView} from "react-native-tab-view"
 import {useWindowDimensions} from 'react-native'
 import styles from "./Auth.styles";
 import {useAppDispatch} from "state";
 import colors from "styles/colors";
 import {clearError} from "state/auth/actions";
-
 
 const renderScene = SceneMap({
 	SignIn,
@@ -21,7 +20,8 @@ function Auth() {
 		{key: 'SignIn', title: 'Sign In'},
 		{key: 'SignUp', title: 'Sign Up'},
 	])
-	const renderTabBar = props => (
+
+	const renderTabBar = (props: (SceneRendererProps & { navigationState: NavigationState<{ key: string, title: string }> })) => (
 		<TabBar
 			{...props}
 			indicatorStyle={styles.indicator}

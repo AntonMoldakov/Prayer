@@ -4,16 +4,16 @@ import {View, FlatList} from 'react-native'
 import styles from './Prayers.styles'
 import {BrownButton, IconTextInput} from "ui"
 import {useAppDispatch, useAppSelector} from "state"
-import {CardPreview} from "../CardPreview";
+import {CardPreview} from "@components/CardPreview";
 import {addCard} from "state/cards/actions";
 import {stopAddColumn} from "state/columns/actions";
 import {ColumnScreenNavigationProps} from "navigations/Authorized/Authorized";
 
-interface IProps extends ColumnScreenNavigationProps{
+interface PrayersListProps extends ColumnScreenNavigationProps{
 	columnId: number
 }
 
-const PrayersList = ({columnId, ...props}: IProps) => {
+const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 	const [inputValue, setInputValue] = useState('')
 	const [isShowAnswered, setIsShowAnswered] = useState(false)
 	const dispatch = useAppDispatch()
@@ -24,7 +24,7 @@ const PrayersList = ({columnId, ...props}: IProps) => {
 			return [card.cards]
 		})
 
-	const AddCard = () => {
+	const handleSubmit = () => {
 		if (inputValue) {
 			dispatch(addCard(columnId, inputValue))
 			setInputValue('')
@@ -52,7 +52,7 @@ const PrayersList = ({columnId, ...props}: IProps) => {
 					inputValue={inputValue}
 					onBlur={() => dispatch(stopAddColumn())}
 					onChangeText={(text) => setInputValue(text)}
-					onSubmitEditing={AddCard}/>
+					onSubmitEditing={handleSubmit}/>
 				<FlatList
 					style={styles.cardList}
 					contentContainerStyle={styles.cardListContainer}

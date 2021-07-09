@@ -2,10 +2,16 @@ import * as React from 'react'
 import {View, TouchableOpacity, Text} from "react-native";
 import styles from "./SignUp.styles";
 import {Field, Form as FinalForm} from "react-final-form";
-import {validate} from "../../utils";
-import {useAppDispatch, useAppSelector} from "../../state";
-import {InputField} from "../";
-import {clearError, signUp} from "../../state/auth/actions";
+import {validate} from "utils";
+import {useAppDispatch, useAppSelector} from "state";
+import {InputField} from "@components/index";
+import {clearError, signUp} from "state/auth/actions";
+
+interface handleSubmitFormProps {
+	email: string,
+	name: string,
+	password: string
+}
 
 const SignIn = () => {
 	const dispatch = useAppDispatch()
@@ -15,17 +21,14 @@ const SignIn = () => {
 			return [auth.error]
 		})
 
-	const onSignUp = ({email, name, password}) => {
+	const handleSubmitForm = ({email, name, password}: handleSubmitFormProps) => {
 		dispatch(clearError())
 		dispatch(signUp(email, name, password))
-		email = ''
-		name = ''
-		password = ''
 	}
 
 	return (
 		<FinalForm
-			onSubmit={onSignUp}
+			onSubmit={handleSubmitForm}
 			render={({handleSubmit}) => {
 				return (
 					<View style={styles.container}>

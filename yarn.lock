@@ -1461,6 +1461,16 @@
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
 
+"@types/react-redux@^7.1.17":
+  version "7.1.17"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.17.tgz#b9ccd01624c2a282b7af3762411cbf8945712438"
+  integrity sha512-vdMbWV4tKltQVPCYOYknqb6M9PP8i82ZAV17q60UTYs/MYafplHNgBVPuKVkTN8LMPlXRw7Fs8Y5BxBIRPxz+g==
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
+
 "@types/react@*":
   version "17.0.13"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.13.tgz#6b7c9a8f2868586ad87d941c02337c6888fb874f"

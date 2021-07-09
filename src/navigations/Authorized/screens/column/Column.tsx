@@ -1,32 +1,35 @@
 import * as React from "react";
 import {useEffect} from 'react'
-import {SceneMap, TabBar, TabView} from "react-native-tab-view";
+import {NavigationState, SceneMap, SceneRendererProps, TabBar, TabView} from "react-native-tab-view";
 import {useWindowDimensions, Text, View} from 'react-native'
-import {Prayers, Subscribed} from "components";
+import {Prayers, Subscribed} from "./components";
 import styles from "./Column.styles";
 import {useAppDispatch} from "state";
 import colors from "styles/colors";
 import {getCards} from "state/cards/actions";
 import {ColumnScreenNavigationProps} from "../../Authorized";
 
+interface getTabBarIconProps {
+	route: {
+		key: string
+	}
+}
 
 const Column = (props: ColumnScreenNavigationProps) => {
 	const dispatch = useAppDispatch()
-
 	const {columnId} = props.route.params;
 
 	useEffect(() => {
 		dispatch(getCards())
 	}, [dispatch]);
 
-	const getTabBarIcon = (props) => {
+	const getTabBarIcon = (props: getTabBarIconProps) => {
 		const {route} = props
 
 		if (route.key === 'Subscribed') {
 			return <View style={styles.bubble}>
 				<Text style={styles.bubbleText}>3</Text>
 			</View>
-
 		}
 	}
 
@@ -44,7 +47,7 @@ const Column = (props: ColumnScreenNavigationProps) => {
 	])
 
 
-	const renderTabBar = props => (
+	const renderTabBar = (props: (SceneRendererProps & { navigationState: NavigationState<{ key: string, title: string }> })) => (
 		<TabBar
 			{...props}
 			indicatorStyle={styles.indicator}

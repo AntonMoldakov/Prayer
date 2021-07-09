@@ -65,11 +65,11 @@ const Card = (props: CardScreenNavigationProps) => {
 					<Text style={styles.blockTitle}>MEMBERS</Text>
 					<View style={styles.block}>
 						<Image
-							source={require('../../../../assets/img/1.png')}
+							source={require('assets/img/1.png')}
 							style={styles.avatar}
 						/>
 						<Image
-							source={require('../../../../assets/img/2.png')}
+							source={require('assets/img/2.png')}
 							style={styles.avatar}
 						/>
 						<IconButton/>

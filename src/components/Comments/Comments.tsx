@@ -7,11 +7,11 @@ import {useAppDispatch, useAppSelector} from "state";
 import styles from "./Comments.styles";
 import {Comment} from "components";
 
-interface IProps {
+interface CommentsProps {
 	cardId: number
 }
 
-const Comments = ({cardId}: IProps) => {
+const Comments = ({cardId}: CommentsProps) => {
 	const dispatch = useAppDispatch();
 	const [commentValue, setCommentValue] = useState('');
 
@@ -27,7 +27,7 @@ const Comments = ({cardId}: IProps) => {
 		[comments, cardId],
 	);
 
-	const onAddComment = () => {
+	const handleSubmit = () => {
 		if (commentValue) {
 			dispatch(addComment(cardId, commentValue, name));
 			setCommentValue('');
@@ -54,7 +54,7 @@ const Comments = ({cardId}: IProps) => {
 						style={[styles.input]}
 						onChangeText={(text) => setCommentValue(text)}
 						value={commentValue}
-						onSubmitEditing={onAddComment}
+						onSubmitEditing={handleSubmit}
 					/>
 				</View>
 			</>

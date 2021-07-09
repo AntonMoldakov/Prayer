@@ -8,8 +8,8 @@ import Hands from 'react-native-vector-icons/FontAwesome5';
 import styles from "../Navigation.styles";
 import {useAppDispatch} from "state";
 import {startAddColumn} from "state/columns/actions";
-import colors from "../../styles/colors";
-import {ColumnTitle} from "../../components";
+import colors from "styles/colors";
+import {ColumnTitle} from "components";
 import {HeaderIconButton} from "ui";
 
 const StackAuth = createStackNavigator()
@@ -47,7 +47,7 @@ const Authorized = () => {
 					name="Column"
 					component={Column}
 					options={{
-						headerTitle: (props) => <ColumnTitle {...props} />,
+						headerTitle: () => <ColumnTitle/>,
 						headerRight: () => (
 							<HeaderIconButton>
 								<Settings
