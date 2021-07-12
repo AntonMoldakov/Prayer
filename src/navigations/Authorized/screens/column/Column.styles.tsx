@@ -19,13 +19,14 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.lightBlue
 	},
 	bubble: {
+		marginBottom: 5,
 		display: 'flex',
 		height: 16,
 		width: 16,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: colors.vinous,
-		borderRadius: 10,
+		borderRadius: 50,
 	},
 	bubbleText: {
 		fontFamily: 'SFUIText-Regular',
