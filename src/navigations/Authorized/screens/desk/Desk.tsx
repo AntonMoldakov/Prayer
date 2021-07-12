@@ -38,6 +38,7 @@ const Desk = (props: DeskScreenNavigationProps) => {
 					{
 						addMode &&
 						<IconTextInput
+							maxLength={30}
 							underlineColorAndroid="transparent"
 							placeholder="Add a column..."
 							inputValue={inputValue}

@@ -4,7 +4,7 @@ import colors from "styles/colors";
 const styles = StyleSheet.create({
 	container: {
 		width: '100%',
-		height: 74,
+		paddingVertical: 15,
 		flexDirection: 'row',
 		alignItems: 'center',
 		borderWidth: 1,
@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
 		lineHeight: 16,
 	},
 	text: {
+		width: '70%',
+		flexWrap: 'wrap',
 		color: colors.lightBlack,
 		fontSize: 17,
 		lineHeight: 20,

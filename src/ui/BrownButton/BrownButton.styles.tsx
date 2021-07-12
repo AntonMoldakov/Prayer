@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		backgroundColor: colors.beige,
 		borderRadius: 20,
-		marginVertical: 10,
+		marginVertical: 21,
 		width: 210,
 		height: 30,
 

@@ -45,6 +45,7 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 			<>
 				<View style={styles.input}>
 					<IconTextInput
+						maxLength={70}
 						underlineColorAndroid="transparent"
 						placeholder="Add a prayer..."
 						inputValue={inputValue}

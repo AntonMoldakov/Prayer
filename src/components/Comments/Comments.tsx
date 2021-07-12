@@ -48,6 +48,7 @@ const Comments = ({cardId}: CommentsProps) => {
 						style={styles.inputIcon}
 					/>
 					<TextInput
+						maxLength={70}
 						underlineColorAndroid="transparent"
 						placeholder="Add a comment..."
 						style={[styles.input]}
