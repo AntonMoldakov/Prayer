@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'flex-start',
 	},
+	input: {
+		paddingHorizontal: 15
+	},
 	cardPreview: {
 		width: '90%',
 		height: 66,

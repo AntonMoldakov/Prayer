@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
 		marginTop: 15,
 	},
 	title: {
+		fontFamily: 'SFUIText-Regular',
 		color: colors.lightBlue,
 		fontSize: 13,
 		lineHeight: 15,
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 	},
 	input: {
+		fontFamily: 'SFUIText-Regular',
 		width: '90%',
 		height: '100%',
 		paddingLeft: 10,

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {View, TextInput, TextInputProps} from 'react-native'
 import styles from "./IconTextInput.styles";
-import colors from "../../styles/colors";
+import colors from "styles/colors";
 import {PlusIcon} from "assets/icons/components";
 
 type IconTextInputProps = {
@@ -14,12 +14,11 @@ type IconTextInputProps = {
 const IconTextInput = ({onChangeText, onBlur, onSubmitEditing, inputValue, ...props}: IconTextInputProps) => {
 	return (
 		<View style={styles.inputSection}>
-			<View style={styles.inputIcon}>
-				<PlusIcon
-					size={28}
-					color={colors.lightBlue}
-				/>
-			</View>
+			<PlusIcon
+				style={styles.inputIcon}
+				size={24}
+				color={colors.lightBlue}
+			/>
 			<TextInput
 				{...props}
 				onChangeText={onChangeText}

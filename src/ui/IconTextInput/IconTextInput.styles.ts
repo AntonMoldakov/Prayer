@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 	},
 	input: {
+		fontFamily: 'SFUIText-Regular',
 		width: '90%',
 		height: '100%',
 		paddingLeft: 10,

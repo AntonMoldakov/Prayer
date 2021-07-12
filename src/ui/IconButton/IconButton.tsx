@@ -8,7 +8,7 @@ const IconButton = (props: TouchableOpacityProps) => {
 	return (
 		<TouchableOpacity onPress={props.onPress}>
 				<PlusIcon
-					size={20}
+					size={18}
 					color={colors.white}
 					style={styles.button}
 				/>

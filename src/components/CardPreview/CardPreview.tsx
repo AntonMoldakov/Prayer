@@ -40,10 +40,14 @@ const CardPreview = ({item, navigation}: CardPreviewProps) => {
 						{item.title}
 					</Text>
 					<View style={styles.cardIcons}>
-						<UserIcon size={24} color={colors.lightBlue} style={styles.icon}/>
-						<Text style={styles.subscribedText}>{item.subscribed}</Text>
-						<HandsIcon size={29} color={colors.lightBlue} style={styles.icon}/>
-						<Text style={styles.totalCountText}>{item.prayedByMe + item.prayedByOthers}</Text>
+						<View style={styles.cardIconsItem}>
+							<UserIcon size={22} color={colors.lightBlue} style={styles.icon}/>
+							<Text style={styles.subscribedText}>{item.subscribed}</Text>
+						</View>
+						<View style={[styles.cardIconsItem, styles.cardIconsItemMargin]}>
+							<HandsIcon size={29} color={colors.lightBlue} style={styles.icon}/>
+							<Text style={styles.totalCountText}>{item.prayedByMe + item.prayedByOthers}</Text>
+						</View>
 					</View>
 				</TouchableOpacity>
 			</View>

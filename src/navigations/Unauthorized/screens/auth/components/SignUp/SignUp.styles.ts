@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 15
 	},
 	buttonContainer: {
+		fontFamily: 'SFUIText-Regular',
 		alignItems: 'center',
 		backgroundColor: '#BFB393',
 		borderRadius: 10,

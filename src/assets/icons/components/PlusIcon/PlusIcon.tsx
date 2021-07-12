@@ -3,13 +3,13 @@ import colors from "styles/colors";
 import Svg, {Path} from "react-native-svg";
 import {StyleProp, View, ViewStyle} from "react-native";
 
-interface SettingsProps {
+interface PlusProps {
 	color?: string,
 	size?: number,
 	style?: StyleProp<ViewStyle>
 }
 
-const PlusIcon = ({color = colors.lightBlue, size = 24, style}: SettingsProps) => {
+const PlusIcon = ({color = colors.lightBlue, size = 24, style}: PlusProps) => {
 	return (
 		<View style={style}>
 			<Svg width={size} height={size} viewBox="0 0 22 22" fill={color}>

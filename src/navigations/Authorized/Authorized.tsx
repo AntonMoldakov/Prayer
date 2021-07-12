@@ -7,7 +7,7 @@ import {useAppDispatch} from "/state"
 import {startAddColumn} from "state/columns/actions"
 import colors from "styles/colors"
 import {ColumnTitle} from "components"
-import {HandsIcon, PlusIcon, SettingsIcon} from "/assets/icons/components"
+import {HandsIcon, SettingsIcon, SmallPlusIcon} from "/assets/icons/components"
 import {View} from "react-native";
 import {HeaderIconButton} from "ui";
 
@@ -32,7 +32,7 @@ const Authorized = () => {
 						title: 'My Desk',
 						headerRight: () => (
 							<HeaderIconButton onPress={() => dispatch(startAddColumn())}>
-								<PlusIcon size={28} style={styles.HeaderIcon}/>
+								<SmallPlusIcon style={styles.HeaderIcon}/>
 							</HeaderIconButton>
 						)
 					}}

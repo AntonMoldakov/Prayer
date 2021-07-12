@@ -43,7 +43,7 @@ const Comments = ({cardId}: CommentsProps) => {
 				))}
 				<View style={styles.inputSection}>
 					<MessageIcon
-						size={25}
+						size={22}
 						color="#BFB393"
 						style={styles.inputIcon}
 					/>

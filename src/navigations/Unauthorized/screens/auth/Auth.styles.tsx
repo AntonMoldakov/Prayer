@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import colors from "../../../../styles/colors";
+import colors from "styles/colors";
 
 const styles = StyleSheet.create({
 	tabBar: {
@@ -9,11 +9,10 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.lightBlue,
 	},
 	tabText: {
-		fontFamily: 'SF UI Text',
+		fontFamily: 'SFUIText-Bold',
 		fontSize: 13,
 		lineHeight: 16,
 		textTransform: 'uppercase',
-		fontWeight: 'bold'
 	}
 })
 

@@ -13,8 +13,9 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.white
 	},
 	headerTitle: {
+		fontFamily: 'SFUIText-Regular',
+		fontWeight: '700',
 		color: colors.lightBlack,
-		fontWeight: '500'
 	},
 	headerCard: {
 		backgroundColor: colors.beige,

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import colors from "../../../../styles/colors";
+import colors from "styles/colors";
 
 const styles = StyleSheet.create({
 	tabBar: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row-reverse'
 	},
 	tabText: {
-		fontFamily: 'SF UI Text',
+		fontFamily: 'SFUIText-Regular',
 		fontSize: 13,
 		lineHeight: 16,
 		textTransform: 'uppercase',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 	},
 	bubbleText: {
-		fontFamily: 'SF UI Text',
+		fontFamily: 'SFUIText-Regular',
 		fontSize: 9,
 		color: colors.white,
 	}

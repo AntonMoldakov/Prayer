@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 	},
 	cardTextChecked: {
 		color: colors.lightBlack,
-		width: '60%',
+		width: '50%',
 		fontSize: 17,
 		lineHeight: 20,
 		textDecorationLine: 'line-through',
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		marginLeft: 20,
+		marginLeft: 30,
 		marginRight: 10,
 	},
 	cardLink: {
@@ -58,9 +58,16 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 	},
+	cardIconsItem: {
+		height: 22,
+		flexDirection: 'row',
+	},
+	cardIconsItemMargin: {
+		marginLeft: 10,
+	},
 	icon: {
-		marginLeft: 8,
-	}
+		marginRight: 5,
+	},
 });
 
 export default styles;

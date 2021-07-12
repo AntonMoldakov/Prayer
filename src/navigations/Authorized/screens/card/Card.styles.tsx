@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
 
 	},
 	titleText: {
+		fontFamily: 'SFUIText-Regular',
 		color: colors.white,
 		fontSize: 17,
 		lineHeight: 27,
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.vinous,
 	},
 	prayedText: {
+		fontFamily: 'SFUIText-Regular',
 		fontSize: 17,
 		lineHeight: 20,
 		marginLeft: 10,
@@ -52,21 +54,26 @@ const styles = StyleSheet.create({
 		width: '50%',
 	},
 	number: {
+		fontFamily: 'SFUIText-Regular',
 		fontSize: 32,
 		lineHeight: 37,
 		color: colors.beige,
 	},
 	date: {
+		fontFamily: 'SFUIText-Regular',
+		marginVertical: 10,
 		fontSize: 22,
 		lineHeight: 26,
 		color: colors.beige,
 	},
 	text: {
+		fontFamily: 'SFUIText-Regular',
 		fontSize: 13,
 		lineHeight: 15,
 		color: colors.lightBlack,
 	},
 	footerText: {
+		fontFamily: 'SFUIText-Regular',
 		fontSize: 13,
 		lineHeight: 15,
 		color: colors.lightBlue,
@@ -78,6 +85,7 @@ const styles = StyleSheet.create({
 		padding: 15,
 	},
 	blockTitle: {
+		fontFamily: 'SFUIText-Regular',
 		color: colors.lightBlue,
 		fontSize: 13,
 		lineHeight: 15,

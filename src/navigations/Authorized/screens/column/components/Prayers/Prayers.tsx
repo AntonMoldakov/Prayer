@@ -42,7 +42,8 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 
 	return (
 		<View style={styles.container}>
-				<>
+			<>
+				<View style={styles.input}>
 					<IconTextInput
 						underlineColorAndroid="transparent"
 						placeholder="Add a prayer..."
@@ -50,27 +51,28 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 						onBlur={() => dispatch(stopAddColumn())}
 						onChangeText={(text) => setInputValue(text)}
 						onSubmitEditing={handleSubmit}/>
-					<FlatList
-						style={styles.cardList}
-						contentContainerStyle={styles.cardListContainer}
-						data={uncheckedCards}
-						renderItem={({item}) => <CardPreview {...props} item={item}/>}
-						keyExtractor={(item) => 'key' + item.id}
-					/>
-					<BrownButton
-						text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
-						onPress={() => setIsShowAnswered(!isShowAnswered)}
-					/>
-					{isShowAnswered &&
-					<FlatList
-						style={styles.cardList}
-						contentContainerStyle={styles.cardListContainer}
-						data={checkedCards}
-						renderItem={({item}) => <CardPreview {...props} item={item}/>}
-						keyExtractor={(item) => 'key' + item.id}
-					/>
-					}
-				</>
+				</View>
+				<FlatList
+					style={styles.cardList}
+					contentContainerStyle={styles.cardListContainer}
+					data={uncheckedCards}
+					renderItem={({item}) => <CardPreview {...props} item={item}/>}
+					keyExtractor={(item) => 'key' + item.id}
+				/>
+				<BrownButton
+					text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
+					onPress={() => setIsShowAnswered(!isShowAnswered)}
+				/>
+				{isShowAnswered &&
+				<FlatList
+					style={styles.cardList}
+					contentContainerStyle={styles.cardListContainer}
+					data={checkedCards}
+					renderItem={({item}) => <CardPreview {...props} item={item}/>}
+					keyExtractor={(item) => 'key' + item.id}
+				/>
+				}
+			</>
 		</View>
 	)
 }

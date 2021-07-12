@@ -4,16 +4,21 @@ import colors from "../../styles/colors";
 const styles = StyleSheet.create({
 	buttonContainer: {
 		alignItems: 'center',
+		justifyContent: "center",
 		backgroundColor: colors.beige,
-		borderRadius: 10,
+		borderRadius: 20,
 		marginVertical: 10,
-		padding: 10,
 		width: 210,
+		height: 30,
+
 	},
 	buttonText: {
 		color: colors.white,
-		fontSize: 17,
-		lineHeight: 20,
+		fontFamily: ' SF UI Text',
+		fontSize: 12,
+		lineHeight: 14,
+		textTransform: 'uppercase',
+		fontWeight: '700'
 	}
 });
 

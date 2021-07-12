@@ -4,10 +4,19 @@ import {View, Text, TextInputProps} from 'react-native'
 import styles from "./InputField.styles";
 import {FieldRenderProps} from "react-final-form";
 
-const InputField = ({input, meta, ...rest}: FieldRenderProps<string> & TextInputProps) => {
+type InputFieldProps =
+	{
+		onChangeText?: (text: string) => void,
+		onBlur?: () => void,
+		onSubmitEditing?: () => void,
+		inputValue?: string,
+	}
+	& Omit<FieldRenderProps<string> & TextInputProps, 'onChangeText' | 'onBlur' | 'onChange' | 'inputValue' | 'onSubmitEditing'>
+
+const InputField = ({input, meta, ...rest}: InputFieldProps) => {
 	return (
 		<View>
-			<CustomTextInput {...input} {...rest}/>
+			<CustomTextInput  {...input} {...rest}/>
 			{
 				meta.error && meta.touched &&
 				<Text style={styles.error}>{meta.error}</Text>
