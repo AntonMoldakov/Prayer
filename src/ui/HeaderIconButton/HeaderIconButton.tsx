@@ -5,9 +5,9 @@ interface HeaderIconButtonProps extends TouchableOpacityProps {
 	children: React.ReactNode
 }
 
-const HeaderIconButton = (props: HeaderIconButtonProps) => {
+const HeaderIconButton = ({style, ...props}: HeaderIconButtonProps) => {
 	return (
-		<TouchableOpacity onPress={props.onPress}>
+		<TouchableOpacity style={style} onPress={props.onPress}>
 			{props.children}
 		</TouchableOpacity>
 	)

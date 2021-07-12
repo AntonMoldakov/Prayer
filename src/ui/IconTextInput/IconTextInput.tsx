@@ -1,8 +1,8 @@
 import * as React from 'react'
-import Plus from 'react-native-vector-icons/AntDesign'
 import {View, TextInput, TextInputProps} from 'react-native'
 import styles from "./IconTextInput.styles";
 import colors from "../../styles/colors";
+import {PlusIcon} from "assets/icons/components";
 
 type IconTextInputProps = {
 	onChangeText: (text: string) => void,
@@ -14,12 +14,12 @@ type IconTextInputProps = {
 const IconTextInput = ({onChangeText, onBlur, onSubmitEditing, inputValue, ...props}: IconTextInputProps) => {
 	return (
 		<View style={styles.inputSection}>
-			<Plus
-				name="plus"
-				size={28}
-				color={colors.lightBlue}
-				style={styles.inputIcon}
-			/>
+			<View style={styles.inputIcon}>
+				<PlusIcon
+					size={28}
+					color={colors.lightBlue}
+				/>
+			</View>
 			<TextInput
 				{...props}
 				onChangeText={onChangeText}

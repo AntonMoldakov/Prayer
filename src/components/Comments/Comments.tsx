@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {useMemo, useState} from 'react';
 import {View, Text, TextInput} from 'react-native';
-import Message from 'react-native-vector-icons/Feather';
 import {addComment} from "state/comments/actions";
 import {useAppDispatch} from "/state";
 import styles from "./Comments.styles";
@@ -9,6 +8,7 @@ import {Comment} from "components";
 import {useSelector} from "react-redux";
 import {selectComments} from "state/comments/selectors";
 import {selectUser} from "state/auth/selectors";
+import {MessageIcon} from "assets/icons/components";
 
 interface CommentsProps {
 	cardId: number
@@ -42,8 +42,7 @@ const Comments = ({cardId}: CommentsProps) => {
 					<Comment key={item.id} comment={item}/>
 				))}
 				<View style={styles.inputSection}>
-					<Message
-						name="message-square"
+					<MessageIcon
 						size={25}
 						color="#BFB393"
 						style={styles.inputIcon}

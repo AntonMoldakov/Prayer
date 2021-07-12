@@ -1,13 +1,13 @@
 import * as React from 'react'
-import {View, TouchableOpacity, Text} from "react-native";
-import styles from "./SignIn.styles";
-import {Field, Form as FinalForm} from "react-final-form";
-import {validate} from "utils";
-import {useAppDispatch} from "/state";
-import {clearError, signIn} from "state/auth/actions";
-import {InputField} from "@components/index";
-import {useSelector} from "react-redux";
-import {selectAuthError} from "state/auth/selectors";
+import {View, TouchableOpacity, Text} from "react-native"
+import styles from "./SignIn.styles"
+import {Field, Form as FinalForm} from "react-final-form"
+import {validate} from "utils"
+import {useAppDispatch} from "/state"
+import {clearError, signIn} from "state/auth/actions"
+import {InputField} from "@components/index"
+import {useSelector} from "react-redux"
+import {selectAuthError} from "state/auth/selectors"
 
 interface handleSubmitFormProps {
 	email: string,

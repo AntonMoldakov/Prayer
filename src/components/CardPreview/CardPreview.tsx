@@ -4,13 +4,13 @@ import {Swipeable} from "react-native-gesture-handler";
 import styles from "./CardPreview.styles";
 import {ICard} from "interface";
 import {Checkbox} from 'react-native-paper';
-import User from 'react-native-vector-icons/Feather';
-import Hands from 'react-native-vector-icons/FontAwesome5';
 import {useAppDispatch} from '/state';
 import {DeleteButton} from 'ui'
 import colors from "styles/colors";
 import {deleteCard, checkedCard} from "state/cards/actions";
 import {ColumnScreenNavigationProps} from "navigations/Authorized/Authorized";
+import {UserIcon} from "assets/icons/components/UserIcon";
+import {HandsIcon} from "assets/icons/components";
 
 interface CardPreviewProps extends ColumnScreenNavigationProps {
 	item: ICard
@@ -40,14 +40,9 @@ const CardPreview = ({item, navigation}: CardPreviewProps) => {
 						{item.title}
 					</Text>
 					<View style={styles.cardIcons}>
-						<User style={styles.icon} name="user" size={22} color={colors.lightBlue}/>
+						<UserIcon size={24} color={colors.lightBlue} style={styles.icon}/>
 						<Text style={styles.subscribedText}>{item.subscribed}</Text>
-						<Hands
-							style={styles.icon}
-							name="praying-hands"
-							size={22}
-							color={colors.lightBlue}
-						/>
+						<HandsIcon size={29} color={colors.lightBlue} style={styles.icon}/>
 						<Text style={styles.totalCountText}>{item.prayedByMe + item.prayedByOthers}</Text>
 					</View>
 				</TouchableOpacity>
