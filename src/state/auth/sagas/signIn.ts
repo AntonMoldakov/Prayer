@@ -5,7 +5,7 @@ import {signInSuccess, errorSuccess} from "../actions";
 
 function* signIn(action: PayloadAction<{ email: string; password: string }>) {
 	try {
-		const response = yield authAPI.signIn(action.payload.email, action.payload.password)
+		const response = yield authAPI.signIn(action.payload.email.toLowerCase(), action.payload.password)
 		if (response.data.message) {
 			yield put(errorSuccess('incorrect email or password'))
 		} else {

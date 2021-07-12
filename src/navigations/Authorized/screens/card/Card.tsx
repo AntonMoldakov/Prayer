@@ -10,6 +10,8 @@ import {CardScreenNavigationProps} from "../../Authorized";
 import {Comments} from "components";
 import {useSelector} from "react-redux";
 import {selectCards} from "state/cards/selectors";
+import {PlusIcon} from "assets/icons/components";
+import colors from "styles/colors";
 
 const Card = (props: CardScreenNavigationProps) => {
 	const {cardId} = props.route.params;
@@ -74,7 +76,13 @@ const Card = (props: CardScreenNavigationProps) => {
 								source={require('assets/img/2.png')}
 								style={styles.avatar}
 							/>
-							<IconButton/>
+							<IconButton>
+								<PlusIcon
+									size={18}
+									color={colors.white}
+									style={styles.button}
+								/>
+							</IconButton>
 						</View>
 					</View>
 					<Comments cardId={card.id}/>

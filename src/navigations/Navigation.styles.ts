@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 		borderColor: colors.lightGray
 	},
 	HeaderIcon: {
-		marginRight: 10
+		marginRight: 15
 	},
 	card: {
 		backgroundColor: colors.white

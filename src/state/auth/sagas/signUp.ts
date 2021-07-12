@@ -5,7 +5,7 @@ import {signInSuccess, errorSuccess} from "../actions";
 
 function* signUp(action: PayloadAction<{ email: string, name: string, password: string }>) {
 	try {
-		const response = yield authAPI.signUp(action.payload.email, action.payload.name, action.payload.password)
+		const response = yield authAPI.signUp(action.payload.email.toLowerCase(), action.payload.name, action.payload.password)
 		if (response.data.message) {
 			yield put(errorSuccess('Email is already in use'))
 		} else {

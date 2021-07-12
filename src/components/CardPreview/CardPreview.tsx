@@ -3,9 +3,8 @@ import {TouchableOpacity, Text, View} from 'react-native'
 import {Swipeable} from "react-native-gesture-handler";
 import styles from "./CardPreview.styles";
 import {ICard} from "interface";
-import {Checkbox} from 'react-native-paper';
 import {useAppDispatch} from '/state';
-import {DeleteButton} from 'ui'
+import {DeleteButton, Checkbox} from 'ui'
 import colors from "styles/colors";
 import {deleteCard, checkedCard} from "state/cards/actions";
 import {ColumnScreenNavigationProps} from "navigations/Authorized/Authorized";
@@ -26,9 +25,8 @@ const CardPreview = ({item, navigation}: CardPreviewProps) => {
 			<View style={styles.cardPreview}>
 				<View style={styles.cardStatus}/>
 				<Checkbox
-					status={item.checked ? 'checked' : 'unchecked'}
+					toggle={item.checked}
 					onPress={() => dispatch(checkedCard({id: item.id, checked: item.checked}))}
-					color={colors.lightBlack}
 				/>
 
 				<TouchableOpacity

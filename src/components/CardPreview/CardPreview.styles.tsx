@@ -20,23 +20,30 @@ const styles = StyleSheet.create({
 		width: '100%',
 	},
 	cardStatus: {
+		marginRight: 10,
 		width: 3,
 		height: 22,
 		backgroundColor: colors.vinous,
 	},
 	cardText: {
+		paddingLeft: 10,
+		fontFamily: 'SFUIText-Regular',
 		color: colors.lightBlack,
-		width: '60%',
+		width: '50%',
 		fontSize: 17,
 		lineHeight: 20,
 	},
 	subscribedText: {
+		fontFamily: 'SFUIText-Regular',
 		color: colors.lightBlack
 	},
 	totalCountText: {
+		fontFamily: 'SFUIText-Regular',
 		color: colors.lightBlack
 	},
 	cardTextChecked: {
+		paddingLeft: 10,
+		fontFamily: 'SFUIText-Regular',
 		color: colors.lightBlack,
 		width: '50%',
 		fontSize: 17,

@@ -98,6 +98,11 @@ const styles = StyleSheet.create({
 	block: {
 		alignItems: 'center',
 		flexDirection: 'row',
+	},
+	button: {
+		padding: 7,
+		borderRadius: 50,
+		backgroundColor: colors.beige
 	}
 })
 

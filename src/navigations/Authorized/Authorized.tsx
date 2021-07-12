@@ -44,7 +44,7 @@ const Authorized = () => {
 						headerTitle: () => <ColumnTitle/>,
 						headerRight: () => (
 							<HeaderIconButton>
-								<SettingsIcon size={28} style={styles.HeaderIcon}/>
+								<SettingsIcon size={24} style={styles.HeaderIcon}/>
 							</HeaderIconButton>
 						)
 					}}

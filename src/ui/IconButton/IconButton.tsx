@@ -1,17 +1,15 @@
 import * as React from "react";
 import {TouchableOpacity, TouchableOpacityProps} from 'react-native'
-import styles from "./IconButton.styles";
-import colors from "styles/colors";
-import {PlusIcon} from "assets/icons/components";
+import {ReactNode} from "react";
 
-const IconButton = (props: TouchableOpacityProps) => {
+interface IconButtonProps extends TouchableOpacityProps {
+	children: ReactNode
+}
+
+const IconButton = (props: IconButtonProps) => {
 	return (
 		<TouchableOpacity onPress={props.onPress}>
-				<PlusIcon
-					size={18}
-					color={colors.white}
-					style={styles.button}
-				/>
+			{props.children}
 		</TouchableOpacity>
 	)
 }

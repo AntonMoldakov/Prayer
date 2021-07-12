@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 20,
 	},
 	text: {
-		fontFamily: 'SFUIText-Regular',
+		fontFamily: 'SFUIText-Bold',
 		fontSize: 17,
 		fontWeight: '700',
 		lineHeight: 20,
