@@ -1,7 +1,7 @@
 import {takeLatest, put} from 'redux-saga/effects';
-import {columnAPI} from "../../../api";
+import {columnAPI} from "api";
 import {PayloadAction} from "@reduxjs/toolkit";
-import {IColumn} from "../../../interface";
+import {IColumn} from "interface";
 import {addColumnSuccess, stopAddColumn} from "../actions";
 
 function* addColumn(action: PayloadAction<{ title: string }>) {

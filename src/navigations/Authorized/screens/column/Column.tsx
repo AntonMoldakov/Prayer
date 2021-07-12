@@ -9,6 +9,8 @@ import colors from "styles/colors";
 import {getCards} from "state/cards/actions";
 import {ColumnScreenNavigationProps} from "../../Authorized";
 import {Loader} from "ui";
+import {useSelector} from "react-redux";
+import {selectCardsIsLoading} from "state/cards/selectors";
 
 interface getTabBarIconProps {
 	route: {
@@ -23,13 +25,12 @@ const Column = (props: ColumnScreenNavigationProps) => {
 		{key: 'Prayers', title: 'My Prayers'},
 		{key: 'Subscribed', title: 'Subscribed'},
 	])
-	const [loading, setLoading] = useState(true)
+
 	const dispatch = useAppDispatch()
 	const {columnId} = props.route.params;
-
+	const isLoading = useSelector(selectCardsIsLoading)
 	useEffect(() => {
 		dispatch(getCards())
-		setLoading(false)
 	}, [dispatch]);
 
 	const getTabBarIcon = (props: getTabBarIconProps) => {
@@ -70,14 +71,14 @@ const Column = (props: ColumnScreenNavigationProps) => {
 
 	return (
 		<>
-			{loading ? <Loader/> :
-				<TabView
-					navigationState={{index, routes}}
-					renderScene={renderScene}
-					renderTabBar={renderTabBar}
-					onIndexChange={setIndex}
-					initialLayout={{width: layout.width}}
-				/>}
+			{isLoading && <Loader/>}
+			<TabView
+				navigationState={{index, routes}}
+				renderScene={renderScene}
+				renderTabBar={renderTabBar}
+				onIndexChange={setIndex}
+				initialLayout={{width: layout.width}}
+			/>
 		</>
 	)
 }

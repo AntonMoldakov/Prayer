@@ -6,6 +6,9 @@ import styles from "./Auth.styles";
 import {useAppDispatch} from "/state";
 import colors from "styles/colors";
 import {clearError} from "state/auth/actions";
+import {useSelector} from "react-redux";
+import {selectAuthIsLoading} from "state/auth/selectors";
+import {Loader} from "ui";
 
 const renderScene = SceneMap({
 	SignIn,
@@ -21,6 +24,8 @@ function Auth() {
 		{key: 'SignUp', title: 'Sign Up'},
 	])
 
+	const isLoading = useSelector(selectAuthIsLoading)
+
 	const renderTabBar = (props: (SceneRendererProps & { navigationState: NavigationState<{ key: string, title: string }> })) => (
 		<TabBar
 			{...props}
@@ -34,14 +39,17 @@ function Auth() {
 	);
 
 	return (
-		<TabView
-			navigationState={{index, routes}}
-			renderScene={renderScene}
-			renderTabBar={renderTabBar}
-			onSwipeEnd={() => dispatch(clearError())}
-			onIndexChange={setIndex}
-			initialLayout={{width: layout.width}}
-		/>
+		<>
+			{isLoading && <Loader/>}
+			<TabView
+				navigationState={{index, routes}}
+				renderScene={renderScene}
+				renderTabBar={renderTabBar}
+				onSwipeEnd={() => dispatch(clearError())}
+				onIndexChange={setIndex}
+				initialLayout={{width: layout.width}}
+			/>
+		</>
 	)
 }
 

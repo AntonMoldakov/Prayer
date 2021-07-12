@@ -1,4 +1,5 @@
 export type initialStateType = {
+	isLoading: boolean,
 	error: string,
 	user: {
 		token: string,

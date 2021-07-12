@@ -12,6 +12,8 @@ export const deleteComment = createAction<types.deleteComment>('DELETE_COMMENT')
 
 export const addCommentSuccess = createAction<IComment>('comments/addComment')
 
+export const isLoadingSuccess = createAction<boolean>('comments/isLoading')
+
 export const getCommentsSuccess = createAction<Array<IComment>>('comments/getComments')
 
 export const deleteCommentSuccess = createAction<types.deleteComment>('comments/deleteComment')

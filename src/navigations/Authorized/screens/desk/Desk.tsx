@@ -8,21 +8,20 @@ import {ColumnPreview} from "components";
 import {addColumn, getColumns, stopAddColumn} from "state/columns/actions";
 import {DeskScreenNavigationProps} from "../../Authorized";
 import {useSelector} from "react-redux";
-import {selectColumns, selectColumnsAddMode} from "state/columns/selectors";
+import {selectColumns, selectColumnsAddMode, selectColumnsIsLoading} from "state/columns/selectors";
 
 
 const Desk = (props: DeskScreenNavigationProps) => {
 	const [inputValue, setInputValue] = useState('')
-	const [loading, setLoading] = useState(true)
-
 	const dispatch = useAppDispatch()
+	const columns = useSelector(selectColumns)
+	const addMode = useSelector(selectColumnsAddMode)
+	const isLoading = useSelector(selectColumnsIsLoading)
 
 	useEffect(() => {
 		dispatch(getColumns())
-		setLoading(false)
 	}, [dispatch]);
-	const columns = useSelector(selectColumns)
-	const addMode = useSelector(selectColumnsAddMode)
+
 
 	const handleSubmit = () => {
 		if (inputValue) {
@@ -33,7 +32,7 @@ const Desk = (props: DeskScreenNavigationProps) => {
 	}
 	return (
 		<View style={styles.container}>
-			{loading ? <Loader/> :
+			{isLoading ? <Loader/> :
 				<>
 					{
 						addMode &&

@@ -3,14 +3,16 @@ import colors from "styles/colors";
 
 const styles = StyleSheet.create({
 	container: {
-		width: '100%',
-		paddingVertical: 15,
+		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
-		borderWidth: 1,
+		borderTopWidth: 1,
 		borderColor: colors.lightGray,
 		backgroundColor: colors.white,
-		paddingLeft: 15,
+		padding: 15,
+	},
+	data: {
+		flex: 1
 	},
 	avatar: {
 		height: 44,
@@ -34,8 +36,6 @@ const styles = StyleSheet.create({
 		lineHeight: 16,
 	},
 	text: {
-		width: '70%',
-		flexWrap: 'wrap',
 		color: colors.lightBlack,
 		fontSize: 17,
 		lineHeight: 20,

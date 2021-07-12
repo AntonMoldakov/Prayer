@@ -1,9 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addCommentSuccess, deleteCommentSuccess, getCommentsSuccess} from "./actions";
+import {addCommentSuccess, deleteCommentSuccess, getCommentsSuccess, isLoadingSuccess} from "./actions";
 import {InitialStateTypes} from "state/comments/types";
 
 
 const initialState: InitialStateTypes = {
+	isLoading: false,
 	addMode: false,
 	comments: []
 }
@@ -21,6 +22,9 @@ const comments = createSlice({
 		})
 		builder.addCase(deleteCommentSuccess, (state, action) => {
 			state.comments = state.comments.filter(comment => comment.id !== action.payload.id)
+		})
+		builder.addCase(isLoadingSuccess, (state, action) => {
+			state.isLoading = action.payload
 		})
 	}
 })

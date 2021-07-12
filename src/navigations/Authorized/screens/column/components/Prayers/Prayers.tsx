@@ -9,7 +9,7 @@ import {addCard} from "state/cards/actions";
 import {stopAddColumn} from "state/columns/actions";
 import {ColumnScreenNavigationProps} from "navigations/Authorized/Authorized";
 import {useSelector} from "react-redux";
-import {selectCards} from "state/cards/selectors";
+import {selectCardsForColumn} from "state/cards/selectors";
 
 interface PrayersListProps extends ColumnScreenNavigationProps {
 	columnId: number
@@ -20,7 +20,6 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 	const [isShowAnswered, setIsShowAnswered] = useState(false)
 	const dispatch = useAppDispatch()
 
-	const cards = useSelector(selectCards)
 
 	const handleSubmit = () => {
 		if (inputValue) {
@@ -29,16 +28,15 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 		}
 	}
 
-	const filteredCards = useMemo(
-		() => cards.filter(card => card.columnId === columnId),
-		[cards, columnId])
+	const cards = useSelector(selectCardsForColumn(columnId))
 
 	const uncheckedCards = useMemo(
-		() => filteredCards.filter((item) => item.checked !== true),
-		[filteredCards])
+		() => cards.filter((item) => item.checked !== true),
+		[cards])
+
 	const checkedCards = useMemo(
-		() => filteredCards.filter((item) => item.checked === true),
-		[filteredCards])
+		() => cards.filter((item) => item.checked === true),
+		[cards])
 
 	return (
 		<View style={styles.container}>
@@ -60,10 +58,13 @@ const PrayersList = ({columnId, ...props}: PrayersListProps) => {
 					renderItem={({item}) => <CardPreview {...props} item={item}/>}
 					keyExtractor={(item) => 'key' + item.id}
 				/>
-				<BrownButton
-					text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
-					onPress={() => setIsShowAnswered(!isShowAnswered)}
-				/>
+				{
+					checkedCards.length > 0 &&
+					<BrownButton
+						text={isShowAnswered ? 'Hide Answered Prayers' : 'Show Answered Prayers'}
+						onPress={() => setIsShowAnswered(!isShowAnswered)}
+					/>
+				}
 				{isShowAnswered &&
 				<FlatList
 					style={styles.cardList}

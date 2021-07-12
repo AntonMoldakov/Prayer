@@ -66,13 +66,14 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 	},
 	cardIconsItem: {
-		height: 22,
+		alignItems: 'center',
 		flexDirection: 'row',
 	},
 	cardIconsItemMargin: {
 		marginLeft: 10,
 	},
 	icon: {
+		alignItems: 'center',
 		marginRight: 5,
 	},
 });

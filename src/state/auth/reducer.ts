@@ -1,8 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {signInSuccess, errorSuccess} from "./actions";
+import {signInSuccess, errorSuccess, isLoadingSuccess} from "./actions";
 import {initialStateType} from "./types";
 
 const initialState: initialStateType = {
+	isLoading: false,
 	error: '',
 	user: {
 		token: '',
@@ -22,6 +23,9 @@ const authentication = createSlice({
 		})
 		builder.addCase(errorSuccess, (state, action) => {
 			state.error = action.payload
+		})
+		builder.addCase(isLoadingSuccess, (state, action) => {
+			state.isLoading = action.payload
 		})
 	}
 })

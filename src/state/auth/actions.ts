@@ -11,3 +11,4 @@ export const clearError = createAction('CLEAR_ERROR')
 export const signInSuccess = createAction<IUser>('auth/signIn')
 
 export const errorSuccess = createAction<types.error>('auth/error')
+export const isLoadingSuccess = createAction<boolean>('auth/isLoading')

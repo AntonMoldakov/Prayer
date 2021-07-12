@@ -1,5 +1,13 @@
 import axios from "axios";
 import store from "/state";
+import {
+	AuthResponse, CheckedResponse,
+	DeleteResponse,
+	GetCardsResponse,
+	GetColumnsResponse, GetCommentsResponse,
+	PostCardResponse,
+	PostColumnResponse, PostCommentResponse
+} from "./types";
 
 const api = axios.create({
 	baseURL: 'https://prayer.herokuapp.com/',
@@ -24,13 +32,13 @@ api.interceptors.request.use((config) => {
 
 export const authAPI = {
 	signIn(email: string, password: string) {
-		return api.post(`auth/sign-in`, {
+		return api.post<AuthResponse>(`auth/sign-in`, {
 			email,
 			password
 		});
 	},
 	signUp(email: string, name: string, password: string) {
-		return api.post(`auth/sign-up`, {
+		return api.post<AuthResponse>(`auth/sign-up`, {
 			email,
 			name,
 			password
@@ -40,22 +48,22 @@ export const authAPI = {
 
 export const columnAPI = {
 	getColumns() {
-		return api.get('columns');
+		return api.get<GetColumnsResponse>('columns');
 	},
 	addColumn(title: string) {
-		return api.post('columns', {title});
+		return api.post<PostColumnResponse>('columns', {title});
 	},
 	deleteColumn(id: number) {
-		return api.delete(`columns/${id}`)
+		return api.delete<DeleteResponse>(`columns/${id}`)
 	}
 }
 
 export const cardAPI = {
 	getCards() {
-		return api.get('prayers');
+		return api.get<GetCardsResponse>('prayers');
 	},
 	addCard(columnId: number, title: string) {
-		return api.post(`columns/${columnId}/prayers`, {
+		return api.post<PostCardResponse>(`columns/${columnId}/prayers`, {
 			description: '',
 			title,
 			checked: false,
@@ -65,23 +73,23 @@ export const cardAPI = {
 		});
 	},
 	checkedCard(id: number, checked: boolean) {
-		return api.put(`prayers/${id}`, {
+		return api.put<CheckedResponse>(`prayers/${id}`, {
 			checked
 		});
 	},
 	deleteCard(id: number) {
-		return api.delete(`prayers/${id}`)
+		return api.delete<DeleteResponse>(`prayers/${id}`)
 	}
 }
 
 export const commentAPI = {
 	getComments() {
-		return api.get('comments');
+		return api.get<GetCommentsResponse>('comments');
 	},
 	addComment(cardId: number, body: string, name: string) {
-		return api.post(`prayers/${cardId}/comments`, {body, name});
+		return api.post<PostCommentResponse>(`prayers/${cardId}/comments`, {body, name});
 	},
 	deleteComment(id: number) {
-		return api.delete(`comments/${id}`)
+		return api.delete<DeleteResponse>(`comments/${id}`)
 	}
 }

@@ -17,7 +17,14 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		paddingLeft: 15,
 	},
+	subTitle: {
+		width: '100%',
+		textAlign: 'center',
+		color: colors.lightGray2,
+	},
 	inputSection: {
+		borderTopWidth: 1,
+		borderColor: colors.lightGray,
 		width: '90%',
 		flexDirection: 'row',
 		justifyContent: 'center',

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {useMemo, useState} from 'react';
+import {useState} from 'react';
 import {View, Text, TextInput} from 'react-native';
 import {addComment} from "state/comments/actions";
 import {useAppDispatch} from "/state";
 import styles from "./Comments.styles";
 import {Comment} from "components";
 import {useSelector} from "react-redux";
-import {selectComments} from "state/comments/selectors";
+import {selectCommentsForCard} from "state/comments/selectors";
 import {selectUser} from "state/auth/selectors";
 import {MessageIcon} from "assets/icons/components";
 
@@ -18,14 +18,9 @@ const Comments = ({cardId}: CommentsProps) => {
 	const dispatch = useAppDispatch();
 	const [commentValue, setCommentValue] = useState('');
 
-	const comments = useSelector(selectComments)
+	const cardComments = useSelector(selectCommentsForCard(cardId))
 	const {name} = useSelector(selectUser)
 
-
-	const cardComments = useMemo(
-		() => comments.filter((item) => item.prayerId === cardId),
-		[comments, cardId],
-	);
 
 	const handleSubmit = () => {
 		if (commentValue) {
@@ -36,28 +31,33 @@ const Comments = ({cardId}: CommentsProps) => {
 
 	return (
 		<View style={styles.container}>
-			<>
-				<Text style={styles.title}>COMMENTS</Text>
-				{cardComments.map((item) => (
-					<Comment key={item.id} comment={item}/>
-				))}
-				<View style={styles.inputSection}>
-					<MessageIcon
-						size={22}
-						color="#BFB393"
-						style={styles.inputIcon}
-					/>
-					<TextInput
-						maxLength={70}
-						underlineColorAndroid="transparent"
-						placeholder="Add a comment..."
-						style={[styles.input]}
-						onChangeText={(text) => setCommentValue(text)}
-						value={commentValue}
-						onSubmitEditing={handleSubmit}
-					/>
-				</View>
-			</>
+
+			<Text style={styles.title}>COMMENTS</Text>
+			{
+				(cardComments.length === 0) ?
+					<Text style={styles.subTitle}>No comments</Text>
+					:
+					cardComments.map((item) => (
+						<Comment key={item.id} comment={item}/>
+					))
+
+			}
+			<View style={styles.inputSection}>
+				<MessageIcon
+					size={22}
+					color="#BFB393"
+					style={styles.inputIcon}
+				/>
+				<TextInput
+					maxLength={70}
+					underlineColorAndroid="transparent"
+					placeholder="Add a comment..."
+					style={[styles.input]}
+					onChangeText={(text) => setCommentValue(text)}
+					value={commentValue}
+					onSubmitEditing={handleSubmit}
+				/>
+			</View>
 		</View>
 	);
 };

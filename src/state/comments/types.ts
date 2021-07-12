@@ -11,6 +11,7 @@ export type deleteComment = {
 }
 
 export type InitialStateTypes = {
+	isLoading: boolean,
 	addMode: boolean,
 	comments: IComment[]
 }

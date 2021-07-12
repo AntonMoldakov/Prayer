@@ -1,9 +1,16 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addColumnSuccess, changeAddModeSuccess, deleteColumnSuccess, getColumnsSuccess} from "./actions";
+import {
+	addColumnSuccess,
+	changeAddModeSuccess,
+	deleteColumnSuccess,
+	getColumnsSuccess,
+	isLoadingSuccess
+} from "./actions";
 import {InitialStateTypes} from "./types";
 
 
 const initialState: InitialStateTypes = {
+	isLoading: false,
 	addMode: false,
 	columns: []
 }
@@ -24,6 +31,9 @@ const columns = createSlice({
 		})
 		builder.addCase(deleteColumnSuccess, (state, action) => {
 			state.columns = state.columns.filter(column => column.id !== action.payload.id)
+		})
+		builder.addCase(isLoadingSuccess, (state, action) => {
+			state.isLoading = action.payload
 		})
 	}
 })

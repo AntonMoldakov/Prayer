@@ -20,6 +20,8 @@ export const getColumnsSuccess = createAction<Array<IColumn>>('columns/getColumn
 
 export const changeAddModeSuccess = createAction<boolean>('columns/changeAddMode')
 
+export const isLoadingSuccess = createAction<boolean>('columns/isLoading')
+
 export const deleteColumnSuccess = createAction<types.deleteColumn>('columns/deleteColumn')
 
 

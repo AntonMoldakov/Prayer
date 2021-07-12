@@ -1,6 +1,7 @@
 import {IColumn} from "interface";
 
 export type InitialStateTypes = {
+	isLoading: boolean,
 	columns: IColumn[],
 	addMode: boolean
 }

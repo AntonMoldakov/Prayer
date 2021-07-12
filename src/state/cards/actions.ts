@@ -16,5 +16,7 @@ export const getCardsSuccess = createAction<Array<ICard>>('cards/getCards')
 
 export const checkedCardSuccess = createAction<number>('cards/checkedCard')
 
+export const isLoadingSuccess = createAction<boolean>('cards/isLoading')
+
 export const deleteCardSuccess = createAction<types.deleteCard>('cards/deleteCard')
 

@@ -24,9 +24,9 @@ const Comment = ({comment}: IProps) => {
 					source={require('/assets/img/userAvatar.png')}
 					style={styles.avatar}
 				/>
-				<View>
+				<View style={styles.data}>
 					<View style={styles.titleSection}>
-						<Text style={styles.titleName}>{comment.name}</Text>
+						<Text style={styles.titleName}>{comment.name? comment.name : 'Name'}</Text>
 						<Text style={styles.titleDate}>2 days ago</Text>
 					</View>
 					<Text style={styles.text}>{comment.body}</Text>

@@ -1,6 +1,7 @@
 import {ICard} from "interface";
 
 export type InitialStateTypes = {
+	isLoading: boolean,
 	cards: ICard[]
 }
 

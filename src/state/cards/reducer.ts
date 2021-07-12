@@ -1,8 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addCardSuccess, checkedCardSuccess, deleteCardSuccess, getCardsSuccess} from "./actions";
+import {addCardSuccess, checkedCardSuccess, deleteCardSuccess, getCardsSuccess, isLoadingSuccess} from "./actions";
 import {InitialStateTypes} from "./types";
 
 const initialState: InitialStateTypes = {
+	isLoading: false,
 	cards: []
 }
 
@@ -25,6 +26,9 @@ const cards = createSlice({
 		})
 		builder.addCase(deleteCardSuccess, (state, action) => {
 			state.cards = state.cards.filter(card => card.id !== action.payload.id)
+		})
+		builder.addCase(isLoadingSuccess, (state, action) => {
+			state.isLoading = action.payload
 		})
 	}
 })
