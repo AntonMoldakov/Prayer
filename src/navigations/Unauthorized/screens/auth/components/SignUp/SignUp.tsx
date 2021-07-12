@@ -33,6 +33,7 @@ const SignIn = () => {
 					<View style={styles.container}>
 						<View>
 							<Field
+								maxLength={30}
 								name="email"
 								placeholder={'email'}
 								component={InputField}
@@ -41,6 +42,7 @@ const SignIn = () => {
 						</View>
 						<View>
 							<Field
+								maxLength={20}
 								name="name"
 								placeholder={'name'}
 								component={InputField}
@@ -49,6 +51,7 @@ const SignIn = () => {
 						</View>
 						<View>
 							<Field
+								maxLength={20}
 								name="password"
 								secureTextEntry
 								placeholder={'password'}
