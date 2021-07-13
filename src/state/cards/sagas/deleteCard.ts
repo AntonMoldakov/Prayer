@@ -1,11 +1,12 @@
-import {takeLatest, put} from 'redux-saga/effects';
+import {takeLatest, put, call} from 'redux-saga/effects';
 import {cardAPI} from "api";
 import {PayloadAction} from "@reduxjs/toolkit";
 import {deleteCardSuccess} from "../actions";
+import {DeleteResponse} from "api/types";
 
 function* deleteCard(action: PayloadAction<{ id: number }>) {
 	try {
-		const response = yield cardAPI.deleteCard(action.payload.id)
+		const response: DeleteResponse = yield call(cardAPI.deleteCard, action.payload.id)
 		if (response.status === 200) {
 			yield put(deleteCardSuccess(action.payload))
 		}

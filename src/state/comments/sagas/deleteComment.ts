@@ -1,11 +1,12 @@
-import {takeLatest, put} from 'redux-saga/effects';
+import {takeLatest, put, call} from 'redux-saga/effects';
 import {commentAPI} from "/api";
 import {PayloadAction} from "@reduxjs/toolkit";
 import {deleteCommentSuccess} from "../actions";
+import {DeleteResponse} from "api/types";
 
 function* deleteComment(action: PayloadAction<{ id: number }>) {
 	try {
-		const response = yield commentAPI.deleteComment(action.payload.id)
+		const response: DeleteResponse = yield call(commentAPI.deleteComment, action.payload.id)
 		if (response.status === 200) {
 			yield put(deleteCommentSuccess(action.payload))
 		}

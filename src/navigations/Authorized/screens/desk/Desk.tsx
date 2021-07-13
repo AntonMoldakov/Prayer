@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {View, FlatList} from 'react-native'
-import {IconTextInput, Loader} from "ui"
+import {BrownButton, IconTextInput, Loader} from "ui"
 import styles from "./Desk.styles";
 import {useAppDispatch} from "/state";
 import {ColumnPreview} from "components";
@@ -9,6 +9,7 @@ import {addColumn, getColumns, stopAddColumn} from "state/columns/actions";
 import {DeskScreenNavigationProps} from "../../Authorized";
 import {useSelector} from "react-redux";
 import {selectColumns, selectColumnsAddMode, selectColumnsIsLoading} from "state/columns/selectors";
+import {signOut} from "state/auth/actions";
 
 
 const Desk = (props: DeskScreenNavigationProps) => {
@@ -57,6 +58,7 @@ const Desk = (props: DeskScreenNavigationProps) => {
 					/>
 				</>
 			}
+			<BrownButton onPress={() => dispatch(signOut)} text={'Sign Out'}/>
 		</View>
 	)
 }

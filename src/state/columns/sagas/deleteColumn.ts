@@ -1,11 +1,12 @@
-import {takeLatest, put} from 'redux-saga/effects';
+import {takeLatest, put, call} from 'redux-saga/effects';
 import {columnAPI} from "api";
 import {PayloadAction} from "@reduxjs/toolkit";
 import {deleteColumnSuccess} from "../actions";
+import {DeleteResponse} from "api/types";
 
 function* deleteColumn(action: PayloadAction<{ id: number }>) {
 	try {
-		const response = yield columnAPI.deleteColumn(action.payload.id)
+		const response: DeleteResponse = yield call(columnAPI.deleteColumn, action.payload.id)
 		if (response.status === 200) {
 			yield put(deleteColumnSuccess(action.payload))
 		}

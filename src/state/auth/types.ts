@@ -1,12 +1,9 @@
+import {IUser} from "interface";
+
 export type initialStateType = {
 	isLoading: boolean,
 	error: string,
-	user: {
-		token: string,
-		name: string,
-		email: string,
-		password: string
-	}
+	user: IUser
 }
 
 export type signIn = {

@@ -1,14 +1,14 @@
-import {takeLatest, put} from 'redux-saga/effects';
+import {takeLatest, put, call} from 'redux-saga/effects';
 import {commentAPI} from "api";
-import {IComment} from "interface";
 import {getCommentsSuccess, isLoadingSuccess} from "../actions";
+import {GetCommentsResponse} from "api/types";
 
 
 function* getComments() {
 	try {
 		yield put(isLoadingSuccess(true))
-		const response = yield commentAPI.getComments()
-		const comments: IComment[] = response.data
+		const response: GetCommentsResponse = yield call(commentAPI.getComments)
+		const comments = response.data
 		if (comments) {
 			yield put(getCommentsSuccess(comments))
 		}

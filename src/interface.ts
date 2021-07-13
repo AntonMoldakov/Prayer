@@ -25,7 +25,6 @@ export interface IComment {
 export interface IUser {
 	name: string,
 	email: string,
-	password: string,
 	token: string,
 	id: number
 }

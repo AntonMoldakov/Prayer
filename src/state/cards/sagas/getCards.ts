@@ -1,13 +1,13 @@
-import {takeLatest, put} from 'redux-saga/effects';
+import {takeLatest, put, call} from 'redux-saga/effects';
 import {cardAPI} from "api";
-import {ICard} from "interface";
 import {getCardsSuccess, isLoadingSuccess} from "../actions";
+import {GetCardsResponse} from "api/types";
 
 function* getCards() {
 	try {
 		yield put(isLoadingSuccess(true))
-		const response = yield cardAPI.getCards()
-		const cards: ICard[] = response.data
+		const response: GetCardsResponse = yield  call(cardAPI.getCards)
+		const cards = response.data
 		if (cards) {
 			yield put(getCardsSuccess(cards))
 		}

@@ -1,13 +1,13 @@
-import {takeLatest, put} from 'redux-saga/effects';
+import {takeLatest, put, call} from 'redux-saga/effects';
 import {commentAPI} from "api";
 import {PayloadAction} from "@reduxjs/toolkit";
-import {IComment} from "interface";
 import {addCommentSuccess} from "../actions";
+import {PostCommentResponse} from "api/types";
 
 function* addComment(action: PayloadAction<{ cardId: number, body: string, name: string }>) {
 	try {
-		const response = yield commentAPI.addComment(action.payload.cardId, action.payload.body, action.payload.name)
-		const comment: IComment = response.data
+		const response: PostCommentResponse = yield call(commentAPI.addComment, action.payload.cardId, action.payload.body, action.payload.name)
+		const comment = response.data
 		if (response.status === 201) {
 			yield put(addCommentSuccess(comment))
 		}

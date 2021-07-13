@@ -1,26 +1,15 @@
-import {ICard, IColumn, IComment} from "interface";
+import {ICard, IColumn, IComment, IUser} from "interface";
 
 export type AuthResponse = {
-	data: {
-		message?: string,
-		name?: string,
-		email?: string,
-		password?: string,
-		token?: string,
-		id?: number
-	}
+	data: IUser
 }
 export type GetColumnsResponse = {
-	data: Array<IColumn> & {
-		message?: string
-	}
+	data: Array<IColumn>
 }
 
 export type PostColumnResponse = {
 	status: number,
-	data: IColumn & {
-		message?: string,
-	}
+	data: IColumn 
 }
 
 export type DeleteResponse = {
@@ -31,16 +20,12 @@ export type DeleteResponse = {
 }
 
 export type GetCardsResponse = {
-	data: Array<ICard> & {
-		message?: string
-	}
+	data: Array<ICard> 
 }
 
 export type PostCardResponse = {
 	status: number,
-	data: ICard & {
-		message?: string,
-	}
+	data: ICard 
 }
 
 export type CheckedResponse = {
@@ -51,15 +36,11 @@ export type CheckedResponse = {
 }
 
 export type GetCommentsResponse = {
-	data: Array<IComment> & {
-		message?: string
-	}
+	data: Array<IComment> 
 }
 
 export type PostCommentResponse = {
 	status: number,
-	data: IComment & {
-		message?: string,
-	}
+	data: IComment 
 }
 
