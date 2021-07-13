@@ -3,7 +3,8 @@ import colors from "styles/colors";
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		minHeight: 75,
+		// flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
 		borderTopWidth: 1,
@@ -39,13 +40,7 @@ const styles = StyleSheet.create({
 		color: colors.lightBlack,
 		fontSize: 17,
 		lineHeight: 20,
-	},
-	swipeableContainer: {
-		width: '100%',
-	},
-	swipeableChildContainer: {
-		width: '100%',
-	},
+	}
 });
 
 export default styles;

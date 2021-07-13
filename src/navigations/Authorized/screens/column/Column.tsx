@@ -12,7 +12,7 @@ import {Loader} from "ui";
 import {useSelector} from "react-redux";
 import {selectCardsIsLoading} from "state/cards/selectors";
 
-interface getTabBarIconProps {
+interface GetTabBarIconProps {
 	route: {
 		key: string
 	}
@@ -33,7 +33,7 @@ const Column = (props: ColumnScreenNavigationProps) => {
 		dispatch(getCards())
 	}, [dispatch]);
 
-	const getTabBarIcon = (props: getTabBarIconProps) => {
+	const getTabBarIcon = (props: GetTabBarIconProps) => {
 		const {route} = props
 
 		if (route.key === 'Subscribed') {

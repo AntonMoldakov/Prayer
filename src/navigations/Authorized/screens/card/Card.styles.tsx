@@ -1,15 +1,13 @@
 import {StyleSheet} from 'react-native';
-import colors from "../../../../styles/colors";
+import colors from "styles/colors";
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: colors.white,
-		alignItems: 'center',
 		justifyContent: 'flex-start',
 	},
 	title: {
-		width: '100%',
 		backgroundColor: colors.beige,
 		paddingHorizontal: 15,
 		paddingBottom: 23,
@@ -53,6 +51,10 @@ const styles = StyleSheet.create({
 		borderRightWidth: 1,
 		borderColor: colors.lightGray,
 		width: '50%',
+	},
+	borderBottom: {
+		borderBottomWidth: 1,
+		borderColor: colors.lightGray,
 	},
 	number: {
 		fontFamily: 'SFUIText-Regular',
@@ -104,6 +106,27 @@ const styles = StyleSheet.create({
 		padding: 7,
 		borderRadius: 50,
 		backgroundColor: colors.beige
+	},
+	inputSection: {
+		borderTopWidth: 1,
+		borderColor: colors.lightGray,
+		width: '100%',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: colors.white,
+		height: 50,
+		paddingRight: 10,
+	},
+	inputIcon: {
+		paddingLeft: 10,
+	},
+	input: {
+		fontFamily: 'SFUIText-Regular',
+		width: '90%',
+		paddingLeft: 10,
+		fontSize: 17,
+		lineHeight: 20,
 	}
 })
 
